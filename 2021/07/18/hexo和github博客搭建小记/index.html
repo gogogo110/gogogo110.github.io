@@ -76,7 +76,7 @@
     </p>
   <p class="article-time">
     <time datetime="2021-07-18T03:01:48.000Z" itemprop="datePublished">2021-07-18</time>
-    Updated:<time datetime="2021-07-18T03:20:17.981Z" itemprop="dateModified">2021-07-18</time>
+    Updated:<time datetime="2021-07-18T05:01:17.107Z" itemprop="dateModified">2021-07-18</time>
     
   </p>
 </header>
@@ -92,25 +92,26 @@
 <p>因此，第一篇博客就由它的搭建开始了。博客搭建的过程是从全国最大的学习网站B站（BV1A4411G7SF）学到的，视频讲的很简单而且小姐姐的声音真的真的很好听。接下来逐步记录一下博客搭建的整个过程。</p>
 <h3 id="step1、必要软件的安装"><a href="#step1、必要软件的安装" class="headerlink" title="step1、必要软件的安装"></a>step1、必要软件的安装</h3><p>git，Nodejs，npm以及github账号的注册。</p>
 <h3 id="step2、git配置和SSH"><a href="#step2、git配置和SSH" class="headerlink" title="step2、git配置和SSH"></a>step2、git配置和SSH</h3><p>1、使用右键“git bash here”配置git用户名和邮箱，这里我之前就配置好了，所以只是检查了一下。如果要新设置一下的话，使git config –global user.name “YOURNAME” 就可以了。</p>
-<p>![1](C:\Users\lijl\Pictures\Camera Roll\1.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/JbstA1i7avlYkdI.png" alt="1.png"></p>
 <p>2、在github上新建NAME.github.io仓库，仓库名必须要是这个。</p>
-<p>![屏幕截图 2021-07-18 101002](C:\Users\lijl\Pictures\Camera Roll\屏幕截图 2021-07-18 101002.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/vz2YXiTH7spaUoc.png" alt="屏幕截图 2021-07-18 101002.png"></p>
 <p>3、利用git找到公钥。首先用下图命令可以生成一个公钥，并在相应位置找到它，是一个以.pub结尾的文件。</p>
-<p>![屏幕截图 2021-07-18 101648](C:\Users\lijl\Pictures\Camera Roll\屏幕截图 2021-07-18 101648.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/E89yofN1xRPAFrX.png" alt="屏幕截图 2021-07-18 101648.png"></p>
 <p>4、将公钥放到github上。登陆github之后，从右上头像进入设置，并点击进入“SSH and GPG keys”。创建一个新的SSH keys，title和key都要填写，其中key就是刚刚生成的pub文件的内容。新建完之后会变成这样</p>
-<p>![屏幕截图 2021-07-18 102034](C:\Users\lijl\Pictures\Camera Roll\屏幕截图 2021-07-18 102034.png)</p>
-<p>5、最后在git上验证一下是否配置完成![5](C:\Users\lijl\Pictures\Camera Roll\5.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/w1vbtQ7X2pqyaA5.png" alt="屏幕截图 2021-07-18 102034.png"></p>
+<p>5、最后在git上验证一下是否配置完成<img src="https://i.loli.net/2021/07/18/IPEpeZVq8QBsKYl.png" alt="5.png"></p>
 <h3 id="step3、安装hexo博客框架并初始化"><a href="#step3、安装hexo博客框架并初始化" class="headerlink" title="step3、安装hexo博客框架并初始化"></a>step3、安装hexo博客框架并初始化</h3><p>1、在git上“npm install -g hexo”安装hexo框架，如果很慢的话可以直接用命令行。实在不行可以安装淘宝镜像。</p>
 <p>我这里因为之前装过，所以跳过这一步了</p>
-<p>![6](C:\Users\lijl\Pictures\Camera Roll\6.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/5lwUEafNdXQsF6e.png" alt="6.png"></p>
 <p>2、在你喜欢的地方创建一个博客文件夹，所以博客相关的东西都可以放在这里。</p>
 <p>3、在创建的博客文件夹中进入git，可以使用hexo init对博客文件夹进行初始化。完成初始化后，你的博客文件夹就会被放入一些必要的东西。</p>
-<p>![7](C:\Users\lijl\Pictures\Camera Roll\7.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/lEp4RoXaYUIx8Mw.png" alt="7.png"></p>
 <p>4、安装hexo-deployer。使用”npm install hexo-deployer-git –save“命令安装博客部署模块，可以将博客内容部署到网上。</p>
-<p>5、在本地预览博客。使用”hexo server“命令，并将生成的连接放到浏览器打开可以预览博客内容。这就是hexo提供的初始化博客啦！没成功生成的可以试一下”hexo s -p 5000”命令换一个端口。![9](C:\Users\lijl\Pictures\Camera Roll\9.png)</p>
+<p>5、在本地预览博客。使用”hexo server“命令，并将生成的连接放到浏览器打开可以预览博客内容。这就是hexo提供的初始化博客啦！没成功生成的可以试一下”hexo s -p 5000”命令换一个端口。<img src="https://i.loli.net/2021/07/18/6GF73LOfIgzEhVB.png" alt="9.png"></p>
 <p>6、打开github仓库，复制SSH链接，并添加到博客的配置文件“_config.yml”中。划到配置文件最下边，如图配置（注意冒号后面有空格）</p>
-<p>![10](C:\Users\lijl\Pictures\Camera Roll\10.png)</p>
+<p><img src="https://i.loli.net/2021/07/18/eBuEzb4ALqDh7kH.png" alt="10.png"></p>
 <p>7、”hexo generate“生成文件，并使用”hexo deploy“将博客内容上传部署。这样以后，就可以在浏览器使用YOURNAME.github.io进入你的博客了。</p>
+<p><img src="https://i.loli.net/2021/07/18/7IjFPDZovme6UYC.png" alt="g.png"></p>
 <h3 id="step4、更换主题"><a href="#step4、更换主题" class="headerlink" title="step4、更换主题"></a>step4、更换主题</h3><p>hexo的主题是可以根据喜好更换的更换的。进入hexo官网主题页面选择喜欢的，并进入对应的github仓库。可以直接下载整个zip，并解压缩至你的博客文件夹的”themes“文件夹下。</p>
 <p>需要应用新主题的话，需要将配置文件中theme中原来的”landscape“改为你放入文件夹的名称，再生成部署就好了</p>
 <h3 id="step5、生成博文"><a href="#step5、生成博文" class="headerlink" title="step5、生成博文"></a>step5、生成博文</h3><p>使用hexo new ”postname“可以生成对应markdown文件，完成写作后再预览生成部署就好了。</p>
