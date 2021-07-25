@@ -1,0 +1,311 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>图机器学习论文阅读-3 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="图机器学习论文阅读-3舟山人在台风天出不了门了，只能呆在家里看论文，呜呜呜。
+今天看的是《Graph Attention Network》(link)这篇。与之前的图网络在汇聚其他邻居信息时选择一视同仁不同，GAT在汇聚时采用了注意力机制，在不增加过多额外计算的同时为不同邻居分配不同的汇聚权重，从而">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/07/25/图机器学习论文阅读-3/" title="图机器学习论文阅读-3" itemprop="url">图机器学习论文阅读-3</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-07-25T01:04:25.000Z" itemprop="datePublished">2021-07-25</time>
+    Updated:<time datetime="2021-07-25T03:28:38.573Z" itemprop="dateModified">2021-07-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-3"><span class="toc-number">1.</span> <span class="toc-text">图机器学习论文阅读-3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81GAT-Architecture"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、GAT Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1%E3%80%81%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%B1%82"><span class="toc-number">1.0.3.0.1.</span> <span class="toc-text">2.1、图注意力层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2%E3%80%81%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.0.3.0.2.</span> <span class="toc-text">2.2、相关工作的比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Evaluation"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、Evaluation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81conclusions"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、conclusions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">自己的总结</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="图机器学习论文阅读-3"><a href="#图机器学习论文阅读-3" class="headerlink" title="图机器学习论文阅读-3"></a>图机器学习论文阅读-3</h1><p>舟山人在台风天出不了门了，只能呆在家里看论文，呜呜呜。</p>
+<p>今天看的是《Graph Attention Network》(<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1710.10903">link</a>)这篇。与之前的图网络在汇聚其他邻居信息时选择一视同仁不同，GAT在汇聚时采用了注意力机制，在不增加过多额外计算的同时为不同邻居分配不同的汇聚权重，从而使GAT达到了优异的性能。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>本文提出了图注意力网络GAT，利用掩码的注意力层解决了基于图卷积及其相近方法的缺点。在层汇聚的阶段，在不增加过多计算和预知未来图结构的情况下，通过注意力机制为邻域中的不同节点分配不同的权重，解决了一些基于谱的图神经网络遇到的关键问题，并使得模型能够同时在转导和归纳问题上得到应用。</p>
+<p>GAT在引用网络数据集上和蛋白质影响数据集上均达到了sota。</p>
+<h3 id="1、Introduction"><a href="#1、Introduction" class="headerlink" title="1、Introduction"></a>1、Introduction</h3><p>目前，处理图数据的方法可以分为基于谱的方法和不基于谱的方法。</p>
+<p>基于谱的方法使用图的谱表示，并已成功地应用于节点分类任务上。但是，谱方法学到的滤波器都是依赖于图的结构的，因此在特定结构上学到的模型不能直接应用在一个结构不同的图结构中；不基于谱的方法则可以在归纳任务上使用，表现良好。</p>
+<p>考虑到注意力机制在模型中的优异效果，本文提出了GAT，用于计算图中每个节点的隐藏表示，并在信息交互的时候使用自注意力策略。使用注意力机制有几个性质：1、并行计算效率高；2、根据节点设权重；3、归纳问题能使用。</p>
+<h3 id="2、GAT-Architecture"><a href="#2、GAT-Architecture" class="headerlink" title="2、GAT Architecture"></a>2、GAT Architecture</h3><h5 id="2-1、图注意力层"><a href="#2-1、图注意力层" class="headerlink" title="2.1、图注意力层"></a>2.1、图注意力层</h5><p>因为整个GAT是由若干个图注意力层构成的，因此文章首先介绍了图注意力层。每一个图注意力层的输入输出都是所有节点特征的集合。</p>
+<p>在汇聚邻居节点信息到中西节点的时候，需要使用自注意力机制来进行群众的计算。两个节点之间的<strong>重要性</strong>计算为，其中<strong>W</strong>为可学习的共享权重</p>
+<p><img src="https://i.loli.net/2021/07/25/M8kGDYTiRsrzPn6.png" alt="1.png"></p>
+<p>考虑到图结构的特殊性，本文在这里采用了掩码注意力(只对邻域节点进行注意力相关的计算)。得到节点间的重要性之后，需要对所有邻域节点之间使用softmax进行一个标准化，就可以得到注意力权重</p>
+<p><img src="https://i.loli.net/2021/07/25/EKXIB7gPUyMDrJw.png" alt="2.png"></p>
+<p>特别的，如果将函数a定义为一个单层前向神经网络加一个非线性激活函数，那么注意力权重可以直接表示为</p>
+<p><img src="https://i.loli.net/2021/07/25/yzv8qn1mgUOdH7Q.png" alt="3.png"></p>
+<p>注意力权重会在后续汇聚计算中作为对应节点的权重进行加权。为了增加自注意力过程的稳定性，文章采用了多头注意力的思路，并将不同注意力计算得到的特征进行拼接（除最后一层外都是用拼接，最后一层使用均值）。</p>
+<h5 id="2-2、相关工作的比较"><a href="#2-2、相关工作的比较" class="headerlink" title="2.2、相关工作的比较"></a>2.2、相关工作的比较</h5><p>GAT解决了若干个问题</p>
+<ul>
+<li>计算简便，自注意力层的计算和输出特征的计算都是可以并行的。</li>
+<li>相比于GCN，GAT能够给不同的邻居节点分配不同的重要性权重，增加了模型容量。除此之外，观察邻居的邻域信息可以帮助解释GAT。</li>
+<li>注意力机制在边上的计算使用了共享权重，这使得GAT能够直接应用到归纳问题上。</li>
+<li>在GraphSAGE中，为了计算简便性，它始终采样固定数量的邻居节点做汇聚。这样会使得网络不能看到所有邻居节点的信息。而GAT则没有这个问题</li>
+<li>GAT可以被看作是MoNet的一个特例</li>
+</ul>
+<p>本文还搞了一个针对稀疏矩阵计算版本的GAT，但只支持秩为2 的矩阵，这需要在未来的工作中解决；除此之外，GAT的感受野大小由网络深度决定，因此为了增大感受野，像是跳跃连接这种技术的合理使用是有用的；最后，并行计算可能会带来大量的计算冗余，这可以设计一定的方法去除。</p>
+<h3 id="3、Evaluation"><a href="#3、Evaluation" class="headerlink" title="3、Evaluation"></a>3、Evaluation</h3><p>分别在转导和归纳两类情况下进行了实验验证，在多个数据集上均取得了sota的成绩，特别是在归纳任务上有较大的提升。实验也证明了，能够为不同邻居节点分配不同的权重确实能够提升模型效果。<img src="https://i.loli.net/2021/07/25/NHLbkEGWJlIfhsp.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/07/25/3VJPmrXUjbDnviT.png" alt="5.png"></p>
+<h3 id="4、conclusions"><a href="#4、conclusions" class="headerlink" title="4、conclusions"></a>4、conclusions</h3><p>本文提出了图注意力网络 (GAT)，这是一种新颖的卷积式神经网络，可对图结构数据进行操作，利用掩码的自注意力层。 在这些网络中使用的图注意力层在计算上是高效的（不需要计算密集的矩阵运算，并且可以在图中的所有节点上并行化），允许为邻域内的不同节点分配不同的重要性，同时处理不同大小的邻域，并且不依赖于预先了解整个图结构——从而解决了以前基于谱的方法的许多理论问题。 我们利用注意力的模型在四个完善的节点分类基准中成功实现或匹配了最先进的性能，包括转导和归纳。</p>
+<p>图注意力网络有几个潜在的改进和扩展，可以作为未来的工作来解决，例如克服第 2.2 小节中描述的实际问题，以便能够处理更大的批量。 一个特别有趣的研究方向是利用注意力机制对模型的可解释性进行彻底的分析。</p>
+<p>此外，从应用程序的角度来看，扩展该方法以执行图分类而不是节点分类也很重要。 最后，扩展模型以包含边缘特征（可能表示节点之间的关系）将使我们能够解决更多种类的问题。</p>
+<h3 id="自己的总结"><a href="#自己的总结" class="headerlink" title="自己的总结"></a>自己的总结</h3><p>总体而言，本文提出的GAT实际上就是在GCN的基础上融合了注意力机制。这一想法在直觉上是非常合理的，因为在图结构中，不同节点与节点之间的联系确实会有较大不同，给与不同的重要性是非常有用的。但是，GAT采用的汇聚函数是简单的求和，可以像GraphSAGE那样尝试使用不同的汇聚函数，并在聚合时同时考虑到自身节点的特征并给一个高的权重。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/07/25/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-3/" data-title="图机器学习论文阅读-3 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/07/23/Pytorch创建自己的数据集/"  title="Pytorch创建自己的数据集">
+ <strong>NEXT:</strong><br/> 
+ <span>Pytorch创建自己的数据集
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-3"><span class="toc-number">1.</span> <span class="toc-text">图机器学习论文阅读-3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81GAT-Architecture"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、GAT Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1%E3%80%81%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%B1%82"><span class="toc-number">1.0.3.0.1.</span> <span class="toc-text">2.1、图注意力层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2%E3%80%81%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.0.3.0.2.</span> <span class="toc-text">2.2、相关工作的比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Evaluation"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、Evaluation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81conclusions"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、conclusions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">自己的总结</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
