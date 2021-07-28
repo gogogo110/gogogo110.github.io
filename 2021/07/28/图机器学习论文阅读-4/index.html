@@ -1,0 +1,327 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>图机器学习论文阅读-4 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="图机器学习论文阅读-4论文名称：Neural Message Passing for Quantum Chemistry
+论文链接：link
+Abstract分子图结构上的监督学习模型在化学，药物发现和材料科学领域有着巨大的应用潜力。目前，已经有几种对分子对称性具有不变性的神经网通用络模型被提出，下">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/07/28/图机器学习论文阅读-4/" title="图机器学习论文阅读-4" itemprop="url">图机器学习论文阅读-4</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-07-28T05:07:15.000Z" itemprop="datePublished">2021-07-28</time>
+    Updated:<time datetime="2021-07-28T13:47:31.480Z" itemprop="dateModified">2021-07-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">图机器学习论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Message-Passing-Neural-Networks"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Message Passing Neural Networks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Related-Work"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81QM9-Dataset"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、QM9 Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81MPNN%E5%8F%98%E4%BD%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">5、MPNN变体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1%E3%80%81message-function"><span class="toc-number">1.0.6.0.1.</span> <span class="toc-text">5.1、message function</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2%E3%80%81%E8%99%9A%E6%8B%9F%E5%9B%BE%E6%88%90%E5%88%86"><span class="toc-number">1.0.6.0.2.</span> <span class="toc-text">5.2、虚拟图成分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3%E3%80%81%E8%AF%BB%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.0.3.</span> <span class="toc-text">5.3、读出函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4%E3%80%81Multiple-Towers"><span class="toc-number">1.0.6.0.4.</span> <span class="toc-text">5.4、Multiple Towers</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81Input-Representation"><span class="toc-number">1.0.7.</span> <span class="toc-text">6、Input Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81Training"><span class="toc-number">1.0.8.</span> <span class="toc-text">7、Training</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81Result"><span class="toc-number">1.0.9.</span> <span class="toc-text">8、Result</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81Conclusion-and-Future-Work"><span class="toc-number">1.0.10.</span> <span class="toc-text">9、Conclusion and Future Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E4%B8%80%E4%BA%9B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9C%8B%E6%B3%95"><span class="toc-number">1.0.11.</span> <span class="toc-text">10、一些自己的看法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="图机器学习论文阅读-4"><a href="#图机器学习论文阅读-4" class="headerlink" title="图机器学习论文阅读-4"></a>图机器学习论文阅读-4</h1><p>论文名称：Neural Message Passing for Quantum Chemistry</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v70/gilmer17a">link</a></p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>分子图结构上的监督学习模型在化学，药物发现和材料科学领域有着巨大的应用潜力。目前，已经有几种对分子对称性具有不变性的神经网通用络模型被提出，下一步是找到这种通用方法的特别有效的变体，并将其应用于化学预测问题上，直到该问题得到解决或达到上限。</p>
+<p>本文将现有模型重新构建为一个单一的普通框架，我们称之为消息传递神经网络 (MPNN)，并探索该框架内的其他新变化。MPNN在基线问题上达到了sota。</p>
+<h3 id="1、Introduction"><a href="#1、Introduction" class="headerlink" title="1、Introduction"></a>1、Introduction</h3><p>最近，大规模量子化学计算和分子动力学模拟以及高通量实验的进步开始以前所未有的速度生成数据。在巨量的数据面前，传统的方法不再非常有效，因此需要新的更加强大的方法来从这些数据中进行学习 ，而图神经网络就是一个很好的选择。</p>
+<p>本文提出了一个通用的，在图上进行监督学习的消息传递神经网络MPNN。它是几个现存网络模型的抽象，以方便人们理解模型之间的关系并想出新的变种。借助于这个通用的模型，不同领域的研究员可以针对不同的应用做出相对合适的改变，从而在各自的领域使用图神经网络。在这篇文章中，这个应用是有机小分子的化学性质预测。</p>
+<p>本文的主要贡献有</p>
+<ul>
+<li>提出MPNN模型，并在QM9数据集上达到sota</li>
+<li>提出若干种不同的MPNN变种，并在仅有分子拓扑信息的条件下表现不错</li>
+<li>提出了在更大数据集训练MPNN的通用方法，并且相应的时间空间复杂度没有增加</li>
+</ul>
+<p>通过使用MPNN和相关领域的经验知识，研究者可以很好的将图神经网络应用在对应的任务上。</p>
+<h3 id="2、Message-Passing-Neural-Networks"><a href="#2、Message-Passing-Neural-Networks" class="headerlink" title="2、Message Passing Neural Networks"></a>2、Message Passing Neural Networks</h3><p>MPNN模型可以由两阶段构成，信息传递阶段和读出阶段，其中信息传递阶段需要循环运行T次，每次更新节点的隐藏更新，信息传递阶段如下,M表示传递的信息，h表示节点隐藏信息的更新<img src="https://i.loli.net/2021/07/28/NoZfhO3GFtCY7VP.png" alt="1.png"></p>
+<p>经过若干次更新后，使用读出阶段的函数将所有节点的嵌入信息变为响应任务的结果输出<img src="https://i.loli.net/2021/07/28/9R6rnxghZ3qHBJk.png" alt="2.png"></p>
+<p>上述所有的函数都是可学习的函数。</p>
+<p>在接下来的内容中，文章描述了如何通过修改MPNN模型中M，U和R函数，将MPNN模型变为一系列已经提出的模型，从而说明了MPNN框架的一个广泛的适用性。文中一共变化出了多种不同的已经提出的模型，并分别阐述了如何设置相应的函数以达到变化的目的，这也验证了MPNN可以通过一些细微的改变以应用在不同的领域。</p>
+<p>通过观察不同MPNN变种的模型在不同应用领域上的表现，我们可以观察到哪些是最关键的实验细节，并将这些细节应用到未来的建模过程中。</p>
+<h3 id="3、Related-Work"><a href="#3、Related-Work" class="headerlink" title="3、Related Work"></a>3、Related Work</h3><p>相关工作介绍了传统的一些分子性质预测的算法，最出名的像是DFT。但DFT的计算时间极长，在QM9上计算17原子大小的分子需要8小时。其他的方法包括传统的机器学习算法，他们都需要手工设计的特征提取器。最近提出的方法则更多的依赖于图结构上的信息传递。</p>
+<h3 id="4、QM9-Dataset"><a href="#4、QM9-Dataset" class="headerlink" title="4、QM9 Dataset"></a>4、QM9 Dataset</h3><h3 id="5、MPNN变体"><a href="#5、MPNN变体" class="headerlink" title="5、MPNN变体"></a>5、MPNN变体</h3><p>在MPNN的框架下，不同的消息函数、输出函数、输入表示以及超参数会在相同的任务下也会带来完全不同的效果。因此，文章在这几个方面探究了多种可能的变体。</p>
+<h5 id="5-1、message-function"><a href="#5-1、message-function" class="headerlink" title="5.1、message function"></a>5.1、message function</h5><ul>
+<li><p>矩阵乘法<br>$$<br>M(h_v, h_w,e_{vw}) = A_{e_{vw}}h_w<br>$$</p>
+</li>
+<li><p>边网络(A为一个神经网络)<br>$$<br>M(h_v, h_w,e_{vw}) = A(e_{vw})h_w<br>$$</p>
+</li>
+<li><p>成对信息传递(同时使用两边的节点信息)<br>$$<br>M(h_v, h_w,e_{vw}) = f(h_w,h_v,e_{vw})<br>$$</p>
+</li>
+</ul>
+<h5 id="5-2、虚拟图成分"><a href="#5-2、虚拟图成分" class="headerlink" title="5.2、虚拟图成分"></a>5.2、虚拟图成分</h5><p>给图添加一些虚拟边或一个虚拟全局节点，这可以有助于节点间信息的长距离传播。</p>
+<h5 id="5-3、读出函数"><a href="#5-3、读出函数" class="headerlink" title="5.3、读出函数"></a>5.3、读出函数</h5><p>读出函数的选择对结果的产生也非常重要，文中描述了两种较好的读出函数。</p>
+<h5 id="5-4、Multiple-Towers"><a href="#5-4、Multiple-Towers" class="headerlink" title="5.4、Multiple Towers"></a>5.4、Multiple Towers</h5><p>为了缓解当嵌入维数和节点数增加时，图网络的计算复杂度剧增的情形，文章将d维嵌入拆分为k个d/k维的嵌入，并且分别在各自的嵌入中进行信息传递缓解。最后，再由一个如下的共享的函数将k个嵌入进行整合。<img src="https://i.loli.net/2021/07/28/wNVu5ESZ76KbxCs.png" alt="3.png"></p>
+<p>  这种混合的方式保持了节点排列的不变性，同时允许图的不同副本在传播阶段相互通信。 这可能是有利的，因为它允许相同数量的参数有更大的隐藏状态，这在实践中达到了计算加速的效果。</p>
+<h3 id="6、Input-Representation"><a href="#6、Input-Representation" class="headerlink" title="6、Input Representation"></a>6、Input Representation</h3><p>最初的节点的嵌入表示对模型的学习性能非常重要，因此采用何种特征和如何表示边结构需要视具体应用而定。文中给出了三种不同的表示。</p>
+<h3 id="7、Training"><a href="#7、Training" class="headerlink" title="7、Training"></a>7、Training</h3><p>使用了超参数搜索</p>
+<h3 id="8、Result"><a href="#8、Result" class="headerlink" title="8、Result"></a>8、Result</h3><p>文章进行了大量实验，以便在该数据集上找到最佳的 MPNN 以及正确的输入表示。具体的模型细节就不描述了，因为在化学领域的应用对我没啥用处。</p>
+<p>添加虚拟节点和虚拟边的方法能够提升性能。</p>
+<p>Multiple Towers不仅能加速训练并使得网络应用到更大的图上，而且实验证明了它能够提升泛化能力。</p>
+<p>实验发现边网络比成对信息传递好用。</p>
+<h3 id="9、Conclusion-and-Future-Work"><a href="#9、Conclusion-and-Future-Work" class="headerlink" title="9、Conclusion and Future Work"></a>9、Conclusion and Future Work</h3><p>文章结果表明，使用适当消息、更新和读出功能的 MPNN 具有有用的归纳偏差，可用于预测分子特性，优于几个强大的基线，并且无需复杂的特征工程。 此外，文章的结果还揭示了使用虚拟节点和虚拟边以实现长距离交互的重要性。 Multiple Towers使这些模型更具可扩展性，但需要额外的改进才能扩展到更大的图。</p>
+<h3 id="10、一些自己的看法"><a href="#10、一些自己的看法" class="headerlink" title="10、一些自己的看法"></a>10、一些自己的看法</h3><ul>
+<li>感觉这篇文章更偏向与应用。使用的网络模型基本上就是之前提出来的，然后作者总结了一下得到了一个通用的模型，再将这个通用模型的变体用在了分子性质预测这个任务上，感觉并没有特别有创新的地方。</li>
+<li>虽然明显创新的地方是没有，但是做出了比较有意义的总结，提出了能够概括目前大多数图网络结构的MPNN模型，并且在其变种问题上也全面的讨论了一下，为接下来想在不同领域应用图神经网络的研究者提供了比较大的参考价值。</li>
+<li>算是提出了一个大类的图神经网络吧</li>
+<li>我觉得文中用来节省计算的Multiple Towers还是有意思的。目前的图神经网络确实受限于计算复杂的和空间复杂的，这样做能够在不损失过大性能的前提下极大的节省对电脑性能的需求，为未来需要使用更大数据的数据集的情况奠定了基础。</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/07/28/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4/" data-title="图机器学习论文阅读-4 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/07/25/图机器学习论文阅读-3/"  title="图机器学习论文阅读-3">
+ <strong>NEXT:</strong><br/> 
+ <span>图机器学习论文阅读-3
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">图机器学习论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Message-Passing-Neural-Networks"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Message Passing Neural Networks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Related-Work"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81QM9-Dataset"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、QM9 Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81MPNN%E5%8F%98%E4%BD%93"><span class="toc-number">1.0.6.</span> <span class="toc-text">5、MPNN变体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1%E3%80%81message-function"><span class="toc-number">1.0.6.0.1.</span> <span class="toc-text">5.1、message function</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2%E3%80%81%E8%99%9A%E6%8B%9F%E5%9B%BE%E6%88%90%E5%88%86"><span class="toc-number">1.0.6.0.2.</span> <span class="toc-text">5.2、虚拟图成分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3%E3%80%81%E8%AF%BB%E5%87%BA%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.0.3.</span> <span class="toc-text">5.3、读出函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4%E3%80%81Multiple-Towers"><span class="toc-number">1.0.6.0.4.</span> <span class="toc-text">5.4、Multiple Towers</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81Input-Representation"><span class="toc-number">1.0.7.</span> <span class="toc-text">6、Input Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81Training"><span class="toc-number">1.0.8.</span> <span class="toc-text">7、Training</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81Result"><span class="toc-number">1.0.9.</span> <span class="toc-text">8、Result</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81Conclusion-and-Future-Work"><span class="toc-number">1.0.10.</span> <span class="toc-text">9、Conclusion and Future Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E4%B8%80%E4%BA%9B%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9C%8B%E6%B3%95"><span class="toc-number">1.0.11.</span> <span class="toc-text">10、一些自己的看法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
