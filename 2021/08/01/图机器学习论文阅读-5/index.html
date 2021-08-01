@@ -1,0 +1,301 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>图机器学习论文阅读-5 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="1、图机器学习论文阅读-5论文标题：《GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models》
+论文链接：link
+类似于GAN在图像生成领域的作用，图领域中的图生成算法在药物发现，物理建模，知识图谱构建等领域有非">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/01/图机器学习论文阅读-5/" title="图机器学习论文阅读-5" itemprop="url">图机器学习论文阅读-5</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-01T04:04:27.000Z" itemprop="datePublished">2021-08-01</time>
+    Updated:<time datetime="2021-08-01T08:18:42.352Z" itemprop="dateModified">2021-08-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">1、图机器学习论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction-and-Related-Work"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction and Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Proposed-Approach"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Proposed Approach</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="1、图机器学习论文阅读-5"><a href="#1、图机器学习论文阅读-5" class="headerlink" title="1、图机器学习论文阅读-5"></a>1、图机器学习论文阅读-5</h1><p>论文标题：《GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v80/you18a.html">link</a></p>
+<p>类似于GAN在图像生成领域的作用，图领域中的图生成算法在药物发现，物理建模，知识图谱构建等领域有非常重要的意义。其中，GraphGNN算是图生成领域中比较重要的一篇文章吧。</p>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>   建模和生成图是研究生物学、工程和社会科学网络的基础，但由于图的非唯一性、高维性质以及给定图中边之间存在的复杂、非局部依赖性，从复杂的图分布中进行快速采样是非常具有挑战性的。</p>
+<p>   本文提出了一个深度自回归模型，GraphGNN，来解决上述挑战。</p>
+<p>   Graph从一系列代表性的图中学习训练，并将图生成的过程以目前生成的图为基础，分为节点生成序列和边生成序列。</p>
+<p>​    GraphGNN在实验中证实了强于所有基线算法。</p>
+<h3 id="1、Introduction-and-Related-Work"><a href="#1、Introduction-and-Related-Work" class="headerlink" title="1、Introduction and Related Work"></a>1、Introduction and Related Work</h3><p>​    图生成算法具有一定的历史，一些传统的生成算法（如随机图，学习度分布等）通过手工设计图的生成过程来建模一系列特定种类的图，因此这些方法没有从已有数据中学习隐藏特点的能力。本文的主要目的就是提出一个能够从一系列给定图中学习他们的特性，并生成新的有相同性质的图的算法。</p>
+<p>​    过去的方法中也有使用深度生成算法的模型，但他们要么只能从一张图上学习，要么只能生成极少节点数量的图。这些限制由以下挑战导致：1、大且可变的输出空间；2、相同的图有多种不同的表达形式；3、边的复杂性。</p>
+<p>​    本文提出的GraphRNN，以自回归的方式对图进行建模（新节点和边的添加序列），以捕获图中所有节点和边的复杂联合概率。GraphRNN可以看作是一个分层模型，graph-level RNN保持图的状态并生成新的节点，edge-level RNN为新加入的节点生成边。需要注意的是，不合理的节点添加顺序不仅会导致结果较差，还会增加生成时间，因此本文采用了BFS来进行节点生成顺序的排序，它能够减少大量的训练和预测的时间，增加模型的可扩展性。最后，本文还提出了基于最大平均区分MMD的评价准则，使得更严格的评估方式得以使用。</p>
+<p>  相比于传统方法，GraphGNN能够从任意图集合中学习特征；相比于其他深度图生成算法，GraphGNN得到的图不仅效果更好，规模也可以更大。</p>
+<h3 id="2、Proposed-Approach"><a href="#2、Proposed-Approach" class="headerlink" title="2、Proposed Approach"></a>2、Proposed Approach</h3><p>将图的生成过程分解为节点添加过程（graph-level RNN）和边添加过程（edge-level RNN）。</p>
+<p>因此一个图的生成过程可以被建模为：</p>
+<p><img src="https://i.loli.net/2021/08/01/2YFWUjtqCf48gBG.png" alt="2.png"></p>
+<p>其中，S_i^pi 是第i个加入的节点与前面所有节点的连接状态。这么一来，一个S^pi对应的一个图在某个特定节点顺序下的生成过程。于是，得到这个图的概率所有节点顺序只和<img src="https://i.loli.net/2021/08/01/3UO9qiYl1yKRoEM.png" alt="3.png"></p>
+<p>在上式中，p(S^pi)是我们需要通过生成模型学到的东西。由于内在的序列性质，p(S^pi)可以表示为<img src="https://i.loli.net/2021/08/01/718THwIP6GKAqNz.png" alt="4.png"></p>
+<p>最后，现在的问题在如何计算每一个连乘项了，文章使用RNN来计算并给除了伪代码</p>
+<p><img src="https://i.loli.net/2021/08/01/lfZKy3WkrxM4Ls1.png" alt="5.png"></p>
+<p>未完。。。。。。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/01/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5/" data-title="图机器学习论文阅读-5 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/07/28/图机器学习论文阅读-4/"  title="图机器学习论文阅读-4">
+ <strong>NEXT:</strong><br/> 
+ <span>图机器学习论文阅读-4
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">1、图机器学习论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction-and-Related-Work"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction and Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Proposed-Approach"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Proposed Approach</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
