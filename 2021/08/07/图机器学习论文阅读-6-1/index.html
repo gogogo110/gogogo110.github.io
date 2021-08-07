@@ -1,0 +1,330 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>图机器学习论文阅读-6 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="文章标题：《Explainability in Graph Neural Networks: A Taxonomic Survey》
+基于深度神经网络的方法目前在许多领域都取得了可喜的表现，但是由于神经网络的可解释性相对较差，所以很难应用在一些关键领域上。为了能够安全的，可信的使用深度神经网络，对深">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/07/图机器学习论文阅读-6-1/" title="图机器学习论文阅读-6" itemprop="url">图机器学习论文阅读-6</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-07T14:30:13.000Z" itemprop="datePublished">2021-08-07</time>
+    Updated:<time datetime="2021-08-07T14:32:37.628Z" itemprop="dateModified">2021-08-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-number">1.</span> <span class="toc-text">挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number"></span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A1%E9%87%8F%E5%87%86%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">衡量准则</span></a></li></ol>
+		</div>
+		
+		<p>文章标题：《Explainability in Graph Neural Networks: A Taxonomic Survey》</p>
+<p>基于深度神经网络的方法目前在许多领域都取得了可喜的表现，但是由于神经网络的可解释性相对较差，所以很难应用在一些关键领域上。为了能够安全的，可信的使用深度神经网络，对深度神经网络可解释性的研究是非常必要的。</p>
+<p>目前针对基于图像和文本的神经网络的可解释性研究已经非常多了。随着图神经网络的不断发展，对图神经网络可解释性的研究变得越发必要。目前仅有少数几种方法研究了图神经网络的可解释性，因此本文对这些方法进行了综述调查详细的介绍了所有可解释性方法的原理，好处与不足，并给出了一种分类策略。除此之外，文章还总结了所有用于图神经网络可解释性任务的数据集和衡量准则，并为了能够公平的比较不同可解释性方法的性能，将三个文本领域的数据集转变为了可理解的图领域的数据集，用作比较。</p>
+<h3 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h3><p>对图神经网络的可解释性研究有如下挑战：</p>
+<ul>
+<li>不像图像结构和文本结构具有规则的网格状结构，图结构不具有稳定的局部信息和邻居数量。图神经网络的可解释性研究需要探索邻接矩阵中包含的拓扑结构，这是一个船新的研究任务。</li>
+<li>在图像和文本中，像素点和单词的重要性是非常重要的，但是在图结构中，小范围内的结构信息更为重要。图神经网络中最重要的步骤是邻域内的信息传递，探索这一点是重要但困难的。</li>
+<li>图形数据不如图像和文本直观，理解图数据需要一定的专业知识。</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>主要分为模型级和实例级两类。<img src="https://i.loli.net/2021/08/05/MntGTDbqAmlgP7O.png" alt="1.PNG"></p>
+<p><strong>实例级</strong>   </p>
+<p>实例级方法为模型提供依赖于输入的解释。 给定一个输入图，这些方法通过识别重要的输入特征来解释深度模型的预测。 </p>
+<p>基于如何获得重要性分数，可以将这些方法分为四个不同的分支：基于梯度/特征的方法，基于扰动的方法，基于分解的方法和基于替代的方法。</p>
+<p><strong>基于特征/梯度的方法</strong></p>
+<p>关键思想是使用梯度或隐藏特征图值作为输入重要性的近似值。具体来说，基于梯度的方法通过反向传播计算目标预测相对于输入特征的梯度；基于特征的方法通过插值将隐藏特征映射到输入空间以测量重要性分数。这一类中方法之间的主要区别在于梯度反向传播的过程以及如何组合不同的隐藏特征图。</p>
+<p>（SA，Guided BP，CAM，Grad CAM）</p>
+<p><strong>基于扰动的方法</strong></p>
+<p>潜在的动机是研究模型关于不同输入扰动的输出变化。当输入图的重要部分被保留而其余部分被mask遮住时，模型的输出应该与原输出是相似的。<img src="https://i.loli.net/2021/08/05/RZVzFWoD8aTprj4.png" alt="2.PNG"></p>
+<p>首先，输入原图，并使用遮罩生成器生成一个遮罩，与原图结合后送入GNN中。新图得到的预测结果与原图的预测结果共同用来升级遮罩生成器。这一类方法之间的不同主要在于遮罩生成器算法，遮罩类型和目标函数。</p>
+<p>(GNNExplainer, PGExlainer, GraphMask, ZORRO,Casual Screening, SubgraphX)</p>
+<p><strong>基于替代的方法</strong></p>
+<p>基本思想是采用简单且可解释的代替模型来近似复杂深度模型对输入示例相邻区域的预测。这种方法假设了输入样例能够被简单的模型所学习，所以可以使用这些简单的模型来解释复杂的模型。这类方法之间的主要区别在于，如何获取本地数据集以及使用什么可解释的代理模型。</p>
+<p>（GraphLime, RelEx,PGM_Explainer,)</p>
+<p><strong>基于分解的方法</strong></p>
+<p>这类方法通过将原始模型预测分解为几个项来衡量输入特征的重要性。，然后将这些项视为相应输入特征的重要性得分。这些算法的直觉是建立分数分解规则，将预测分数分配到输入空间。简单来说就是将GNN的输出结果通过某种分解规则传播到输入空间上。</p>
+<p>（LRP，excitation BP， GNN-LRP）</p>
+<p><strong>模型级</strong> </p>
+<p>模型级方法为模型提供不依赖于输入的解释，是一种高级的，更加通用的解释方法。他们学习了输入图模式是如何引导GNN学习到特定的行为的。</p>
+<p>这一类别中，唯一的一种方法是XGNN，是一种基于图生成原理的方法。它不是直接优化输入图，而是训练图生成器，以便生成的图可以最大化目标图预测。生成的图被视为对目标预测的解释，并有望包含判别图模式。</p>
+<p><img src="https://i.loli.net/2021/08/05/Mm8WPv5xAN1zQGe.png" alt="3.PNG"></p>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><ul>
+<li>合成数据</li>
+<li>情感图数据</li>
+<li>分子数据</li>
+</ul>
+<h3 id="衡量准则"><a href="#衡量准则" class="headerlink" title="衡量准则"></a>衡量准则</h3><ul>
+<li>Fidelity</li>
+<li>sparsity</li>
+<li>stability</li>
+<li>accuracy</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/07/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-6-1/" data-title="图机器学习论文阅读-6 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2021/08/07/图机器学习论文阅读-7/" title="图机器学习论文阅读-7">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  图机器学习论文阅读-7</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2021/08/01/图机器学习论文阅读-5/"  title="图机器学习论文阅读-5">
+ <strong>NEXT:</strong><br/> 
+ <span>图机器学习论文阅读-5
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-number">1.</span> <span class="toc-text">挑战</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number"></span> <span class="toc-text">分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A1%E9%87%8F%E5%87%86%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">衡量准则</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
