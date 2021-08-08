@@ -1,0 +1,310 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级论文阅读-1 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级（glioma grading）论文阅读-1​        老板前两天叫我关注一下基于多模态医学影像融合的脑胶质瘤分级这一方向，并附赠了我《CoCa-GAN: Common-Feature-Learning-Based Context-Aware Generative Adversar">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/08/脑胶质瘤分级论文阅读-1/" title="脑胶质瘤分级论文阅读-1" itemprop="url">脑胶质瘤分级论文阅读-1</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-08T10:36:00.000Z" itemprop="datePublished">2021-08-08</time>
+    Updated:<time datetime="2021-08-08T13:15:36.720Z" itemprop="dateModified">2021-08-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%EF%BC%88glioma-grading%EF%BC%89%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-1"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级（glioma grading）论文阅读-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E9%83%A8%E5%88%86%EF%BC%88optimizer1%EF%BC%89"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">1、生成对抗部分（optimizer1）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%9C%9F%E5%81%87%E5%9B%BE%E5%83%8F%E5%B7%AE%E5%88%AB%E9%83%A8%E5%88%86%EF%BC%88optimizer2%EF%BC%89"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2、真假图像差别部分（optimizer2）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%82%BF%E7%98%A4%E6%84%9F%E7%9F%A5%E5%AD%A6%E4%B9%A0%EF%BC%88optimizer3%EF%BC%89"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">3、肿瘤感知学习（optimizer3）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%88%86%E7%BA%A7%E6%A8%A1%E5%9E%8B%EF%BC%88optimizer4%EF%BC%89"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">4、分级模型（optimizer4）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3"><span class="toc-number">1.4.</span> <span class="toc-text">4、个人感想</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级（glioma-grading）论文阅读-1"><a href="#脑胶质瘤分级（glioma-grading）论文阅读-1" class="headerlink" title="脑胶质瘤分级（glioma grading）论文阅读-1"></a>脑胶质瘤分级（glioma grading）论文阅读-1</h1><p>​        老板前两天叫我关注一下基于多模态医学影像融合的脑胶质瘤分级这一方向，并附赠了我《CoCa-GAN: Common-Feature-Learning-Based Context-Aware Generative Adversarial Network for Glioma Grading》这篇文章。我非常感动，所以立马下过来看了。</p>
+<p>​        这一块对我来说又是一个全新的方向了，所以我打算从老板送的这篇文章开始，慢慢的看一些最初的和最新的相关论文。这篇CoCa-GAN是19年MICCAI的文章，说新不新说老不老，从这开始刚刚好。</p>
+<p><strong>文章标题</strong> ：CoCa-GAN: Common-Feature-Learning-Based Context-Aware Generative Adversarial Network for Glioma Grading</p>
+<p><strong>文章链接</strong>： <a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-32248-9_18">link</a></p>
+<p>​        另外，从这一片论文阅读笔记开始，我打算按介绍，方法和实验三部分来记录论文内容，这样感觉会更清晰一点。</p>
+<h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>​        在目前的医疗诊断中，基于多模态MRI的术前脑胶质瘤分级算法已经得到了一定程度上的应用，这类方法使用一位患者的多模态脑部图像对脑胶质瘤的等级进行判断。尽管多模态图像能够提供更加丰富的信息，在实际医疗诊断过程中获取完整的高分辨率的多模态数据是昂贵和困难的，因此即使多模态的方法能够取得很好的效果，但却难以应用。</p>
+<p>​        受使用生成对抗学习借助已有模态生成未有模态图像的工作的启发，文章提出了一种基于三维公共特征学习的上下文感知 GAN（CoCa-GAN），从具有完整模态的数据集中学习，以解决仅以 T1 MRI 作为输入的胶质瘤分级时缺失模态的问题。</p>
+<p>​        本文提出的方法的主要思想是，通过学习数据集中完整四种模态图像的信息，将T1 MRI映射到四种模态的公共特征空间上。由于这个公共特征空间是由四种模态学习得到的，因此即使输入仅有T1 MRI一种，但其特征向量却能够编码内在的多模态关系和特定于病变的表示，其包含的信息比仅由T1 MRI编码得到的特征向量要多，因此得到的分级效果会明显要好。</p>
+<p>​        实验结果表明，本文提出的方法明显优于仅使用T1 MRI的单模态方法，和使用完整多模态信息的方法有可比的效果。该方法的主要优势在于，模型在训练的过程中需要完整的四种模态的数据，但是在测试的时候仅需要T1 MRI图像就可以得到近似于使用四种模态图像的结果，可以在实际诊断过程中MRI图像不足的情况下有更广泛应用。</p>
+<h2 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h2><p>​        首先给出方法的主要流程图<img src="https://i.loli.net/2021/08/08/SjvfgFehI7o8qbz.png" alt="1.png"></p>
+<p>​    图中，</p>
+<p>​    接下来分环节介绍网络框架的每一个部分。</p>
+<h4 id="1、生成对抗部分（optimizer1）"><a href="#1、生成对抗部分（optimizer1）" class="headerlink" title="1、生成对抗部分（optimizer1）"></a>1、生成对抗部分（optimizer1）</h4><p>​        这部分由一个编码器，三个解码器和三个鉴别器组成。框架使用一个编码器将T1 MRI图像编码到公共特征空间<strong>H</strong>中，再使用三个解码器将公共特征生成为三种不同的模态图像。和GAN的思想一样，三个解码器想要生成尽可能真实的图像以骗过鉴别器，鉴别器则尽可能鉴别出解码器生成的图像和真实图像的区别。该部分的损失函数为</p>
+<p><img src="https://i.loli.net/2021/08/08/C3emPjiVtNHvfEY.png" alt="2.png"></p>
+<p>​        其中，上式为鉴别器损失，他希望将真实图像判为1，生成图像判为0；下是为解码器对抗损失，他希望鉴别器将生成图像判为1.</p>
+<h4 id="2、真假图像差别部分（optimizer2）"><a href="#2、真假图像差别部分（optimizer2）" class="headerlink" title="2、真假图像差别部分（optimizer2）"></a>2、真假图像差别部分（optimizer2）</h4><p>​        为了进一步加速训练，文章额外使用了三个损失，我称他们为<strong>真假图L2差</strong>， <strong>真假图梯度差</strong>，<strong>真假图边缘差</strong>，损失函数的定义分别如下，其主要目的是让生成图像尽可能相似，同时引入边感知学习（受先前工作启发）。</p>
+<p><img src="https://i.loli.net/2021/08/08/cxphfwJL7Nak9HU.png" alt="3.png"></p>
+<p><img src="https://i.loli.net/2021/08/08/WUfo7lsz8jT2XFD.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/08/08/5aL4HwTI8YDKOuF.png" alt="5.png"></p>
+<p>​        这三个损失函数作为额外使用的损失，能够加速生成器的学习速度。同时，由于文章引入了边感知学习，所以将与边有关的信息也作为了鉴别器的输入（如图），这样可以帮助模型捕捉大脑的内容信息，以增强鉴别器的性能，进一步增强生成器和公共特征空间的性能。</p>
+<h4 id="3、肿瘤感知学习（optimizer3）"><a href="#3、肿瘤感知学习（optimizer3）" class="headerlink" title="3、肿瘤感知学习（optimizer3）"></a>3、肿瘤感知学习（optimizer3）</h4><p>​        肿瘤的形状在脑胶质瘤分级的任务中是非常重要的，因此文章想利用一种特殊的方法在图像生成的过程中保留肿瘤的形状信息。在模型中，使用一个肿瘤检测器S来学习肿瘤的形状知识，使得肿瘤检测器S能够从公共特征空间映射到肿瘤感知注意力值。这个值将会被用在在optimizer2部分和optimizer4部分。<img src="https://i.loli.net/2021/08/08/1iFM4pzwSnIXf9l.png" alt="6.png"></p>
+<p>​        以上三个优化部分为一个阶段，第四部分的优化为第二阶段。</p>
+<h4 id="4、分级模型（optimizer4）"><a href="#4、分级模型（optimizer4）" class="headerlink" title="4、分级模型（optimizer4）"></a>4、分级模型（optimizer4）</h4><p>​        在上面的部分优化完成后，再进行分级模型的优化。</p>
+<p>​        分级模型主要依靠的是由编码器得到的公共特征。除此之外，本文与之前一些方法不同的地方在于，之前的工作认为只有肿瘤部分的特征是有用的，而其他正常部分的特征对肿瘤分级是没有用的；本文则认为受到肿瘤部分的影响，正常部分的脑部图像会受到一定程度的影响。为了达到这一想法，文章使用肿瘤感知学习部分得到的注意力值对特征进行处理后，再进行分类。这一部分的损失函数为交叉熵加上注意力<img src="https://i.loli.net/2021/08/08/XNkyRM3VTYUjao8.png" alt="7.png"></p>
+<p>​    在最后的测试阶段，要做的就是输入T1 MRI图像，由编码器编码为一个公共特征，再由肿瘤检测器计算出注意力，最后将特征和注意力共同输入分级模型，得到最终的结果。解码器部分在测试过程中实际上用不上，但可作为可视化模型好坏的一种途径。</p>
+<p>​        最后不得不说，文章给出的这个图乍一看很复杂，但是细看却觉得调理很清楚，点赞！</p>
+<h2 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h2><p>​        文章讲本方法在BARTS15数据集上进行了验证。</p>
+<p>​        对生成图像的表现的实验验证了边感知和肿瘤感知模块的有效性<img src="https://i.loli.net/2021/08/08/OwZte3hXGcdAaIg.png" alt="8.png"></p>
+<p>​        对分级结果的验证，说明了公共特征学习的方式能够取得比单模态输入更准确的结果，并表现的与多模态输入方法相近。<img src="https://i.loli.net/2021/08/08/Lcwu54xvG1QeWtF.png" alt="9.png"></p>
+<h2 id="4、个人感想"><a href="#4、个人感想" class="headerlink" title="4、个人感想"></a>4、个人感想</h2><p>​        本文方法提出的初衷是非常实用的，因为多模态的完整数据确实很贵很难获得。除此之外好像没啥想法，就觉得整个模型又复杂又不复杂，应该是因为这一方向文章看的还不够多，后续还要多看。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/08/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-1/" data-title="脑胶质瘤分级论文阅读-1 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/07/图机器学习论文阅读-7/"  title="图机器学习论文阅读-7">
+ <strong>NEXT:</strong><br/> 
+ <span>图机器学习论文阅读-7
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%EF%BC%88glioma-grading%EF%BC%89%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-1"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级（glioma grading）论文阅读-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E7%94%9F%E6%88%90%E5%AF%B9%E6%8A%97%E9%83%A8%E5%88%86%EF%BC%88optimizer1%EF%BC%89"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">1、生成对抗部分（optimizer1）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E7%9C%9F%E5%81%87%E5%9B%BE%E5%83%8F%E5%B7%AE%E5%88%AB%E9%83%A8%E5%88%86%EF%BC%88optimizer2%EF%BC%89"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2、真假图像差别部分（optimizer2）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81%E8%82%BF%E7%98%A4%E6%84%9F%E7%9F%A5%E5%AD%A6%E4%B9%A0%EF%BC%88optimizer3%EF%BC%89"><span class="toc-number">1.2.0.3.</span> <span class="toc-text">3、肿瘤感知学习（optimizer3）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%88%86%E7%BA%A7%E6%A8%A1%E5%9E%8B%EF%BC%88optimizer4%EF%BC%89"><span class="toc-number">1.2.0.4.</span> <span class="toc-text">4、分级模型（optimizer4）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%83%B3"><span class="toc-number">1.4.</span> <span class="toc-text">4、个人感想</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
