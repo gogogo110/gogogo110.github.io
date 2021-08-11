@@ -1,0 +1,316 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级论文阅读-2 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级论文阅读-2文章名称：《Optimizing Texture Retrieving Model for Multimodal MR Image-Based Support Vector Machine for Classifying Glioma》
+文章链接：link
+1、介绍对脑胶质瘤">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/11/脑胶质瘤分级论文阅读-2/" title="脑胶质瘤分级论文阅读-2" itemprop="url">脑胶质瘤分级论文阅读-2</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-11T12:31:03.000Z" itemprop="datePublished">2021-08-11</time>
+    Updated:<time datetime="2021-08-11T13:34:08.086Z" itemprop="dateModified">2021-08-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-2"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级论文阅读-2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%82%E6%95%B0%E5%9B%BE%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-number">1.2.0.0.0.1.</span> <span class="toc-text">一、参数图的获取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.0.0.0.2.</span> <span class="toc-text">二、特征提取与分类</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BB%93%E8%AE%BA"><span class="toc-number">1.3.</span> <span class="toc-text">3、结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级论文阅读-2"><a href="#脑胶质瘤分级论文阅读-2" class="headerlink" title="脑胶质瘤分级论文阅读-2"></a>脑胶质瘤分级论文阅读-2</h1><p>文章名称：《Optimizing Texture Retrieving Model for Multimodal MR Image-Based Support Vector Machine for Classifying Glioma》</p>
+<p>文章链接：<a target="_blank" rel="noopener" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jmri.26524">link</a></p>
+<h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>对脑胶质瘤的术前分级对于患者的手术及相关诊断非常重要。</p>
+<p>目前，已经有一定数量的工作探究了如何使用纹理检索模型对先进或传统的不同种类的MRI图像进行特征提取，然后使用一些机器学习的方法，如SVM来实现对脑胶质瘤分级的目标。这类的工作有不少，他们的不同点在于使用不同类型的MRI图像，使用不同纹理检索方法和使用不同的分类器。</p>
+<p>由于这些方法不能直观的进行对比，因此本文的主要目的就是，使用多模态多参数的MRI图像和SVM，探究何种纹理检索模型和其相应的特征是最好的。文章比较系统的比较了四种纹理检索模型的不同特征的有效性，为未来脑胶质瘤分级任务需要使用纹理特征时，提供一些有用的特征。</p>
+<h2 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h2><h6 id="一、参数图的获取"><a href="#一、参数图的获取" class="headerlink" title="一、参数图的获取"></a>一、参数图的获取</h6><p>文章共考虑使用了四种不同模态的MRI图像，包括一种传统的T1/FLAIR MRI和三种相对先进的DCE， Mb-DWI， 3D-ASL。三中图像的详细获取参数在文中有详细的说明。</p>
+<p>针对后三种先进的MRI获取方式，作者使用各种参数图生成的方式得到了30章参数图。因为我对这一部分没有一点了解，所以不好细说。可以确定的是，经过参数图这一步的计算，可以得到30张不同的参数图。</p>
+<p>在将T1/FLAIR MRI重采样到与参数图相同大小后，由神经放射学家在该图上逐片分割出详细的肿瘤位置，并将这个位置迁移到参数图上，以供后续纹理模型的应用。</p>
+<p><img src="G:\Myblog_pic\脑胶质瘤分级\2\1.png" alt="1"></p>
+<h6 id="二、特征提取与分类"><a href="#二、特征提取与分类" class="headerlink" title="二、特征提取与分类"></a>二、特征提取与分类</h6><p>使用四种纹理检索模型对肿瘤区域的参数图进行检索，并提取出一定数量的特征。纹理模型包括一阶模型Global，二阶模型GLCM，GLRLM，GLSZM，每个模型都有一定数量的可提取特征，为3，8，13，13个。</p>
+<p>考虑到数据不平衡的问题，数据集的切分使用了SMOTE（我又不知道这是啥）。</p>
+<p>考虑到数据的冗余问题和过拟合问题，文章使用SVM-RFE进行特征筛选。根据权重值大小选出较高的K个值，扔进RBF-SVM中进行分类，得到分级的结果。</p>
+<h2 id="3、结论"><a href="#3、结论" class="headerlink" title="3、结论"></a>3、结论</h2><p>这篇文章的本意并不是提出一个多有效的模型，而是讨论得到哪一个纹理检索模型中的哪些特征是比较好的，以及留下多少数量的特征是相对好的。</p>
+<p>文章通过穷举的对比实验得到，1、留下特征数量得到的实验结果会随着K的增加先增加再减少，即会存在一个较明显的峰值；2、64灰度值的GLSZM模型在最优特征组合下是最好的；3、最优特征子集不一定要求每个特真都非常强大，但是特征之间的互补性可以帮助特征达到最好的效果。</p>
+<h2 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h2><p>我在找文章时，是想找一些多模态的文章，这篇文章的内容也确实与多模态密切相关，可又不是我想的那种类型。但是初入一个领域多看些相关的文章总归是问题不大的，毕竟也知道了纹理特征是能够用来进行脑胶质瘤分级的，而且MRI成像的种类也很多，也见识到了参数图啊这类的东西。</p>
+<p>但是感觉这篇文章的创新的点不多，多模态融合和SVM-RFE勉勉强强算两点，其他的基本很难看到，但文章的工作量还是在的，包括数据的收集和一大堆实验的运行。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-grading/">glioma grading</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/11/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-2/" data-title="脑胶质瘤分级论文阅读-2 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/08/脑胶质瘤分级论文阅读-1/"  title="脑胶质瘤分级论文阅读-1">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级论文阅读-1
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-2"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级论文阅读-2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8F%82%E6%95%B0%E5%9B%BE%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="toc-number">1.2.0.0.0.1.</span> <span class="toc-text">一、参数图的获取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.0.0.0.2.</span> <span class="toc-text">二、特征提取与分类</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BB%93%E8%AE%BA"><span class="toc-number">1.3.</span> <span class="toc-text">3、结论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>2</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
