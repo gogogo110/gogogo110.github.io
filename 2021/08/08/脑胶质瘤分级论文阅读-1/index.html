@@ -75,7 +75,7 @@
     </p>
   <p class="article-time">
     <time datetime="2021-08-08T10:36:00.000Z" itemprop="datePublished">2021-08-08</time>
-    Updated:<time datetime="2021-08-11T12:27:50.186Z" itemprop="dateModified">2021-08-11</time>
+    Updated:<time datetime="2021-08-12T14:38:59.537Z" itemprop="dateModified">2021-08-12</time>
     
   </p>
 </header>
@@ -116,7 +116,8 @@
 <h2 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h2><p>​        文章讲本方法在BARTS15数据集上进行了验证。</p>
 <p>​        对生成图像的表现的实验验证了边感知和肿瘤感知模块的有效性<img src="https://i.loli.net/2021/08/08/OwZte3hXGcdAaIg.png" alt="8.png"></p>
 <p>​        对分级结果的验证，说明了公共特征学习的方式能够取得比单模态输入更准确的结果，并表现的与多模态输入方法相近。<img src="https://i.loli.net/2021/08/08/Lcwu54xvG1QeWtF.png" alt="9.png"></p>
-<h2 id="4、个人感想"><a href="#4、个人感想" class="headerlink" title="4、个人感想"></a>4、个人感想</h2><p>​        本文方法提出的初衷是非常实用的，因为多模态的完整数据确实很贵很难获得。除此之外好像没啥想法，就觉得整个模型又复杂又不复杂，应该是因为这一方向文章看的还不够多，后续还要多看。</p>
+<h2 id="4、个人感想"><a href="#4、个人感想" class="headerlink" title="4、个人感想"></a>4、个人感想</h2><p>​        本文方法提出的初衷是非常实用的，因为多模态的完整数据确实很贵很难获得。文章中最闪耀的点在于公共特征空间的设计。通过对抗学习，将多种模态内和模态间的信息全部编码到一个公共特征空间上，使得其包含超出单模态图像信息的东西，是这个模型能够在单模态情况下性能比肩多模态模型的关键。另外，肿瘤感知学习这一块像是提供了一个全局注意力的mask，也是一个可以参考学习的点。</p>
+<p>​        同样的模型想法后续可以用在单模态脑胶质瘤分割任务上，但是需要进一步提升生成模态图像的质量。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
