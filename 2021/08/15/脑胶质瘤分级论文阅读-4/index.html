@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>图机器学习论文阅读-7 | 放荡小李的博客</title>
+    <title>脑胶质瘤分级论文阅读-4 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="文章标题《Design Space for Graph Neural Networks》目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有">
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-4论文标题：《The RSNA-ASNR-MICCAI BraTS 2021 Benchmark on Brain Tumor Segmentation and Radiogenomic Classification》
+论文链接：link
+​    
+​    想要了解脑胶">
     
     
     
@@ -67,15 +70,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/08/07/图机器学习论文阅读-7/" title="图机器学习论文阅读-7" itemprop="url">图机器学习论文阅读-7</a>
+      <a href="/2021/08/15/脑胶质瘤分级论文阅读-4/" title="脑胶质瘤分级论文阅读-4" itemprop="url">脑胶质瘤分级论文阅读-4</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-08-07T14:30:39.000Z" itemprop="datePublished">2021-08-07</time>
-    Updated:<time datetime="2021-08-11T12:29:29.939Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2021-08-15T13:49:43.000Z" itemprop="datePublished">2021-08-15</time>
+    Updated:<time datetime="2021-08-15T14:50:48.863Z" itemprop="dateModified">2021-08-15</time>
     
   </p>
 </header>
@@ -84,28 +87,32 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%B5%9B%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">1、比赛任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2、讨论</span></a></li></ol></li></ol>
 		</div>
 		
-		<h4 id="文章标题《Design-Space-for-Graph-Neural-Networks》"><a href="#文章标题《Design-Space-for-Graph-Neural-Networks》" class="headerlink" title="文章标题《Design Space for Graph Neural Networks》"></a>文章标题《Design Space for Graph Neural Networks》</h4><p>目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有相似性衡量矩阵的任务空间，以及一个一种高效且有效的设计空间评估方法，以从设计空间中为一个新的任务找到合适的GNN结构。</p>
-<p>现阶段GNN的快速发展出现了一些问题，可能会限制GNN的未来发展</p>
-<ul>
-<li>研究只关注特定的GNN设计结构，而不是设计空间的做法限制了未来新的好的GNN模型的发现。</li>
-<li>当需要解决新出现的任务时，由于这种新任务与任何现有的 GNN 基准任务并不相似，因此尚不清楚如何为给定的新任务设计有效的 GNN 架构。 </li>
-<li>目前缺乏统一实的平台。</li>
-</ul>
-<p>为解决上述问题，本文提出了三个主要概念：<strong>GNN设计空间</strong>，<strong>GNN任务空间</strong>和<strong>设计空间的评估</strong>。除此之外，文章还开发了 GraphGym，这是一个探索不同 GNN 设计和任务的平台，具有模块化 GNN 实现、标准化 GNN 评估以及可重复和可扩展的实验管理。<img src="https://i.loli.net/2021/08/06/tIwGfWANHBe8XbK.png" alt="1.PNG"></p>
-<p><strong>GNN设计空间</strong>由层内设计，层间设计和学习参数设置构成，由共12个设计维度组成，各部分的可选维度如图。该设计空间的目的并不是为了尽可能的涵盖所有可能存在的GNN结构，而是想展示对设计空间的关注如何有助于为 GNN 研究提供信息。</p>
-<p><strong>任务空间</strong>通过将一组固定的锚点 GNN 架构应用于两个任务，通过对锚点GNN的性能的排序并计算相关性，来计算两个任务之间的相似性。新来的任务通过在锚点GNN上计算相应的性能，便可以在任务空间上找到属于自己的位置。</p>
-<p><strong>设计空间的评估</strong>是借助于随机受限搜索实现的。也就是除了待确定的维度可以改变外，其余的所有维度内容都相同，找出这样的一定数量的网络结构，通过比较二组结果之间统计上的好坏来决定这个维度的选择。</p>
-<p><strong>实验结果</strong> 文章的实验发现了一些在大部分任务上都能表现比较好的GNN组件，同时将使用该设计空间的方法运用到一些已经有的任务上，能够达到sota的效果。</p>
+		<h1 id="脑胶质瘤分级分割论文阅读-4"><a href="#脑胶质瘤分级分割论文阅读-4" class="headerlink" title="脑胶质瘤分级分割论文阅读-4"></a>脑胶质瘤分级分割论文阅读-4</h1><p>论文标题：《The RSNA-ASNR-MICCAI BraTS 2021 Benchmark on Brain Tumor Segmentation and Radiogenomic Classification》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.02314">link</a></p>
+<p>​    </p>
+<p>​    想要了解脑胶质瘤分割问题怎么能不提到BraTS竞赛呢？这可以算是一个规模最大数据最多的脑胶质瘤分割比赛了，我觉得我可以从这个比赛入手，然后学习一些每年比赛排名靠前的一些方法，从而入门闹胶质瘤分割任务。这篇文章是BraTS2021的介绍论文，介绍了今年比赛的两个任务的数据，获取方式和衡量准则等，除此之外里面提到了一些过去几年比赛里排名靠前的方法，已做收藏供后续阅读。</p>
+<h2 id="1、比赛任务"><a href="#1、比赛任务" class="headerlink" title="1、比赛任务"></a>1、比赛任务</h2><p>​        BraTS 2021 关注的两个任务是：a) 组织学上不同的脑肿瘤亚区域的分割，以及 b) 肿瘤 MGMT 启动子甲基化状态的分类。前者是BraTS每年必有的一个任务，目的是给定多模态的图像，需要算法来划分出不同子区域，如增强肿瘤ET，瘤周水肿/浸润组织ED 和坏死的肿瘤核心NCR。后者是今年新出的一个任务，因为MGMT的启动子甲基化在新诊断的 GBM 中已被确定为有利的预后因素和化疗反应的预测因子 ， 因此，确定新诊断的 GBM 中 MGMT 启动子甲基化状态可以影响治疗决策。 </p>
+<p><strong>数据说明</strong></p>
+<p>​        比赛提供的数据是由多机构多设备多准则的方式获得的，这导致图像质量差异很大，能够反映了不同机构的不同临床实践。相比于去年，今年比赛的数据量大大增加，其中，任务一的真实值由专家通过，任务二的真实值由实验得到。数据集包含的模态有T1，T1-GD， T2， T2FLAIR。一些标准的预处理操作被使用在了这些数据上，具体来说，应用的预处理例程包括将 DI-COM 文件转换为 NIFTI 文件格式、重新定向到通用定向系统（即 RAI）、共同对齐到相同的解剖模板(SRI24) ，重新采样到均匀的各向同性分辨率（1mm3），最后进行头骨剥离。</p>
+<p>​    任务一的打标过程，先由过去优胜算法DeepScan, DeepMedic及nnU-Net的融合作为初始，然后由专家调整并最后由资深专家通过。不同模态的图像对不同细胞的分割的作用有较大差别，文章有一个大概的说明；任务二的打标过程，是需要进行一定流程的实验的，太生物了，看不懂。</p>
+<p>​        一个本届比赛数据和往届比赛数据的对比如下<img src="https://i.loli.net/2021/08/15/8CJD1iF7ATGMvt6.png" alt="1.png"></p>
+<p><strong>子区域分割</strong></p>
+<p>​        针对于子区域分割的标签部分，文章给出了较为详细的流程，为先由过去算法初始化，再有专家调整并通过。值得注意的是，BraTS 肿瘤视觉特征（子区域）是基于图像的，并不反映严格的生物实体。根据过去算法的表现，文章还给出了过去算法最经常出现的四点错误，算是给今年比赛参赛者一点建议。</p>
+<p>​            子区域分割是一个多类分割问题，一共分为四类，包括增强肿瘤，肿瘤核，整体肿瘤和其他。给出的数据包含2000位患者的8000张MRI图像，数据量非常丰富。主要的衡量准则为Dice和Hausdorff</p>
+<p><strong>MGMT甲基化分类</strong></p>
+<p>​        给定与子区域分割任务相似的数据集，但是目标变为了一个二分类任务。主要衡量准则为AUC，acc，FSscore等。</p>
+<h2 id="2、讨论"><a href="#2、讨论" class="headerlink" title="2、讨论"></a>2、讨论</h2><p><strong>局限性</strong></p>
+<p>首先，每个病例的肿瘤特征分割由单个注释者通过与一组批准者的迭代过程进行细化，直到获得后者的批准，因此无法评估潜在的评估者之间的一致性。 其次，由于提供的 MGMT 启动子甲基化状态是基于提供数据的多个机构的不同方法确定的，并且每个机构都遵循自己的方法（例如，焦磷酸测序与定量 PCR）和阈值，因此只有甲基化状态的二元分类是 提供给参与者而不是连续值。 最后，我们注意到挑战中包含的一些 MRI 数据包含更多的异常，而不仅仅是胶质瘤，因此可能需要多疾病分割方法。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/graph-ML/">graph ML</a>
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
   </div>
 
 
@@ -113,7 +120,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/08/07/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7/" data-title="图机器学习论文阅读-7 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/08/15/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4/" data-title="脑胶质瘤分级论文阅读-4 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -122,19 +129,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/08/08/脑胶质瘤分级论文阅读-1/" title="脑胶质瘤分级论文阅读-1">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  脑胶质瘤分级论文阅读-1</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/08/07/图机器学习论文阅读-6-1/"  title="图机器学习论文阅读-6">
+<a href="/2021/08/13/脑胶质瘤分级论文阅读-3/"  title="脑胶质瘤分级论文阅读-3">
  <strong>NEXT:</strong><br/> 
- <span>图机器学习论文阅读-6
+ <span>脑胶质瘤分级论文阅读-3
 </span>
 </a>
 </div>
@@ -147,7 +146,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%B5%9B%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">1、比赛任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2、讨论</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
