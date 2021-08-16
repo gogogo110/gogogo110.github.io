@@ -1,0 +1,323 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-5 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-5论文标题：《Efficient Multi-Scale 3D CNN with fully connected CRF for Accurate Brain Lesion Segmentation》
+论文链接：link
+​    这篇文章提出的DeepMedic，是Bra">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/16/脑胶质瘤分级分割论文阅读-5/" title="脑胶质瘤分级分割论文阅读-5" itemprop="url">脑胶质瘤分级分割论文阅读-5</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-16T08:36:06.000Z" itemprop="datePublished">2021-08-16</time>
+    Updated:<time datetime="2021-08-16T12:55:59.215Z" itemprop="dateModified">2021-08-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3D-CNN"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">3D CNN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3D-%E5%85%A8%E8%BF%9E%E6%8E%A5CRF"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">3D 全连接CRF</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">4、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">5、想法</span></a></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级分割论文阅读-5"><a href="#脑胶质瘤分级分割论文阅读-5" class="headerlink" title="脑胶质瘤分级分割论文阅读-5"></a>脑胶质瘤分级分割论文阅读-5</h1><p>论文标题：《Efficient Multi-Scale 3D CNN with fully connected CRF for Accurate Brain Lesion Segmentation》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1361841516301839">link</a></p>
+<p>​    这篇文章提出的DeepMedic，是BraTS2021用作初始化分割结果的方法之一，算是比较经典的医学影像分割算法了。文章主要提出了一个便捷的多尺度3D CNN加一个全连接CRF来实现分割，并配以一个合适的训练策略，是MIA2017的文章（MIA的文章都好长，喜欢MICCAI）。</p>
+<h2 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h2><p>​        文章提出了一个双通道，11层深，三维卷积神经网络，以实现脑损伤及肿瘤的分割。文章主要的亮点有：</p>
+<ul>
+<li>为了减少网络的计算负担和时间，并自适应数据中固有的类不平衡，文章设计了一种高效的密集训练方法，将相邻图像块同时进行处理（不就是FCN？）；</li>
+<li>使用了一个双通道，11层深，三维卷积神经网络，双通道能够同时利用全局和局部的信息；</li>
+<li>设计了3D全连接CRF用作后处理，进一步增强结果。</li>
+<li>开源啦</li>
+</ul>
+<pre><code>     文章对相关工作的大致分类有:1、将分割任务看作是异常检测任务，把患者的图像对准到健康图像地图上，根据偏差判断分割界线，但对小肿瘤分割不好，因此更适合检测而不适合分割；2、使用监督传统机器学习的方法，通过逐像素提取特征然后使用传统机器学习算法进行分类，效果不错但是建模能力还不够强 ；3、基于深度学习的方法，2D/3D，以及训练策略。初入这一领域看看这些还是有用的。
+</code></pre>
+<h2 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h2><p>​        文章提出的分割算法由两个主要部分组成，一个是生成高精度软分割图的3D CNN，另一个是对CNN输出施加正则化约束并生成最终硬分割标签的全连接3D CRF。</p>
+<h4 id="3D-CNN"><a href="#3D-CNN" class="headerlink" title="3D CNN"></a><strong>3D CNN<img src="https://i.loli.net/2021/08/16/An9rigYZ1NKDcPB.png" alt="1.png"></strong></h4><p>​        <strong>Dense training</strong>：对于最开始的使用CNN进行分割的任务中，网络的输入一般是原图中的一个块，输出是该块中心像素的分割类值。也就是说，当需要进行3D分割时，需要不断的将原图划分为若干个小图，并给每个小图一个标签（类似于分类问题），最终将所有结果合并成最后的分割结果。但是这样做实际进行了很多冗余的计算，因为相邻块之间有很多重叠，会导致很多计算资源的浪费。于是，通过增加输入图像的大小，输出的结果就会是一个小块的类（全是卷积才行），这个就可以当做这个小块中所有像素的类别了。这样可以几大减少计算复杂度。除此之外，由于这种训练方式中一个输入会包含多个类别，因此合适的选择输入块能有效减少类别分割问题中类别不均衡给训练结果带来的影响。（实际上这一块好像都是FCN里的东西）</p>
+<p>​        <strong>Deeper Network</strong> 通过将一个大的卷积核换成多个小的卷积核，可以增加深度且不增加参数量和计算复杂的（好像又是VGG里的东西）。为了更好的训练更深的网络，还使用了Kaiming标准化以及BN层。</p>
+<p>​        <strong>多尺度并行</strong> 为了将局部和更大的背景信息融合到3DCNN中，文章添加了第二条路径，对下采样的图像进行操作。因此，同时使用两条路径能够在多个尺度上同事处理输入图像。</p>
+<h4 id="3D-全连接CRF"><a href="#3D-全连接CRF" class="headerlink" title="3D 全连接CRF"></a><strong>3D 全连接CRF</strong></h4><p>​        由于邻居图共享的原因，使用上述网络得到的分割结果会存在平滑的问题。因此文章使用3D全连接CRF来使分割结果变硬。具体的建模过程就不在这里描述了，与平常CRF只建模相邻像素不同，这里的全连接CRF对任意一对节点进行了建模，这里节点可以是任意模态之间的。</p>
+<h2 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h2><p>​        文章实验部分验证了训练策略，更深的神经网络，3D信息的获取是有效的。</p>
+<p>​        除此之外，上述方法，DeepMedic，还被用在了自创伤性脑损伤，脑肿瘤和缺血性中风患者这三个分割任务中，都有非常好的表现，显示了DeepMedic的泛化性。</p>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><h2 id="5、想法"><a href="#5、想法" class="headerlink" title="5、想法"></a>5、想法</h2><p>​        他这里应该是把多个模态的图像直接堆叠起来放进网络的输入了，这样做很方便但我觉得不太合理。因为不同模态的图像虽然大体相似，但对于不同部分的分辨能力是不同的，虽然直接堆起来让网络来学习在对不同模态不熟悉的情况下是最直接的方法，但如果对各种模态对应的作用有所了解，可以对不同模态设计各自的网络结构，用来提取更具特点的有用特征。但这需要比较强的先验知识，且可能只能针对特定的任务，泛化能力不强，仅作考虑。</p>
+<p>​        DeepMedic像是把一些新的东西缝合了起来，FCN的密集训练，VGG的多个小核，BN层，2D里用过的CRF等等。但文章的实验量真的好多，也很长，就很牛。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/16/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5/" data-title="脑胶质瘤分级分割论文阅读-5 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/15/脑胶质瘤分级论文阅读-4/"  title="脑胶质瘤分级论文阅读-4">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级论文阅读-4
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3D-CNN"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">3D CNN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3D-%E5%85%A8%E8%BF%9E%E6%8E%A5CRF"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">3D 全连接CRF</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">4、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.5.</span> <span class="toc-text">5、想法</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>3</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>2</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
