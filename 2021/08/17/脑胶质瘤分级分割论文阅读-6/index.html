@@ -1,0 +1,328 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-6 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-6论文标题：《Ensembles of Densely-Connected CNNs with Label-Uncertainty for Brain Tumor Segmentation》
+论文链接：link
+​         该论文是BraTS2018脑肿瘤比赛的并列">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/17/脑胶质瘤分级分割论文阅读-6/" title="脑胶质瘤分级分割论文阅读-6" itemprop="url">脑胶质瘤分级分割论文阅读-6</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-17T10:58:01.000Z" itemprop="datePublished">2021-08-17</time>
+    Updated:<time datetime="2021-08-17T12:51:28.199Z" itemprop="dateModified">2021-08-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-6"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DeepSCAN"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">DeepSCAN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Label-Uncertainty-Loss"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">Label-Uncertainty Loss</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%A8BRATS%E4%B8%8A"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">应用在BRATS上</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级分割论文阅读-6"><a href="#脑胶质瘤分级分割论文阅读-6" class="headerlink" title="脑胶质瘤分级分割论文阅读-6"></a>脑胶质瘤分级分割论文阅读-6</h1><p>论文标题：《Ensembles of Densely-Connected CNNs with Label-Uncertainty for Brain Tumor Segmentation》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-11726-9_40">link</a></p>
+<p>​         该论文是BraTS2018脑肿瘤比赛的并列第三名，发表在MICCAI BrainLes 2018上。该论文主要是使用了多模型集成的方法，主要设计了两个基于和dilated convolution的U型网络。</p>
+<h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p>​        本文主要介绍了一个系列的DeepSCAN架构的分类器，在该架构中，密集连接的空洞卷积被嵌入在一个包含上下采样和跳跃连接的U型网络中。除此之外，文章害还采用了一个能能够建模模型噪音和不确定性的损失函数。以上就是这篇文章主要描述的东西。</p>
+<p>​        DeepSCAN架构的设计很大程度上借鉴了DenseNet的思想，使用了密集连接。但是与DenseNet不同的是，DeepSCAN没有加入密集块之间的过度层以及其他CNN常用的池化层。其中，池化层被空洞卷积代替了，而过度层的缺失能够让梯度直接的回传到最深的层当中。但是这样做会导致过多的内存占用。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><h4 id="DeepSCAN"><a href="#DeepSCAN" class="headerlink" title="DeepSCAN"></a><strong>DeepSCAN</strong></h4><p>​        DeepSCAN极大程度上借鉴了DenseNet的思想，及使用密集连接块，并使用过度层将密集连接块连接成整个网络。其中，密集连接块将输入和输出拼接作为最终的输出，使得监督信息作用更加直接，而过度层则通过池化进行降维以减少参数量，但也隔绝了监督信息的直接传递。因此，DeepSCAN扔掉了过度层。</p>
+<p>​        同时，考虑到池化层的平移不变性对分割任务是不利的，DeepSCAN还使用了空洞卷积来代替。空洞卷积和池化层一样，能够扩大感受野，但与此同时空洞卷积相比于池化层还能保留空间信息。</p>
+<p>​        DeepSCAN的详细架构用文中的两幅图可以概括：</p>
+<p><img src="https://i.loli.net/2021/08/17/LtXkrqBTibSJFA6.png" alt="1.png"></p>
+<p><img src="https://i.loli.net/2021/08/17/eCvmxbKAUcGjowX.png" alt="2.png"></p>
+<h4 id="Label-Uncertainty-Loss"><a href="#Label-Uncertainty-Loss" class="headerlink" title="Label-Uncertainty Loss"></a><strong>Label-Uncertainty Loss</strong></h4><p>​        假设：p为标签为正的概率，q为标签预测与ground-truth标注中的标签不对应的概率。于是，标签不确定损失为</p>
+<p><img src="https://i.loli.net/2021/08/17/PKlxH7DYLS9nj6O.png" alt="3.png"></p>
+<p>​    然而，我看了一下，并没有很懂。（ T 。 T）</p>
+<h4 id="应用在BRATS上"><a href="#应用在BRATS上" class="headerlink" title="应用在BRATS上"></a><strong>应用在BRATS上</strong></h4><p>​        预处理包括标准化等。</p>
+<p>​        文章考虑到BRATS给的数据集中去骨效果不好，还设计了一个级联网络进一步去除非脑部分。</p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p><img src="https://i.loli.net/2021/08/17/IyGw3JaVp7WezYC.png" alt="4.png"></p>
+<h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        我感觉这篇文章写的有点乱，还有点草率，实在是有点不想读下去了。</p>
+<p>​        从这篇文章主要是学这个网络结构的设计。其他的就这样吧，像这个损失函数，并不觉得会有很好的效果（但我也没试过）。而其他的用在BraTS上的小操作在其他的方法中也肯定有，就这样吧。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/17/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-6/" data-title="脑胶质瘤分级分割论文阅读-6 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2021/08/18/脑胶质瘤分级分割论文阅读-7/" title="脑胶质瘤分级分割论文阅读-7">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  脑胶质瘤分级分割论文阅读-7</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2021/08/16/脑胶质瘤分级分割论文阅读-5/"  title="脑胶质瘤分级分割论文阅读-5">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级分割论文阅读-5
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-6"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DeepSCAN"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">DeepSCAN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Label-Uncertainty-Loss"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">Label-Uncertainty Loss</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%A8BRATS%E4%B8%8A"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">应用在BRATS上</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>3</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>4</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

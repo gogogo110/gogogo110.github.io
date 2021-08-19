@@ -1,0 +1,325 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-7 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分割分级论文阅读-7论文标题：《Segmentation of the multimodal brain tumor image used the multi-pathway architecture method based on 3D FCN》
+论文链接：link
+​        搞了">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/18/脑胶质瘤分级分割论文阅读-7/" title="脑胶质瘤分级分割论文阅读-7" itemprop="url">脑胶质瘤分级分割论文阅读-7</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-18T13:15:20.000Z" itemprop="datePublished">2021-08-18</time>
+    Updated:<time datetime="2021-08-18T15:02:30.861Z" itemprop="dateModified">2021-08-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E5%89%B2%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分割分级论文阅读-7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分割分级论文阅读-7"><a href="#脑胶质瘤分割分级论文阅读-7" class="headerlink" title="脑胶质瘤分割分级论文阅读-7"></a>脑胶质瘤分割分级论文阅读-7</h1><p>论文标题：《Segmentation of the multimodal brain tumor image used the multi-pathway architecture method based on 3D FCN》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/abs/pii/S0925231220315733">link</a></p>
+<p>​        搞了篇21年六月份的新鲜论文看看，嘿嘿。</p>
+<p>​        本文提出了一种基于3D全卷积网络的新模型，并参考了U-Net的设计思路。更具体地说，本文采用多路径架构的形式进行特征提取，从而有效地从多模态MRI图像中提取特征。在每个信号通路中采用三维空洞卷积提取不同的感受野的特征。</p>
+<h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p>​        目前想要得到准确可靠的脑胶质瘤分割结果，主要面临三个挑战：</p>
+<p>​        1、分割结果是一个复杂的边界，由共四个类组成。同时MRI图像还会引入噪声。本文使用多通路特征来挖掘信息以更好的处理细小的边界。</p>
+<p>​        2、在池化和跨步卷积操作过程中，特征会丢失。本文使用跨步连接减少特征信息的丢失。</p>
+<p>​        3、深度模型容易过拟合。本文使用了随机切片和BN层来缓解这一现象。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p><strong>预处理</strong></p>
+<pre><code> 共使用了三步预处理方法。一是裁剪，将原来大小的图像去掉一些无用信息，略微变小至144 *192 *192，这样都是16的倍数，便于放入神经网络。二是随机切片，将裁剪后的图像随机切为连续的九块，变成9 * 16 * 192 * 192，这样的随机化是的网络由更强的泛化能力。但其实这一块我没有很懂，既然说了所有训练数据的像素点都会使用，并且要从144中自己切分出九个连续的长为16的序列，那怎么做到随机切分呢？这要搞懂的话要看看他开源的[代码](https://github.com/JalexDooo/BrainstormTS.)了。第三步是z型归一化，没啥好说的。
+</code></pre>
+<p><strong>模型</strong></p>
+<p>​        <img src="https://i.loli.net/2021/08/18/tuiEoXsHTgj12IR.png" alt="1.png"></p>
+<p>​        再多的对模型的文字介绍不如一张图来的直观。模型的输入大小是一个五维的bs* c* h* w* d的，bs为batchsize，c为通道数或多模态维度，剩下的为3D图像的大小。这个模型构建了一个多通路结构，每个通路通过不同数量的空洞卷积改变特征图大小和感受野大小，以挖掘不同的尺度的信息。不同大小的特征图通过卷积核池化进行特征提取后，堆叠成完整的特征图。这个特征图再通过不断的反卷积恢复到原来大小。在反卷积的同时，将相同尺度的编码编码阶段的特征图直接加入到卷积前的输入中，以获取更精细的信息，这就是整个网络的大致结构。</p>
+<p>​        其他细节上，使用了BN层，RRELU损失函数，特定的初始化，Categorical Cross-entropy等。</p>
+<p><strong>后处理</strong></p>
+<p>​        在后处理步骤中，当增强的肿瘤像素数小于一定阈值时，我们使用坏死标记代替增强的肿瘤标记。</p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        文章在BraTS2018和2019上进行了验证，证明了模型各部分的优势以及与sota的比较。</p>
+<p><img src="https://i.loli.net/2021/08/18/kmnqKvVfcGrQ4Wh.png" alt="2.png"></p>
+<p><img src="https://i.loli.net/2021/08/18/YnO49XFSev2rWsD.png" alt="3.png"></p>
+<h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        这篇文章使用的模型总的来说和U-Net还是很相似的，加入了一些新的东西，其中重要的是空洞卷积以及其带来的多通路了。感觉现在医学影像的分割网络模型多多少少有点离不开U-net了。在预处理方法中，这个随机切片这一块我还是没有看明白究竟是要怎么做，应该只有源码能告诉我了。模型的其他地方，就像是在u-net上加了几个到中间特征图的路径和几个网络块，</p>
+<pre><code>     另外，记录一个今天洗澡的时候的一个想法。在很多论文中有看到，不同的模态在分类不同的类的边界的时候的作用是不一样的，但是虽然很多文章中由这么说，但是好像最后大家使用的模型都是对所有的模态一视同仁，直接放进一个能够处理多模态图像的网络中。但我认为因为特定的模态对特定的边界分割效果很好，因此可以将原本的多类分割任务分成多个二分类任务，在每个二分类任务中，使用好的那几个模态作为输入。这样一方面能减少无用模态在这个边界划分中引入的噪声，一方面将多个二分类任务融合为一个多分类任务能够提升鲁棒性。后续可以尝试一下下再说。
+</code></pre>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/18/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7/" data-title="脑胶质瘤分级分割论文阅读-7 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/17/脑胶质瘤分级分割论文阅读-6/"  title="脑胶质瘤分级分割论文阅读-6">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级分割论文阅读-6
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E5%89%B2%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分割分级论文阅读-7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>3</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>4</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
