@@ -1,0 +1,317 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-9 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-9论文标题：《3D MRI brain tumor segmentation using autoencoder regularization》
+论文链接：link
+​        这篇文章的方法是BraTS2018的第一名，来学习一下。整个模型的框架还是很好理解的，就是">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/08/20/脑胶质瘤分级分割论文阅读-9/" title="脑胶质瘤分级分割论文阅读-9" itemprop="url">脑胶质瘤分级分割论文阅读-9</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-08-20T06:13:49.000Z" itemprop="datePublished">2021-08-20</time>
+    Updated:<time datetime="2021-08-20T12:53:36.050Z" itemprop="dateModified">2021-08-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-9"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、想法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级分割论文阅读-9"><a href="#脑胶质瘤分级分割论文阅读-9" class="headerlink" title="脑胶质瘤分级分割论文阅读-9"></a>脑胶质瘤分级分割论文阅读-9</h1><p>论文标题：《3D MRI brain tumor segmentation using autoencoder regularization》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-11726-9_28">link</a></p>
+<p>​        这篇文章的方法是BraTS2018的第一名，来学习一下。整个模型的框架还是很好理解的，就是在经典的U-Net的架构中，通过额外加入VAE的思想进一步使得编码器部分的训练受到约束，从而得到更好的编码后的特征。因为之前下载了BraTS的训练集和验证集，所以我在github上找了一个复现的<a target="_blank" rel="noopener" href="https://github.com/sinclairjang/3D-MRI-brain-tumor-segmentation-using-autoencoder-regularization">代码</a>先学习一下，毕竟只看论文不写代码还是没啥意思的。</p>
+<h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p>​        本文提出了一个基于编解码器的3D 多模态MRI图像脑胶质瘤分割模型，为了更好的利用有限的数据资源，引入了VAE来进一步有效地训练共享编码器部分。参照卷积神经网络的编解码器结构，文章采用了非对称大的编码器提取图像深层信息，在解码器部分重建密集分割mask，并在网络中加入了VAE分支，以联合分割来重建输入图像，从而对共享编码器进行正则化。使用VAE分支的动机是在编码器部分添加额外的指导和正则化，从而更有效的利用数据集图像。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        先上图：</p>
+<p><img src="https://i.loli.net/2021/08/20/I7LgG1HaDlQeCOi.png" alt="1.png"></p>
+<p>​            网络的主体结构由一个共享编码器和两个解码器构成。其中，可以将编码器和上面的解码器看成一个处理三维图像的U-Net，不仅有对称大小的上下采样，而且相同分辨率下编解码器之间的特征信息传递，除了使用了参考了ResNet设计的Block外，与U-Net相似。而在推理的时候，仅用这两个部分就可以构建出最终的分类结果。在训练阶段中，除了上述的一对编解码器外，这个共享的编码器和另一个解码器又组成了一个VAE，并想要使用编码器得到的特征，加入噪声，通过解码器恢复到原始图像。通过添加这一个分支，可以通过自监督的方式，进一步加强共享编码器的性能。</p>
+<p>​        网络最终的损失是由两个输出结果共同组成的，包括分割部分的结果的Dice损失，VAE重建部分的L2损失和KL散度损失。</p>
+<p><img src="https://i.loli.net/2021/08/20/9sBc1tVmF4uJiXr.png" alt="3.png"></p>
+<p>​        除了网络结构和损失函数外，文章使用了Adam优化器，L2正则化和Dropout，以及数据增强（随机强度变化，尺度变化，随机镜像反转）。</p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        实验结果中，Single Model就是指第二部分中描述的方法。TTa指的是test time augmentation。最好的结果是融合10个模型得到的。</p>
+<p><img src="https://i.loli.net/2021/08/20/hRsjpfHXqUMldiF.png" alt="2.png"></p>
+<p>​        在实验部分，文章也尝试了很多种可能能够改进算法效果的途径。例如，文章尝试了更大的 8 Batchsize以能够使用 BatchNorm（并利用批量统计数据），但是由于 GPU 内存限制了这种修改需要使用更小的图像裁剪大小，并导致性能更差。文章还尝试了更复杂的数据增强技术，包括随机直方图匹配、仿射图像变换和随机图像过滤，但没有表现出任何额外的改进。文章已经尝试了几种数据后处理技术，如全链接CRF 的后处理，但没有发现它是有益的（它对某些图像有帮助，但会使其他一些图像分割结果变得更糟。进一步增加网络深度并没有提高性能，但增加网络宽度持续改善了结果。使用 NVIDIA Volta V100 32GB GPU，与 V100 16GB 版本相比，我们能够将特征数量增加一倍。最后，额外的 VAE 分支有助于规范共享编码器（在存在有限数据的情况下），这不仅提高了性能，而且有助于始终为任何随机初始化实现良好的训练精度。</p>
+<h3 id="4、实现"><a href="#4、实现" class="headerlink" title="4、实现"></a>4、实现</h3><p>​        参考了<a target="_blank" rel="noopener" href="https://github.com/sinclairjang/3D-MRI-brain-tumor-segmentation-using-autoencoder-regularization%E8%B7%91%E4%BA%86%E4%B8%80%E4%B8%8B%EF%BC%8C%E8%83%BD%E8%B7%91%E6%98%AF%E8%83%BD%E8%B7%91%EF%BC%8C%E4%BD%86%E6%98%AF%E9%9C%80%E8%A6%81%E5%B0%86%E8%BE%93%E5%85%A5%E5%9B%BE%E5%83%8F%E7%9A%84%E5%A4%A7%E5%B0%8F%E5%8F%98%E4%B8%BA%E8%AE%BA%E6%96%87%E4%B8%AD%E8%AE%BE%E7%BD%AE%E7%9A%84%E4%B8%80%E5%8D%8A%E3%80%82%E8%BF%99%E4%B9%9F%E8%AF%B4%E6%98%8E%E4%BA%86%E7%AC%94%E8%AE%B0%E6%9C%AC3060%E7%9A%846g%E6%98%BE%E5%AD%98%E5%9C%A8%E8%B7%91%E4%B8%80%E4%BA%9B%E5%A4%A7%E4%B8%80%E7%82%B9%E7%9A%84%E7%BD%91%E7%BB%9C%E5%B0%B1%E4%B8%8D%E5%A5%BD%E7%94%A8%E4%BA%86%E3%80%82%E4%B9%8B%E5%90%8E%E6%89%93%E7%AE%97%E5%8E%BB%E7%A0%94%E7%A9%B6%E4%B8%80%E4%B8%8BColab%EF%BC%8C%E5%AE%9E%E5%9C%A8%E4%B8%8D%E8%A1%8C%E6%AF%8F%E4%B8%AA%E6%9C%8810%E5%88%80%E5%86%B2%E4%B8%AApro%E4%B9%9F%E4%B8%8D%E6%98%AF%E4%B8%8D%E8%A1%8C%E3%80%82">https://github.com/sinclairjang/3D-MRI-brain-tumor-segmentation-using-autoencoder-regularization跑了一下，能跑是能跑，但是需要将输入图像的大小变为论文中设置的一半。这也说明了笔记本3060的6g显存在跑一些大一点的网络就不好用了。之后打算去研究一下Colab，实在不行每个月10刀冲个pro也不是不行。</a></p>
+<h3 id="5、想法"><a href="#5、想法" class="headerlink" title="5、想法"></a>5、想法</h3><p>​        文章模型的主要创新点在于，加入了VAE分支，使得网络中的编码器部分训练的更好。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/08/20/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-9/" data-title="脑胶质瘤分级分割论文阅读-9 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/19/脑胶质瘤分级分割论文阅读-8/"  title="脑胶质瘤分级分割论文阅读-8">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级分割论文阅读-8
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-9"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、想法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>3</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
