@@ -1,0 +1,324 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-12 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-12文章标题：《nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation》
+文章链接：link
+​        看了Jun Ma老师对2020年医学影像">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/09/02/脑胶质瘤分级分割论文阅读-12/" title="脑胶质瘤分级分割论文阅读-12" itemprop="url">脑胶质瘤分级分割论文阅读-12</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-09-02T08:07:53.000Z" itemprop="datePublished">2021-09-02</time>
+    Updated:<time datetime="2021-09-05T13:32:27.676Z" itemprop="dateModified">2021-09-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-12"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-12</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级分割论文阅读-12"><a href="#脑胶质瘤分级分割论文阅读-12" class="headerlink" title="脑胶质瘤分级分割论文阅读-12"></a>脑胶质瘤分级分割论文阅读-12</h1><p>文章标题：《nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation》</p>
+<p>文章链接：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41592-020-01008-z">link</a></p>
+<p>​        看了Jun Ma老师对2020年医学影像分割竞赛的top方法的<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2101.00232">综述</a>之后，发现很多取得好成绩的方法都使用了nnU-Net作为了基本网络结构，这也促使了我找到了这篇文章来学习一下。而且nnU-Net已经可以被公开使用了，在进行医学影像分割比赛时可以以此作为起点。</p>
+<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        在现在的医学影像分割任务中，深度学习技术已经占据了绝对的主导地位。虽然如此，在面向不同数据集的分割任务时，神经网络结构及其输入输出等参数的设置，往往需要大量时间的专业化的调整，以适应不同任务的特点和数据集的属性。为了解决这一困扰，文章提出了nnU-Net，一种基于深度学习的分割方法，它可以自动配置，包括预处理、网络架构、训练和任何新任务的后处理等相关的设置。这一过程中的关键在于，将整个流程建模为一组固定参数，互相依赖的规则的参数和经验参数。</p>
+<p>​        文章提出的nnU-Net是no new U-Net的缩写。该方法在网络结构上并没有什么创新，但是他能够针对每一个新的数据集的特性，根据规则定下来一些合适的参数，再加上简单的经验参数的选择，就可以得到性能非常好的模型。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        以U-Net作为基础网络结构，将整个模型的参数分为三个部分。第一个为固定参数，是一组不需要根据数据集的特性而做出改变的，为下图蓝色部分；第二个为基于规则的参数，这些参数会根据数据集的特性，通过一组定义好的硬规则，做出一定的选择，为下图绿色部分；第三个为经验参数，是需要人为通过实验来进行设计的一部分参数，为下图黄色部分。以下所有参数，加上U-Net结构，组成了能够自适应数据集的通用模型nnU-Net。仅需要极少部分的经验参数的设置，就可以为U-Net得到较为合适的超参数。</p>
+<p><img src="https://i.loli.net/2021/09/05/KfTICN3u1DgP86v.png" alt="2.png"></p>
+<p>​        具体的nnU-Net的架构如下。通过数据集的特征和GPU显存的限制，如patch size， batch size，重采样大小等对网络非常重要且难以人为快速确定的参数由给定的规则直接确定，并且由规则确定的参数之间有着错综复杂的关系，如图绿色块之间的箭头。使用固定参数和基于经验的参数，就可以训练出三种不同的U-Net，分别为2D，3D，cascade 3D。最终如何后处理和如何集成模型，则由人工确定。</p>
+<p><img src="https://i.loli.net/2021/09/05/MaXchUy9RPwNpDF.png" alt="2.png"></p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        nnU-Net能够解决非常不同的数据集的分割问题，并在不同的数据集上都能有不俗的表现，展现出非常强的泛化能力（33/53个第一）。同时，通过nnU-Net的成功，可以看到方法设置上的细节可能会比模型架构上的变化带来的影响更大。</p>
+<p>​        nnU-Net在好多数据集上表现的都很好</p>
+<p><img src="https://i.loli.net/2021/09/05/GDZWhBEr3AKxXFq.png" alt="3.png"></p>
+<p>论文标题：《nnU-Net for Brain Tumor Segmentation》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2011.00848.pdf">link</a></p>
+<p>​        同一个团队使用nnU-Net的小变体，在BraTS2020中取得了第一名的成绩。这篇文章就不具体展开了，主要就是使用了nnU-Net，并在此基础上，根据BraTS比赛数据集和分割目标的特性，进行了如下几点改动：</p>
+<p>​        1、使用BraTS的算法排序方法作为模型选择的依据； </p>
+<p>​        2、使用了Leaky ReLU，Instance normalization，Dice和交叉熵损失的结合等代替原有U-Net的部分；</p>
+<p>​        3、使用基于区域的训练，原本输出单张结果，现在为每一类输出一个二分割结果；</p>
+<p>​        4、后处理使用了一个学习到的阈值来去除不足阈值大小的ET，这一后处理在其他BraTS方法中被证明是有效的；</p>
+<p>​        5、更激进的数据扩增手段，以增加模型鲁棒性；</p>
+<p>​        6、可能可以增加Batchsize，或使用BatchDice。</p>
+<h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​    nnU-Net能够在任何新的数据集上，取得一个非常不错的基线结果，使得我在打相关比赛的时候可以从一个比较高的起点开始。但是，由于nnU-Net使用五折交叉验证，并且每一个模型要训练1000个epoch，所以这个是非常耗时间的。再加上往往需要集成一定数量的模型，这就使得nnU-Net在训练和测试的时候都需要一定的时间，实时性不强。可以考虑在U-Net里加上一些能够加速训练和推理的模块，虽然我也不知道加什么有用。但是在自己用的时候，可以降低一下epoch次数，用一定的精度来换取所消耗的时间。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-grading/">glioma grading</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/09/02/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-12/" data-title="脑胶质瘤分级分割论文阅读-12 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/08/27/脑胶质瘤分级分割论文阅读-11/"  title="脑胶质瘤分级分割论文阅读-11">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级分割论文阅读-11
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-12"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-12</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>8</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
