@@ -1,0 +1,321 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>脑胶质瘤分级分割论文阅读-13 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-13论文名称：《Modality-Pairing Learning for Brain Tumor Segmentation》
+论文链接：link
+​        这篇文章提出的方法获得了BraTS2020的并列第二名。文章主要研究了不同模态之间所提取的特征的不同，以及如">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/09/13/脑胶质瘤分级分割论文阅读-13/" title="脑胶质瘤分级分割论文阅读-13" itemprop="url">脑胶质瘤分级分割论文阅读-13</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2021-09-13T06:06:19.000Z" itemprop="datePublished">2021-09-13</time>
+    Updated:<time datetime="2021-09-13T08:41:14.248Z" itemprop="dateModified">2021-09-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-13"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、一些想法</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="脑胶质瘤分级分割论文阅读-13"><a href="#脑胶质瘤分级分割论文阅读-13" class="headerlink" title="脑胶质瘤分级分割论文阅读-13"></a>脑胶质瘤分级分割论文阅读-13</h1><p>论文名称：《Modality-Pairing Learning for Brain Tumor Segmentation》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.00848">link</a></p>
+<p>​        这篇文章提出的方法获得了BraTS2020的并列第二名。文章主要研究了不同模态之间所提取的特征的不同，以及如何合理使用这些来自不同模态的特征以得到更好的分割结果。这一点其实我自己之前也想过，因为有不少文章有提到说，某个模态更适用于分割某两类脑瘤，但在最后输入是却无一例外的将四个模态都一视同仁地放进去输入了，感觉就有点丢失了模态之间的差异信息。所以这篇文章可能能够解答我心里的想法。</p>
+<p>（T1和T1ce在灰质和白质组织之间产生高对比度，突出显示没有瘤周的肿瘤。 T2和Flair增强了整个瘤周水肿的图像对比度。）</p>
+<h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p>​        以前的脑瘤分割算法大多忽略了不同模态之间的潜在关系，而是对不同模态的信息一视同仁进行处理。因此在这项工作中，文章提出了一种用于脑肿瘤分割的端到端模态配对学习算法，来分别处理来自不同模态的独特信息。</p>
+<p>​        模型使用两个并行分支来挖掘不同模态的特征，并利用一系列密集的层连接来捕获模态之间的复杂关系和丰富的信息。 除此之外，还使用一致性模态匹配损失来最小化两个分支之间的预测差异；采用学习率预热策略来解决训练不稳定和早期过拟合的问题；使用多个模型的集成和一些后处理技术来获得最终结果。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        下图为<strong>模型网络结构</strong>。文章将四个模态分成两组，一组为T1和T1ce，一组为T2和Flair，这样分的原因是实验。将不同模态分开处理的目的是导出与每种模态最相关的特征，并在不同模态之间获得更丰富的信息。</p>
+<p><img src="https://i.loli.net/2021/09/13/dwUrOFlyQ9gN8YL.png" alt="1.png"></p>
+<p>​        模型的具体结构可以从图中看的很清楚。两组模态各自有一个和3DUNet相同的架构，具有编码器，解码器以及跳跃连接。为了加强不同模态之间的特征信息交流，两个分支之间的具有较为密集的连接，几乎在模型的每一个分辨率每一个block都有。在需要计算一次卷积block时，会同时堆叠自己分支的上一层输出和另一个分支的相同层输出，以做到不同模态之间特征信息的密集传播。同时，UNet中固有的同分辨率传递也仍然包含在该模型之中。</p>
+<p>​        除了网络结构之外，文章在<strong>损失函数</strong>上也做了些许改动。不同于常规的Dice和交叉熵损失的结合，文章添加了一个模态匹配损失，用来保持两个分支学到的特征相差的不能太大，其中A,B为两个分支同一深度的特征图。</p>
+<p><img src="https://i.loli.net/2021/09/13/ezginwZIJMfvk2T.png" alt="2.png"></p>
+<p>​        最后，还有<strong>学习率预热</strong>， <strong>深度监督</strong>，<strong>后处理</strong>也被用到了，但不是文章的重点，就不再展开。最终提交的模型是多个模型的平均集成。</p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><pre><code>  在BraTS2020的训练集，验证集和测试寄上的结果如下
+</code></pre>
+<p><img src="https://i.loli.net/2021/09/13/xSauiGdkYDHfhyN.png" alt="3.png"></p>
+<p><img src="https://i.loli.net/2021/09/13/l7VCQgxPFkZOAio.png" alt="4.png"></p>
+<p><img src="https://i.loli.net/2021/09/13/amnkDY6jMBETGIS.png" alt="5.png"></p>
+<h3 id="4、一些想法"><a href="#4、一些想法" class="headerlink" title="4、一些想法"></a>4、一些想法</h3><p>​        这篇文章算是践行了我之前对不同模态具有不同特性的想法，而且网络结构的设计也很符合这些设想。比如不同模态使用不同的分支进行特征学习，分支之间的信息传递又使得模态间的特征得到了互相学习，网络结构的设计非常契合作者的动机。</p>
+<p>​        但是，我认为文章的实验部分只给出了模型在BraTS2020的训练集，验证集和测试集上的结果，只能说明这个模型能够对脑胶质瘤得到分割，并不能说明两个分支上学到的模态信息是不同的。实际上，网络结构中两个分支之间的连接这么密集，所以两个分支之间传递的信息约等于是共享的，他有的东西我也有，因此两个分分支学习提取的信息可能仍然具有较大的相似性。除了如此密集的连接之外，作者还加了一个损失函数让这两个分支不要离得太远，更让我觉得实际上这两个分支学到的东西相差不大。虽然有实验对比了这个模型与普通UNet的结果差别，该模型具有一定的优势，但我还是觉得，文章并没有给出特别让我相信两个分支学到的东西不同的实验。（可以自己试试普通UNet和成对模态结果的差别）</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2021/09/13/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-13/" data-title="脑胶质瘤分级分割论文阅读-13 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/09/02/脑胶质瘤分级分割论文阅读-12/"  title="脑胶质瘤分级分割论文阅读-12">
+ <strong>NEXT:</strong><br/> 
+ <span>脑胶质瘤分级分割论文阅读-12
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-13"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-13</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、一些想法</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>9</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2021 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
