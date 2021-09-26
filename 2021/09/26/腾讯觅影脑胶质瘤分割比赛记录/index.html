@@ -4,12 +4,10 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>图机器学习论文阅读-7 | 放荡小李的博客</title>
+    <title>腾讯觅影脑胶质瘤分割比赛记录 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
-    
-    <meta name="description" content="文章标题《Design Space for Graph Neural Networks》目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有">
     
     
     
@@ -67,15 +65,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/08/07/图机器学习论文阅读-7/" title="图机器学习论文阅读-7" itemprop="url">图机器学习论文阅读-7</a>
+      <a href="/2021/09/26/腾讯觅影脑胶质瘤分割比赛记录/" title="腾讯觅影脑胶质瘤分割比赛记录" itemprop="url">腾讯觅影脑胶质瘤分割比赛记录</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-08-07T14:30:39.000Z" itemprop="datePublished">2021-08-07</time>
-    Updated:<time datetime="2021-08-11T12:29:29.939Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2021-09-26T10:03:23.000Z" itemprop="datePublished">2021-09-26</time>
+    Updated:<time datetime="2021-09-26T10:03:23.773Z" itemprop="dateModified">2021-09-26</time>
     
   </p>
 </header>
@@ -84,36 +82,19 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+		
 		</div>
 		
-		<h4 id="文章标题《Design-Space-for-Graph-Neural-Networks》"><a href="#文章标题《Design-Space-for-Graph-Neural-Networks》" class="headerlink" title="文章标题《Design Space for Graph Neural Networks》"></a>文章标题《Design Space for Graph Neural Networks》</h4><p>目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有相似性衡量矩阵的任务空间，以及一个一种高效且有效的设计空间评估方法，以从设计空间中为一个新的任务找到合适的GNN结构。</p>
-<p>现阶段GNN的快速发展出现了一些问题，可能会限制GNN的未来发展</p>
-<ul>
-<li>研究只关注特定的GNN设计结构，而不是设计空间的做法限制了未来新的好的GNN模型的发现。</li>
-<li>当需要解决新出现的任务时，由于这种新任务与任何现有的 GNN 基准任务并不相似，因此尚不清楚如何为给定的新任务设计有效的 GNN 架构。 </li>
-<li>目前缺乏统一实的平台。</li>
-</ul>
-<p>为解决上述问题，本文提出了三个主要概念：<strong>GNN设计空间</strong>，<strong>GNN任务空间</strong>和<strong>设计空间的评估</strong>。除此之外，文章还开发了 GraphGym，这是一个探索不同 GNN 设计和任务的平台，具有模块化 GNN 实现、标准化 GNN 评估以及可重复和可扩展的实验管理。<img src="https://i.loli.net/2021/08/06/tIwGfWANHBe8XbK.png" alt="1.PNG"></p>
-<p><strong>GNN设计空间</strong>由层内设计，层间设计和学习参数设置构成，由共12个设计维度组成，各部分的可选维度如图。该设计空间的目的并不是为了尽可能的涵盖所有可能存在的GNN结构，而是想展示对设计空间的关注如何有助于为 GNN 研究提供信息。</p>
-<p><strong>任务空间</strong>通过将一组固定的锚点 GNN 架构应用于两个任务，通过对锚点GNN的性能的排序并计算相关性，来计算两个任务之间的相似性。新来的任务通过在锚点GNN上计算相应的性能，便可以在任务空间上找到属于自己的位置。</p>
-<p><strong>设计空间的评估</strong>是借助于随机受限搜索实现的。也就是除了待确定的维度可以改变外，其余的所有维度内容都相同，找出这样的一定数量的网络结构，通过比较二组结果之间统计上的好坏来决定这个维度的选择。</p>
-<p><strong>实验结果</strong> 文章的实验发现了一些在大部分任务上都能表现比较好的GNN组件，同时将使用该设计空间的方法运用到一些已经有的任务上，能够达到sota的效果。</p>
-  
+		  
 	</div>
 		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/graph-ML/">graph ML</a>
-  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/08/07/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7/" data-title="图机器学习论文阅读-7 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/09/26/%E8%85%BE%E8%AE%AF%E8%A7%85%E5%BD%B1%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E5%89%B2%E6%AF%94%E8%B5%9B%E8%AE%B0%E5%BD%95/" data-title="腾讯觅影脑胶质瘤分割比赛记录 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -122,19 +103,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/08/08/脑胶质瘤分级论文阅读-1/" title="脑胶质瘤分级论文阅读-1">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  脑胶质瘤分级论文阅读-1</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/08/07/图机器学习论文阅读-6-1/"  title="图机器学习论文阅读-6">
+<a href="/2021/09/26/脑胶质瘤分级分割论文阅读-17/"  title="脑胶质瘤分级分割论文阅读-17">
  <strong>NEXT:</strong><br/> 
- <span>图机器学习论文阅读-6
+ <span>脑胶质瘤分级分割论文阅读-17
 </span>
 </a>
 </div>
@@ -147,7 +120,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+  
   </div>
 
 <div id="asidepart">
