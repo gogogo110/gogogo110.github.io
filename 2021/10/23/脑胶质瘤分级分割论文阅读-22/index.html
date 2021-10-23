@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>远程服务器screen的使用“ | 放荡小李的博客</title>
+    <title>脑胶质瘤分级分割论文阅读-22 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="远程服务器screen的使用因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。
-后来就在网上找了相关的解决方法，发">
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-22​        今天带来的是BraTS2019的第二名方法，当时的第一名方法好像是两阶段的那个模型。这篇文章主要是介绍了对于脑胶质瘤分割任务中比较常用且好用的一些小技巧，并且表明这些小技巧是能够对分割结果有所帮助的。除了这些小技巧外，文章使用的模型则是UNet的一个简">
     
     
     
@@ -68,15 +67,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/07/18/远程服务器screen的使用“/" title="远程服务器screen的使用“" itemprop="url">远程服务器screen的使用“</a>
+      <a href="/2021/10/23/脑胶质瘤分级分割论文阅读-22/" title="脑胶质瘤分级分割论文阅读-22" itemprop="url">脑胶质瘤分级分割论文阅读-22</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-07-18T14:12:53.000Z" itemprop="datePublished">2021-07-18</time>
-    Updated:<time datetime="2021-08-11T12:30:14.924Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2021-10-23T06:11:43.000Z" itemprop="datePublished">2021-10-23</time>
+    Updated:<time datetime="2021-10-23T07:38:15.161Z" itemprop="dateModified">2021-10-23</time>
     
   </p>
 </header>
@@ -85,28 +84,39 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-22"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-22</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h1 id="远程服务器screen的使用"><a href="#远程服务器screen的使用" class="headerlink" title="远程服务器screen的使用"></a>远程服务器screen的使用</h1><p>因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。</p>
-<p>后来就在网上找了相关的解决方法，发现使用screen的方式很方便也很好理解，所以现在就用screen来调用远程服务器后台运行程序了。相关的步骤和常用方式如下：</p>
-<h4 id="step1、安装screen"><a href="#step1、安装screen" class="headerlink" title="step1、安装screen"></a>step1、安装screen</h4><p>在ubuntu系统的服务器上，使用简单的安装语句安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install screen</span><br></pre></td></tr></table></figure>
-
-<h4 id="step2、-创建screen窗口"><a href="#step2、-创建screen窗口" class="headerlink" title="step2、 创建screen窗口"></a>step2、 创建screen窗口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S name</span><br></pre></td></tr></table></figure>
-
-<p>使用如上命令创建对应名字的窗口。这个窗口类似于一个后台进程，可以通过命令使得代码运行在这个窗口上，并在连接断开后仍然能够运行。</p>
-<p>创建完窗口后，会直接跳进这个窗口，然后就可以执行相关代码命令了。需要临时退出窗口，可以使用ctrl+a+d，这样该窗口仍在运行；需要完全结束这个窗口，使用exit，这样这个窗口就彻底没了。</p>
-<h4 id="step3、重新进入已创建的窗口"><a href="#step3、重新进入已创建的窗口" class="headerlink" title="step3、重新进入已创建的窗口"></a>step3、重新进入已创建的窗口</h4><p>将程序运行后，当然就想关电脑走人了。那么如何在重新与服务器连接后恢复之前创建的screen呢？</p>
-<p>使用screen -ls可以查看当前存在的所有进程，每个进程都会显示对应的PID和名字。找到想要进入的PID，然后使用screen -r -d PID就可以进去了。</p>
-<p>棒棒！</p>
+		<h1 id="脑胶质瘤分级分割论文阅读-22"><a href="#脑胶质瘤分级分割论文阅读-22" class="headerlink" title="脑胶质瘤分级分割论文阅读-22"></a>脑胶质瘤分级分割论文阅读-22</h1><p>​        今天带来的是BraTS2019的第二名方法，当时的第一名方法好像是两阶段的那个模型。这篇文章主要是介绍了对于脑胶质瘤分割任务中比较常用且好用的一些小技巧，并且表明这些小技巧是能够对分割结果有所帮助的。除了这些小技巧外，文章使用的模型则是UNet的一个简单变种。</p>
+<p>文章标题：《Bag of Tricks for 3D MRI Brain Tumor Segmentation》</p>
+<p>文章链接：<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/341488453_Bag_of_Tricks_for_3D_MRI_Brain_Tumor_Segmentation">link</a></p>
+<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        本文主要研究了能够应用在三维脑胶质瘤分割的深度神经网络上的，能够提分的一些小技巧。文中主要将这些小技巧分为三类，数据处理，模型构建和优化过程。借助于这些技巧，作者在BraTS2019拿到了第二名。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p><strong>数据处理</strong></p>
+<ul>
+<li>采样：受数据不平衡的影响，对图像patch的合理采样对于网络的训练非常重要。文章举例了两种方法：1、先随机采一定数量，然后使用非背景最多的块；2、困难样本挖掘，只回传最不确定样本的梯度。</li>
+<li>随机patch大小训练：每次随机选择输入的patch大小，使得patch size和batch size得到权衡。<img src="https://i.loli.net/2021/10/23/Kcx6TjSo7ultwRg.png" alt="2.PNG"></li>
+<li>半监督学习：使用额外的没有标签的数据</li>
+</ul>
+<p><strong>模型设计</strong></p>
+<ul>
+<li>整体模型设计：在UNet的基础上，对不同尺度的输出进行融合最后的到最终输出<img src="https://i.loli.net/2021/10/23/Yo6U5CGFLJVhZux.png" alt="3.PNG"></li>
+<li>融合方式：模型融合（五折交叉验证求均值）；patch融合（对重复预测的体素求均值）</li>
+</ul>
+<p><strong>优化方式</strong></p>
+<ul>
+<li>学习率预热</li>
+<li>多任务学习</li>
+</ul>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p><img src="https://i.loli.net/2021/10/23/15KAn4kWwo3DyrC.png" alt="1.PNG"></p>
+<h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        这篇文章提到了很多实际自己在做的时候可以很轻松的加进自己的方法的小技巧。</p>
+<p>​        文章中采用的，每次输入网络的patchsize大小进行随机选择，我感觉还挺有意思的挺新奇的，但文中的对比实验没有提到这个部分，再加上这样来同时学习细节和全局信息感觉有点怪怪的，会不会让模型一会学这个一会学那个，最终导致两个都学不好也不好说。其他的，如学习吕预热，模型融合，半监督伪标签等，倒是可以很容易的加进自己的模型当中。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/small-tricks/">small tricks</a>
+  <span></span> <a href="/tags/glioma-segmentation/">--glioma segmentation</a>
   </div>
 
 
@@ -114,7 +124,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/07/18/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8%E2%80%9C/" data-title="远程服务器screen的使用“ | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/10/23/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-22/" data-title="脑胶质瘤分级分割论文阅读-22 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -123,19 +133,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/07/20/图表示学习论文阅读-1/" title="图表示学习论文阅读(1)">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  图表示学习论文阅读(1)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/07/18/hexo和github博客搭建小记/"  title="hexo和github博客搭建小记">
+<a href="/2021/10/21/深度学习相关论文阅读-1/"  title="深度学习相关论文阅读-1">
  <strong>NEXT:</strong><br/> 
- <span>hexo和github博客搭建小记
+ <span>深度学习相关论文阅读-1
 </span>
 </a>
 </div>
@@ -148,7 +150,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-22"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-22</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
