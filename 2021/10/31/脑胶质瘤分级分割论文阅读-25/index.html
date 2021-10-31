@@ -4,10 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>“脑胶质瘤分级分割论文阅读-24” | 放荡小李的博客</title>
+    <title>脑胶质瘤分级分割论文阅读-25 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-25文章标题：《Semi-Supervised Brain Lesion Segmentation with an Adapted Mean Teacher Model》
+文章链接：link
+文章引用：Cui W, Liu Y, Li Y, et al. Semi-supe">
     
     
     
@@ -65,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/10/28/“脑胶质瘤分级分割论文阅读-24”/" title="“脑胶质瘤分级分割论文阅读-24”" itemprop="url">“脑胶质瘤分级分割论文阅读-24”</a>
+      <a href="/2021/10/31/脑胶质瘤分级分割论文阅读-25/" title="脑胶质瘤分级分割论文阅读-25" itemprop="url">脑胶质瘤分级分割论文阅读-25</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-10-28T14:08:47.000Z" itemprop="datePublished">2021-10-28</time>
-    Updated:<time datetime="2021-10-28T14:08:47.640Z" itemprop="dateModified">2021-10-28</time>
+    <time datetime="2021-10-31T05:14:25.000Z" itemprop="datePublished">2021-10-31</time>
+    Updated:<time datetime="2021-10-31T05:16:28.199Z" itemprop="dateModified">2021-10-31</time>
     
   </p>
 </header>
@@ -82,19 +86,34 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-25"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-25</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li></ol></li></ol>
 		</div>
 		
-		  
+		<h2 id="脑胶质瘤分级分割论文阅读-25"><a href="#脑胶质瘤分级分割论文阅读-25" class="headerlink" title="脑胶质瘤分级分割论文阅读-25"></a>脑胶质瘤分级分割论文阅读-25</h2><p><strong>文章标题</strong>：《Semi-Supervised Brain Lesion Segmentation with an Adapted Mean Teacher Model》</p>
+<p>文章链接：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-20351-1_43">link</a></p>
+<p><strong>文章引用</strong>：Cui W, Liu Y, Li Y, et al. Semi-supervised brain lesion segmentation with an adapted mean teacher model[C]//International Conference on Information Processing in Medical Imaging. Springer, Cham, 2019: 554-565.</p>
+<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        文章提出了一种使用半监督学习的脑肿瘤分割方案，将未标注的数据结合到了模型的训练中。使用的半监督策略是mean teacher model（学生模型根据老师模型给出的标签训练，老师模型根据学生模型更新的参数更新），并基于类似的输入应该要有一致的输出的假设，实现半监督学习。外加一个自集成。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        <strong>主干分割模型</strong>：老师模型和学生模型使用的主干CNN架构为DeepMedic，如下</p>
+<p><img src="https://i.loli.net/2021/10/31/QbV8dkY5BanGtKj.png" alt="1.png"></p>
+<p>​        <strong>半监督学习</strong>：为了实现半监督学习，文章首先使用标记过的数据训练出一个老师模型。然后循环地，先以老师模型对未标记数据得到的结果作为标签，加上已标记数据，使用如下两个损失函数(对未标记数据使用softdice，标记数据使用交叉熵），共同训练学生模型；随着学生模型的更新，老师模型也根据指数移动平均策略受学生模型的参数进行更新。</p>
+<p><img src="https://i.loli.net/2021/10/31/WRmist2lMAG3qCh.png" alt="2.png"><img src="https://i.loli.net/2021/10/31/ZyJ1v64mePn2cCV.png" alt="3.png"></p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p><img src="https://i.loli.net/2021/10/31/U8PcwdaMtE7m2zq.png" alt="4.png"></p>
+<p>​        相比于其他SSL的方法，文章使用的方式能够在较少有标记训练样本的情况下仍得到不错的结果。这主要是因为本文中的适应 MT 模型受有限数量的训练扫描的影响较小，因为它不想其他方法一样需要在标记数据和未标记数据之间进行比较（较少的标记数据会使得比无法正确的表示合理的分布），而是在未标记数据之间比较。</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/10/28/%E2%80%9C%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-24%E2%80%9D/" data-title="“脑胶质瘤分级分割论文阅读-24” | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/10/31/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-25/" data-title="脑胶质瘤分级分割论文阅读-25 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -103,19 +122,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/10/28/脑胶质瘤分级分割论文阅读-24/" title="脑胶质瘤分级分割论文阅读-24">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  脑胶质瘤分级分割论文阅读-24</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/10/28/脑胶质瘤分级分割论文阅读-23/"  title="脑胶质瘤分级分割论文阅读-23">
+<a href="/2021/10/28/脑胶质瘤分级分割论文阅读-24/"  title="脑胶质瘤分级分割论文阅读-24">
  <strong>NEXT:</strong><br/> 
- <span>脑胶质瘤分级分割论文阅读-23
+ <span>脑胶质瘤分级分割论文阅读-24
 </span>
 </a>
 </div>
@@ -128,7 +139,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-25"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-25</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.3.</span> <span class="toc-text">3、实验</span></a></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -150,7 +161,7 @@
 		
 			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
 		
-			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>14</sup></a></li>
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>15</sup></a></li>
 		
 			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
 		
