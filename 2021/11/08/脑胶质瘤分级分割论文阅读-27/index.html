@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>图机器学习论文阅读-7 | 放荡小李的博客</title>
+    <title>脑胶质瘤分级分割论文阅读-27 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="文章标题《Design Space for Graph Neural Networks》目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有">
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-27文章标题：《Attention gated networks: Learning to leverage salient regions in medical images》
+文章链接：link
+引用：Schlemper J, Oktay O, Schaap M, et">
     
     
     
@@ -67,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/08/07/图机器学习论文阅读-7/" title="图机器学习论文阅读-7" itemprop="url">图机器学习论文阅读-7</a>
+      <a href="/2021/11/08/脑胶质瘤分级分割论文阅读-27/" title="脑胶质瘤分级分割论文阅读-27" itemprop="url">脑胶质瘤分级分割论文阅读-27</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-08-07T14:30:39.000Z" itemprop="datePublished">2021-08-07</time>
-    Updated:<time datetime="2021-08-11T12:29:29.939Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2021-11-08T08:55:01.000Z" itemprop="datePublished">2021-11-08</time>
+    Updated:<time datetime="2021-11-08T08:56:13.825Z" itemprop="dateModified">2021-11-08</time>
     
   </p>
 </header>
@@ -84,28 +86,26 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-27"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-27</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h4 id="文章标题《Design-Space-for-Graph-Neural-Networks》"><a href="#文章标题《Design-Space-for-Graph-Neural-Networks》" class="headerlink" title="文章标题《Design Space for Graph Neural Networks》"></a>文章标题《Design Space for Graph Neural Networks》</h4><p>目前的GNN研究侧重于提出和评估一个特定架构设计的GNN，并将这些特定的设计用于单个任务上，而还没有工作研究过如何为一个船新的工作快速的找到最佳最佳的GNN结构。为此，本文提出了一个通用的GNN设计空间，一个带有相似性衡量矩阵的任务空间，以及一个一种高效且有效的设计空间评估方法，以从设计空间中为一个新的任务找到合适的GNN结构。</p>
-<p>现阶段GNN的快速发展出现了一些问题，可能会限制GNN的未来发展</p>
-<ul>
-<li>研究只关注特定的GNN设计结构，而不是设计空间的做法限制了未来新的好的GNN模型的发现。</li>
-<li>当需要解决新出现的任务时，由于这种新任务与任何现有的 GNN 基准任务并不相似，因此尚不清楚如何为给定的新任务设计有效的 GNN 架构。 </li>
-<li>目前缺乏统一实的平台。</li>
-</ul>
-<p>为解决上述问题，本文提出了三个主要概念：<strong>GNN设计空间</strong>，<strong>GNN任务空间</strong>和<strong>设计空间的评估</strong>。除此之外，文章还开发了 GraphGym，这是一个探索不同 GNN 设计和任务的平台，具有模块化 GNN 实现、标准化 GNN 评估以及可重复和可扩展的实验管理。<img src="https://i.loli.net/2021/08/06/tIwGfWANHBe8XbK.png" alt="1.PNG"></p>
-<p><strong>GNN设计空间</strong>由层内设计，层间设计和学习参数设置构成，由共12个设计维度组成，各部分的可选维度如图。该设计空间的目的并不是为了尽可能的涵盖所有可能存在的GNN结构，而是想展示对设计空间的关注如何有助于为 GNN 研究提供信息。</p>
-<p><strong>任务空间</strong>通过将一组固定的锚点 GNN 架构应用于两个任务，通过对锚点GNN的性能的排序并计算相关性，来计算两个任务之间的相似性。新来的任务通过在锚点GNN上计算相应的性能，便可以在任务空间上找到属于自己的位置。</p>
-<p><strong>设计空间的评估</strong>是借助于随机受限搜索实现的。也就是除了待确定的维度可以改变外，其余的所有维度内容都相同，找出这样的一定数量的网络结构，通过比较二组结果之间统计上的好坏来决定这个维度的选择。</p>
-<p><strong>实验结果</strong> 文章的实验发现了一些在大部分任务上都能表现比较好的GNN组件，同时将使用该设计空间的方法运用到一些已经有的任务上，能够达到sota的效果。</p>
+		<h1 id="脑胶质瘤分级分割论文阅读-27"><a href="#脑胶质瘤分级分割论文阅读-27" class="headerlink" title="脑胶质瘤分级分割论文阅读-27"></a>脑胶质瘤分级分割论文阅读-27</h1><p><strong>文章标题</strong>：《Attention gated networks: Learning to leverage salient regions in medical images》</p>
+<p><strong>文章链接</strong>：<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S1361841518306133">link</a></p>
+<p><strong>引用</strong>：Schlemper J, Oktay O, Schaap M, et al. Attention gated networks: Learning to leverage salient regions in medical images[J]. Medical image analysis, 2019, 53: 197-207.</p>
+<h3 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h3><p>​        文章提出了一种新的注意力门控（AG)模型，旨在利用他自动学习并关注输入中的目标结构，使得网络能够抑制不相关部分更着眼于显著的特征。AG能够很容易的嵌入进像是VGG，UNet这类的网络结构中使用，能够在不明显增加计算成本的同时提升结果。</p>
+<p>​        文章中主要包含了借助于AG，实现了医学分类和分割两个任务。因为我自己是在做分割的，所以这里我只关注分割的模型。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        g为全局特征向量，用他作为指导来计算输入特征图的注意力$\alpha$​。这里g必须从大的空间内容中编码全局信息，通常使用粗略的尺度激活图。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://i.loli.net/2021/11/07/GfyXwlL9Or7xBZ4.png" alt="3DP5PL80S_RJQ399EG@A~Q7.png"></h3><p><img src="https://i.loli.net/2021/11/07/wU324sEQAajmhXJ.png" alt="1.png"></p>
+<p>​        最后的分割模型长这样，就是在UNet的跳跃连接上，加入了由更小特征图引导的注意力机制。这个做法跟我现在在做的差不多，我一方面用了自注意力，效果有点提升，一方面用了模态先验注意力，但结果没有变好。而他这里用的是上一层的特征上采样后得到的特征来引导注意力。</p>
+<p><img src="https://i.loli.net/2021/11/07/sxa1ywYHql6JTU3.png" alt="2.png"></p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验<img src="https://i.loli.net/2021/11/07/wMXxl7j9OaeDmpP.png" alt="4.png"></h3><h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>是一种新的计算注意力的方式，并且能够简单的融合进UNet中。打算找一下它开元的代码学习一下。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/graph-ML/">graph ML</a>
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
   </div>
 
 
@@ -113,7 +113,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/08/07/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-7/" data-title="图机器学习论文阅读-7 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/11/08/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-27/" data-title="脑胶质瘤分级分割论文阅读-27 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -122,19 +122,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/08/08/脑胶质瘤分级论文阅读-1/" title="脑胶质瘤分级论文阅读-1">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  脑胶质瘤分级论文阅读-1</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/08/07/图机器学习论文阅读-6-1/"  title="图机器学习论文阅读-6">
+<a href="/2021/11/08/脑胶质瘤分级分割论文阅读-26/"  title="脑胶质瘤分级分割论文阅读-26">
  <strong>NEXT:</strong><br/> 
- <span>图机器学习论文阅读-6
+ <span>脑胶质瘤分级分割论文阅读-26
 </span>
 </a>
 </div>
@@ -147,7 +139,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E9%A2%98%E3%80%8ADesign-Space-for-Graph-Neural-Networks%E3%80%8B"><span class="toc-number">1.</span> <span class="toc-text">文章标题《Design Space for Graph Neural Networks》</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-27"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-27</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.3.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
