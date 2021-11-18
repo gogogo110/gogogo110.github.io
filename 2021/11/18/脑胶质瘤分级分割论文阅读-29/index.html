@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>图机器学习论文阅读-5 | 放荡小李的博客</title>
+    <title>脑胶质瘤分级分割论文阅读-29 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="1、图机器学习论文阅读-5论文标题：《GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models》
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-29论文名称：《Deep Attentional Features for Prostate Segmentation in Ultrasound》
 论文链接：link
-类似于GAN在图像生成领域的作用，图领域中的图生成算法在药物发现，物理建模，知识图谱构建等领域有非">
+引用：Wang Y, Deng Z, Hu X, et al. Deep attentional fea">
     
     
     
@@ -69,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/08/01/图机器学习论文阅读-5/" title="图机器学习论文阅读-5" itemprop="url">图机器学习论文阅读-5</a>
+      <a href="/2021/11/18/脑胶质瘤分级分割论文阅读-29/" title="脑胶质瘤分级分割论文阅读-29" itemprop="url">脑胶质瘤分级分割论文阅读-29</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-08-01T04:04:27.000Z" itemprop="datePublished">2021-08-01</time>
-    Updated:<time datetime="2021-08-11T12:29:10.778Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2021-11-18T13:20:04.000Z" itemprop="datePublished">2021-11-18</time>
+    Updated:<time datetime="2021-11-18T13:26:43.833Z" itemprop="dateModified">2021-11-18</time>
     
   </p>
 </header>
@@ -86,35 +86,28 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">1、图机器学习论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction-and-Related-Work"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction and Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Proposed-Approach"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Proposed Approach</span></a></li></ol></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-29"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-29</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h1 id="1、图机器学习论文阅读-5"><a href="#1、图机器学习论文阅读-5" class="headerlink" title="1、图机器学习论文阅读-5"></a>1、图机器学习论文阅读-5</h1><p>论文标题：《GraphRNN: Generating Realistic Graphs with Deep Auto-regressive Models》</p>
-<p>论文链接：<a target="_blank" rel="noopener" href="http://proceedings.mlr.press/v80/you18a.html">link</a></p>
-<p>类似于GAN在图像生成领域的作用，图领域中的图生成算法在药物发现，物理建模，知识图谱构建等领域有非常重要的意义。其中，GraphGNN算是图生成领域中比较重要的一篇文章吧。</p>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>   建模和生成图是研究生物学、工程和社会科学网络的基础，但由于图的非唯一性、高维性质以及给定图中边之间存在的复杂、非局部依赖性，从复杂的图分布中进行快速采样是非常具有挑战性的。</p>
-<p>   本文提出了一个深度自回归模型，GraphGNN，来解决上述挑战。</p>
-<p>   Graph从一系列代表性的图中学习训练，并将图生成的过程以目前生成的图为基础，分为节点生成序列和边生成序列。</p>
-<p>​    GraphGNN在实验中证实了强于所有基线算法。</p>
-<h3 id="1、Introduction-and-Related-Work"><a href="#1、Introduction-and-Related-Work" class="headerlink" title="1、Introduction and Related Work"></a>1、Introduction and Related Work</h3><p>​    图生成算法具有一定的历史，一些传统的生成算法（如随机图，学习度分布等）通过手工设计图的生成过程来建模一系列特定种类的图，因此这些方法没有从已有数据中学习隐藏特点的能力。本文的主要目的就是提出一个能够从一系列给定图中学习他们的特性，并生成新的有相同性质的图的算法。</p>
-<p>​    过去的方法中也有使用深度生成算法的模型，但他们要么只能从一张图上学习，要么只能生成极少节点数量的图。这些限制由以下挑战导致：1、大且可变的输出空间；2、相同的图有多种不同的表达形式；3、边的复杂性。</p>
-<p>​    本文提出的GraphRNN，以自回归的方式对图进行建模（新节点和边的添加序列），以捕获图中所有节点和边的复杂联合概率。GraphRNN可以看作是一个分层模型，graph-level RNN保持图的状态并生成新的节点，edge-level RNN为新加入的节点生成边。需要注意的是，不合理的节点添加顺序不仅会导致结果较差，还会增加生成时间，因此本文采用了BFS来进行节点生成顺序的排序，它能够减少大量的训练和预测的时间，增加模型的可扩展性。最后，本文还提出了基于最大平均区分MMD的评价准则，使得更严格的评估方式得以使用。</p>
-<p>  相比于传统方法，GraphGNN能够从任意图集合中学习特征；相比于其他深度图生成算法，GraphGNN得到的图不仅效果更好，规模也可以更大。</p>
-<h3 id="2、Proposed-Approach"><a href="#2、Proposed-Approach" class="headerlink" title="2、Proposed Approach"></a>2、Proposed Approach</h3><p>将图的生成过程分解为节点添加过程（graph-level RNN）和边添加过程（edge-level RNN）。</p>
-<p>因此一个图的生成过程可以被建模为：</p>
-<p><img src="https://i.loli.net/2021/08/01/2YFWUjtqCf48gBG.png" alt="2.png"></p>
-<p>其中，S_i^pi 是第i个加入的节点与前面所有节点的连接状态。这么一来，一个S^pi对应的一个图在某个特定节点顺序下的生成过程。于是，得到这个图的概率所有节点顺序只和<img src="https://i.loli.net/2021/08/01/3UO9qiYl1yKRoEM.png" alt="3.png"></p>
-<p>在上式中，p(S^pi)是我们需要通过生成模型学到的东西。由于内在的序列性质，p(S^pi)可以表示为<img src="https://i.loli.net/2021/08/01/718THwIP6GKAqNz.png" alt="4.png"></p>
-<p>最后，现在的问题在如何计算每一个连乘项了，文章使用RNN来计算并给除了伪代码</p>
-<p><img src="https://i.loli.net/2021/08/01/lfZKy3WkrxM4Ls1.png" alt="5.png"></p>
-<p>未完。。。。。。</p>
+		<h1 id="脑胶质瘤分级分割论文阅读-29"><a href="#脑胶质瘤分级分割论文阅读-29" class="headerlink" title="脑胶质瘤分级分割论文阅读-29"></a>脑胶质瘤分级分割论文阅读-29</h1><p>论文名称：《Deep Attentional Features for Prostate Segmentation in Ultrasound》</p>
+<p>论文链接：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-00937-3_60">link</a></p>
+<p>引用：Wang Y, Deng Z, Hu X, et al. Deep attentional features for prostate segmentation in ultrasound[C]//International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2018: 523-530.</p>
+<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        方法提出是应用在经直肠超声中的前列腺自动分割任务的。</p>
+<p>​        本文提出的DAF利用注意力机制选择性地利用从不同层集成的多级特征来细化每个单独层的特征，抑制 CNN 浅层的非前列腺噪声，并将更多的前列腺细节增加到深层特征中。</p>
+<p>​        简单来说就是两点贡献，一是使用不同层不同尺度不同分辨率的特征图挖掘不同的信息，如低层特征便于区分前列腺边界，而高层特征便于确定前列腺的位置；二是结合使用注意力机制抑制非前列腺区域。</p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        网络结构中的SLF和MLF能够互补。高层SLF能够从MLF中得到细节信息，低层SLF能够从MLF中得到语意信息。网络结构如下，基本上就是一个多尺度加上一个注意力的设计。</p>
+<p><img src="https://i.loli.net/2021/11/18/fEv1hCKaqmgUBbl.png" alt="1"></p>
+<p><img src="https://i.loli.net/2021/11/18/6jpJnN3YM5w9Cdt.png" alt="2"></p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        好像这一块还没有统一的数据集，所以实验的数据是从合作医院中过来的，相应的对比网络也没有很多。其实我是希望再看到一些消融实验的，可能会对自己的工作有点帮助，但是这里没有也没啥办法，感觉会议论文相关的实验确实没有期刊论文的实验要来的多。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://i.loli.net/2021/11/18/Fmj9gfI3Vr8ceY1.png" alt="3"></h3><h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        看了下超声前列腺的图像，发现分割难度确实不小。他的边界真的非常模糊，而且前列腺和周围部分的强度也很接近，感觉会边界比脑部的分割更模糊。</p>
+<p>​        回到模型，这个模型的设计还是很满足目前我的想法实现的需要的。目前，我已经在DAF这个模型的基础上做了一定的手脚，一方面是多个分支来处理多个模态，发现比单个分支处理四个模态好，另外这样设计也有助于开发基于模态先验知识的模型。目前还在努力中，希望后续能有好的结果。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/graph-ML/">graph ML</a>
+  <span></span> <a href="/tags/glioma-segmentation/">glioma segmentation</a>
   </div>
 
 
@@ -122,7 +115,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/08/01/%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5/" data-title="图机器学习论文阅读-5 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/11/18/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-29/" data-title="脑胶质瘤分级分割论文阅读-29 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -131,19 +124,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/08/07/图机器学习论文阅读-6-1/" title="图机器学习论文阅读-6">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  图机器学习论文阅读-6</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/07/28/图机器学习论文阅读-4/"  title="图机器学习论文阅读-4">
+<a href="/2021/11/18/脑胶质瘤分级分割论文阅读-28/"  title="脑胶质瘤分级分割论文阅读-28">
  <strong>NEXT:</strong><br/> 
- <span>图机器学习论文阅读-4
+ <span>脑胶质瘤分级分割论文阅读-28
 </span>
 </a>
 </div>
@@ -156,7 +141,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81%E5%9B%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-5"><span class="toc-number">1.</span> <span class="toc-text">1、图机器学习论文阅读-5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Abstract"><span class="toc-number">1.0.1.</span> <span class="toc-text">Abstract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Introduction-and-Related-Work"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、Introduction and Related Work</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Proposed-Approach"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、Proposed Approach</span></a></li></ol></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-29"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-29</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
