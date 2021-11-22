@@ -4,15 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>脑胶质瘤分级论文阅读-4 | 放荡小李的博客</title>
+    <title>脑胶质瘤分级分割论文阅读-30 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="脑胶质瘤分级分割论文阅读-4论文标题：《The RSNA-ASNR-MICCAI BraTS 2021 Benchmark on Brain Tumor Segmentation and Radiogenomic Classification》
+    <meta name="description" content="脑胶质瘤分级分割论文阅读-30论文名称：《3D Dilated Multi-Fiber Network for Real-time Brain Tumor Segmentation in MRI》
 论文链接：link
-​    
-​    想要了解脑胶">
+引用：Chen C, Liu X, Ding M, et al. 3D dilat">
     
     
     
@@ -70,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/08/15/脑胶质瘤分级论文阅读-4/" title="脑胶质瘤分级论文阅读-4" itemprop="url">脑胶质瘤分级论文阅读-4</a>
+      <a href="/2021/11/22/脑胶质瘤分级分割论文阅读-30/" title="脑胶质瘤分级分割论文阅读-30" itemprop="url">脑胶质瘤分级分割论文阅读-30</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-08-15T13:49:43.000Z" itemprop="datePublished">2021-08-15</time>
-    Updated:<time datetime="2021-08-15T14:50:48.863Z" itemprop="dateModified">2021-08-15</time>
+    <time datetime="2021-11-22T14:04:44.000Z" itemprop="datePublished">2021-11-22</time>
+    Updated:<time datetime="2021-11-22T14:05:46.275Z" itemprop="dateModified">2021-11-22</time>
     
   </p>
 </header>
@@ -87,25 +86,22 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%B5%9B%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">1、比赛任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2、讨论</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-30"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-30</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h1 id="脑胶质瘤分级分割论文阅读-4"><a href="#脑胶质瘤分级分割论文阅读-4" class="headerlink" title="脑胶质瘤分级分割论文阅读-4"></a>脑胶质瘤分级分割论文阅读-4</h1><p>论文标题：《The RSNA-ASNR-MICCAI BraTS 2021 Benchmark on Brain Tumor Segmentation and Radiogenomic Classification》</p>
-<p>论文链接：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2107.02314">link</a></p>
-<p>​    </p>
-<p>​    想要了解脑胶质瘤分割问题怎么能不提到BraTS竞赛呢？这可以算是一个规模最大数据最多的脑胶质瘤分割比赛了，我觉得我可以从这个比赛入手，然后学习一些每年比赛排名靠前的一些方法，从而入门闹胶质瘤分割任务。这篇文章是BraTS2021的介绍论文，介绍了今年比赛的两个任务的数据，获取方式和衡量准则等，除此之外里面提到了一些过去几年比赛里排名靠前的方法，已做收藏供后续阅读。</p>
-<h2 id="1、比赛任务"><a href="#1、比赛任务" class="headerlink" title="1、比赛任务"></a>1、比赛任务</h2><p>​        BraTS 2021 关注的两个任务是：a) 组织学上不同的脑肿瘤亚区域的分割，以及 b) 肿瘤 MGMT 启动子甲基化状态的分类。前者是BraTS每年必有的一个任务，目的是给定多模态的图像，需要算法来划分出不同子区域，如增强肿瘤ET，瘤周水肿/浸润组织ED 和坏死的肿瘤核心NCR。后者是今年新出的一个任务，因为MGMT的启动子甲基化在新诊断的 GBM 中已被确定为有利的预后因素和化疗反应的预测因子 ， 因此，确定新诊断的 GBM 中 MGMT 启动子甲基化状态可以影响治疗决策。 </p>
-<p><strong>数据说明</strong></p>
-<p>​        比赛提供的数据是由多机构多设备多准则的方式获得的，这导致图像质量差异很大，能够反映了不同机构的不同临床实践。相比于去年，今年比赛的数据量大大增加，其中，任务一的真实值由专家通过，任务二的真实值由实验得到。数据集包含的模态有T1，T1-GD， T2， T2FLAIR。一些标准的预处理操作被使用在了这些数据上，具体来说，应用的预处理例程包括将 DI-COM 文件转换为 NIFTI 文件格式、重新定向到通用定向系统（即 RAI）、共同对齐到相同的解剖模板(SRI24) ，重新采样到均匀的各向同性分辨率（1mm3），最后进行头骨剥离。</p>
-<p>​    任务一的打标过程，先由过去优胜算法DeepScan, DeepMedic及nnU-Net的融合作为初始，然后由专家调整并最后由资深专家通过。不同模态的图像对不同细胞的分割的作用有较大差别，文章有一个大概的说明；任务二的打标过程，是需要进行一定流程的实验的，太生物了，看不懂。</p>
-<p>​        一个本届比赛数据和往届比赛数据的对比如下<img src="https://i.loli.net/2021/08/15/8CJD1iF7ATGMvt6.png" alt="1.png"></p>
-<p><strong>子区域分割</strong></p>
-<p>​        针对于子区域分割的标签部分，文章给出了较为详细的流程，为先由过去算法初始化，再有专家调整并通过。值得注意的是，BraTS 肿瘤视觉特征（子区域）是基于图像的，并不反映严格的生物实体。根据过去算法的表现，文章还给出了过去算法最经常出现的四点错误，算是给今年比赛参赛者一点建议。</p>
-<p>​            子区域分割是一个多类分割问题，一共分为四类，包括增强肿瘤，肿瘤核，整体肿瘤和其他。给出的数据包含2000位患者的8000张MRI图像，数据量非常丰富。主要的衡量准则为Dice和Hausdorff</p>
-<p><strong>MGMT甲基化分类</strong></p>
-<p>​        给定与子区域分割任务相似的数据集，但是目标变为了一个二分类任务。主要衡量准则为AUC，acc，FSscore等。</p>
-<h2 id="2、讨论"><a href="#2、讨论" class="headerlink" title="2、讨论"></a>2、讨论</h2><p><strong>局限性</strong></p>
-<p>首先，每个病例的肿瘤特征分割由单个注释者通过与一组批准者的迭代过程进行细化，直到获得后者的批准，因此无法评估潜在的评估者之间的一致性。 其次，由于提供的 MGMT 启动子甲基化状态是基于提供数据的多个机构的不同方法确定的，并且每个机构都遵循自己的方法（例如，焦磷酸测序与定量 PCR）和阈值，因此只有甲基化状态的二元分类是 提供给参与者而不是连续值。 最后，我们注意到挑战中包含的一些 MRI 数据包含更多的异常，而不仅仅是胶质瘤，因此可能需要多疾病分割方法。</p>
+		<h1 id="脑胶质瘤分级分割论文阅读-30"><a href="#脑胶质瘤分级分割论文阅读-30" class="headerlink" title="脑胶质瘤分级分割论文阅读-30"></a>脑胶质瘤分级分割论文阅读-30</h1><p><strong>论文名称</strong>：《3D Dilated Multi-Fiber Network for Real-time Brain Tumor Segmentation in MRI》</p>
+<p><strong>论文链接</strong>：<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/978-3-030-32248-9_21">link</a></p>
+<p><strong>引用</strong>：Chen C, Liu X, Ding M, et al. 3D dilated multi-fiber network for real-time brain tumor segmentation in MRI[C]//International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2019: 184-192.</p>
+<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        目前提出的基于卷积神经网络的方法往往需要大量的计算复杂度，因此在实际应用中很可能会受到一定程度上的限制。因此，本文主要是提出了一个高效的实时的分割模型，通过结合使用多纤维模块（降低复杂度）和扩张卷积（建立多尺度特征表示），使得该模型在大幅度提升计算效率低同时，没有损失过多的性能。</p>
+<p>​        </p>
+<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​        倒数第二个图为DMF块，包含了使用multi-fiber的思想降低计算复杂度，然后使用可学习加权的方式融合不同扩散率的扩张卷积。</p>
+<p><img src="https://i.loli.net/2021/11/21/rcLvPuStoNYOaMI.png" alt="1.png"></p>
+<p>​        最终使用的模型也是在UNet的基础上，替换了部分卷积块为DMF unit 和MF unit得到的</p>
+<p><img src="https://i.loli.net/2021/11/21/LbeQG62DUSAEB7q.png" alt="2.png"></p>
+<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        实验表明该模型能够在极小的计算复杂度的条件下达到sota</p>
+<p><img src="https://i.loli.net/2021/11/21/uFU2sVw5i6EIBmt.png" alt="3.png"></p>
+<h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        本质上提出的方法是将unet和multi-fiber和dilated 卷积的融合，通过构建比较不同的卷积块，得到一个计算便捷效果又好的模型，但是最终的结果很不错。</p>
+<p>​        用了开元的代码和它放出的模型权重，能够得到和文章中完全相同的结果。同样我也跑了下他的方法，结果也与文章中的结果相近，所以还是可以从他们的代码中学习的。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -120,7 +116,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/08/15/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4/" data-title="脑胶质瘤分级论文阅读-4 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2021/11/22/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-30/" data-title="脑胶质瘤分级分割论文阅读-30 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -130,18 +126,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2021/08/16/脑胶质瘤分级分割论文阅读-5/" title="脑胶质瘤分级分割论文阅读-5">
+ <a href="/2021/11/22/脑胶质瘤分级分割论文阅读-31/" title="脑胶质瘤分级分割论文阅读-31">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  脑胶质瘤分级分割论文阅读-5</span>
+  脑胶质瘤分级分割论文阅读-31</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2021/08/13/脑胶质瘤分级论文阅读-3/"  title="脑胶质瘤分级论文阅读-3">
+<a href="/2021/11/18/脑胶质瘤分级分割论文阅读-29/"  title="脑胶质瘤分级分割论文阅读-29">
  <strong>NEXT:</strong><br/> 
- <span>脑胶质瘤分级论文阅读-3
+ <span>脑胶质瘤分级分割论文阅读-29
 </span>
 </a>
 </div>
@@ -154,7 +150,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-4"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%B5%9B%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">1、比赛任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%AE%A8%E8%AE%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2、讨论</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-30"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-30</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
