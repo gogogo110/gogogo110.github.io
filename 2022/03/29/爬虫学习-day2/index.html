@@ -1,0 +1,336 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>爬虫学习-day2 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="爬虫学习-Day20、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接123456789101112131415161718192021222324252627282930313233343536373839404142import requestsfrom lxml import et">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/03/29/爬虫学习-day2/" title="爬虫学习-day2" itemprop="url">爬虫学习-day2</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2022-03-29T06:22:07.000Z" itemprop="datePublished">2022-03-29</time>
+    Updated:<time datetime="2022-03-29T10:55:44.227Z" itemprop="dateModified">2022-03-29</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-Day2"><span class="toc-number">1.</span> <span class="toc-text">爬虫学习-Day2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0%E3%80%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%88%AC%E5%8F%9698%E5%A0%82%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%83%BD%E5%A4%9F%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87%E5%92%8C%E7%88%AC%E5%8F%96%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5"><span class="toc-number">1.0.1.</span> <span class="toc-text">0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E6%8B%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%99%BB%E9%99%86%EF%BC%88%E5%A4%84%E7%90%86cookie%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、模拟浏览器登陆（处理cookie）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%98%B2%E7%9B%97%E9%93%BE%E5%A4%84%E7%90%86%EF%BC%88%E6%A2%A8%E8%A7%86%E9%A2%91%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、防盗链处理（梨视频）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BB%A3%E7%90%86%EF%BC%88%E9%98%B2%E6%AD%A2%E8%A2%AB%E5%B0%81IP"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、代理（防止被封IP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%BB%BC%E5%90%88%E8%AE%AD%E7%BB%83"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、综合训练</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="爬虫学习-Day2"><a href="#爬虫学习-Day2" class="headerlink" title="爬虫学习-Day2"></a>爬虫学习-Day2</h1><h3 id="0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接"><a href="#0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接" class="headerlink" title="0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接"></a>0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取论坛源码，并找出子界面地址</span></span><br><span class="line">sub_urls= []</span><br><span class="line">sub_names = []</span><br><span class="line">domain = <span class="string">&quot;https://dsadsfgd.art/&quot;</span></span><br><span class="line">url = <span class="string">&quot;https://dsadsfgd.art/forum-103-1.html&quot;</span></span><br><span class="line">resp = requests.get(url)</span><br><span class="line">tree = etree.HTML(resp.text)</span><br><span class="line">subs = tree.xpath(<span class="string">&#x27;//*[@id=&quot;threadlisttableid&quot;]/tbody&#x27;</span>)[<span class="number">7</span>:-<span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> sub <span class="keyword">in</span> subs:</span><br><span class="line">    p = sub.xpath(<span class="string">&#x27;./tr/th/a[2]/@href&#x27;</span>)</span><br><span class="line">    n = sub.xpath(<span class="string">&#x27;./tr/th/a[2]/text()&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(p) &gt; <span class="number">0</span>:</span><br><span class="line">        sub_urls.append(domain+p[<span class="number">0</span>])</span><br><span class="line">        sub_names.append(n[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入子页面获取下载链接</span></span><br><span class="line"></span><br><span class="line">tmp = []</span><br><span class="line"><span class="keyword">for</span> index, url <span class="keyword">in</span> <span class="built_in">enumerate</span>(sub_urls):</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    tree = etree.HTML(resp.text)</span><br><span class="line">    <span class="built_in">id</span> = tree.xpath(<span class="string">&#x27;//*[@id=&quot;postlist&quot;]/div[1]/@id&#x27;</span>)[<span class="number">0</span>][-<span class="number">7</span>:]</span><br><span class="line">    text = tree.xpath(<span class="string">&#x27;//*[@id=&quot;postmessage_&#123;&#125;&quot;]/text()&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>))[:<span class="number">3</span>]</span><br><span class="line">    pics = tree.xpath(<span class="string">&#x27;//*[@id=&quot;postmessage_&#123;&#125;&quot;]/ignore_js_op/img[1]/@file&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>))</span><br><span class="line">    magnet = tree.xpath(<span class="string">&#x27;//*[@id=&quot;postmessage_&#123;&#125;&quot;]/div[1]/div[1]/ol/li/text()&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>))[<span class="number">0</span>]</span><br><span class="line">    text = <span class="string">&quot;&quot;</span>.join([t[<span class="number">2</span>:] <span class="keyword">for</span> t <span class="keyword">in</span> text])</span><br><span class="line">    <span class="built_in">print</span>(text, pics, magnet)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存图片</span></span><br><span class="line">    <span class="keyword">for</span> pic_i, pic <span class="keyword">in</span> <span class="built_in">enumerate</span>(pics):</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;98/&#x27;</span> + sub_names[index]+<span class="built_in">str</span>(pic_i)+<span class="string">&#x27;.jpg&#x27;</span>, mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            img_resp = requests.get(pic)</span><br><span class="line">            f.write(img_resp.content)</span><br><span class="line">    tmp.append([<span class="built_in">id</span>, text, magnet])</span><br><span class="line">df = pd.DataFrame(tmp, columns=[<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;description&#x27;</span>, <span class="string">&#x27;link&#x27;</span>])</span><br><span class="line">df.to_csv(<span class="string">&#x27;98/MyResorce.csv&#x27;</span>,encoding=<span class="string">&quot;utf_8_sig&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1、模拟浏览器登陆（处理cookie）"><a href="#1、模拟浏览器登陆（处理cookie）" class="headerlink" title="1、模拟浏览器登陆（处理cookie）"></a>1、模拟浏览器登陆（处理cookie）</h3><p>​    使用session进行登陆，然后再用登陆后的session进行数据读取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 登陆 -》得到cookie -》带着cookie去请求</span></span><br><span class="line"><span class="comment"># 使用session进行请求 -》session可以认为是一连串的请求，在这个过程中cookie不会丢失</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">session = requests.session()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登陆</span></span><br><span class="line">url = <span class="string">&quot;https://passport.17k.com/ck/user/login&quot;</span></span><br><span class="line">resp = session.post(url, data=&#123;<span class="string">&quot;loginName&quot;</span>:<span class="string">&quot;13666712459&quot;</span>, <span class="string">&quot;password&quot;</span>:<span class="string">&quot;lijiale1511&quot;</span>&#125;)</span><br><span class="line"><span class="comment"># print(resp.text)</span></span><br><span class="line"><span class="comment"># print(resp.cookies)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line">shelf_url = <span class="string">&quot;https://user.17k.com/ck/author/shelf?page=1&amp;appKey=2406394919&quot;</span></span><br><span class="line">resp = session.get(shelf_url)</span><br><span class="line"><span class="built_in">print</span>(resp.json())</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、防盗链处理（梨视频）"><a href="#2、防盗链处理（梨视频）" class="headerlink" title="2、防盗链处理（梨视频）"></a>2、防盗链处理（梨视频）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开发者工具看到的源码和爬到的页面源码有一定偏差</span></span><br><span class="line"><span class="comment"># 视频或图片的地址不一定在源码中</span></span><br><span class="line"><span class="comment"># 拿到视频链接后，可能还做了额外的加工</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1、拿到contId</span></span><br><span class="line">url = <span class="string">&quot;https://pearvideo.com/video_1756582&quot;</span></span><br><span class="line">contID = url.split(<span class="string">&#x27;_&#x27;</span>)[<span class="number">1</span>]</span><br><span class="line">videoStatus = <span class="string">f&quot;https://www.pearvideo.com/videoStatus.jsp?contId=<span class="subst">&#123;contID&#125;</span>&amp;mrd=0.6952007481227842&quot;</span></span><br><span class="line">head = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36&quot;</span>,</span><br><span class="line">    <span class="comment"># 防盗链</span></span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: url</span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(videoStatus, headers=head)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、拿到videoStatus返回的json，并去出srcURL</span></span><br><span class="line">srcurl = resp.json()[<span class="string">&quot;videoInfo&quot;</span>][<span class="string">&quot;videos&quot;</span>][<span class="string">&quot;srcUrl&quot;</span>]</span><br><span class="line">t = resp.json()[<span class="string">&quot;systemTime&quot;</span>]</span><br><span class="line">srcurl = srcurl.replace(t, <span class="string">f&quot;cont-<span class="subst">&#123;contID&#125;</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(srcurl)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3、对srcURL进行修改，并下载视频</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;data/a.mp4&#x27;</span>, mode=<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(requests.get(srcurl).content)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、代理（防止被封IP"><a href="#3、代理（防止被封IP" class="headerlink" title="3、代理（防止被封IP)"></a>3、代理（防止被封IP)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不推荐，不到万不得已不用</span></span><br><span class="line"><span class="comment"># 原理：通过第三方的机器发送请求</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 代理IP 218.60.8.83:3129</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">&quot;https&quot;</span>:<span class="string">&quot;https://218.60.8.83:3129&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(<span class="string">&quot;https://www.baidu.com&quot;</span>, proxies=proxies)</span><br><span class="line">resp.encoding= <span class="string">&quot;utf-8&quot;</span></span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、综合训练"><a href="#4、综合训练" class="headerlink" title="4、综合训练"></a>4、综合训练</h3><p>​    网易云音乐评论抓取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">不会，麻了</span><br><span class="line">是要去网易源码中找对参数的编码和解码的方式的</span><br></pre></td></tr></table></figure>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/爬虫/">-- 爬虫</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2022/03/29/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-day2/" data-title="爬虫学习-day2 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/03/28/爬虫学习-day1/"  title="爬虫学习-day1">
+ <strong>NEXT:</strong><br/> 
+ <span>爬虫学习-day1
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-Day2"><span class="toc-number">1.</span> <span class="toc-text">爬虫学习-Day2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#0%E3%80%81%E8%87%AA%E5%B7%B1%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E7%88%AC%E5%8F%9698%E5%A0%82%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8C%E8%83%BD%E5%A4%9F%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87%E5%92%8C%E7%88%AC%E5%8F%96%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5"><span class="toc-number">1.0.1.</span> <span class="toc-text">0、自己写了一个爬取98堂数据的代码，能够下载图片和爬取下载链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A8%A1%E6%8B%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E7%99%BB%E9%99%86%EF%BC%88%E5%A4%84%E7%90%86cookie%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">1、模拟浏览器登陆（处理cookie）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%98%B2%E7%9B%97%E9%93%BE%E5%A4%84%E7%90%86%EF%BC%88%E6%A2%A8%E8%A7%86%E9%A2%91%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">2、防盗链处理（梨视频）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BB%A3%E7%90%86%EF%BC%88%E9%98%B2%E6%AD%A2%E8%A2%AB%E5%B0%81IP"><span class="toc-number">1.0.4.</span> <span class="toc-text">3、代理（防止被封IP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%BB%BC%E5%90%88%E8%AE%AD%E7%BB%83"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、综合训练</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>2</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="-glioma segmentation">-glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/deep-learning/" title="deep learning">deep learning<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>20</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/medical-image-segmentation/" title="medical image segmentation">medical image segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+			<li><a href="/tags/脑肿瘤分割整理/" title="脑肿瘤分割整理">脑肿瘤分割整理<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2022 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
