@@ -4,13 +4,10 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>远程服务器screen的使用“ | 放荡小李的博客</title>
+    <title>代码随想录-链表 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
-    
-    <meta name="description" content="远程服务器screen的使用因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。
-后来就在网上找了相关的解决方法，发">
     
     
     
@@ -68,15 +65,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/07/18/远程服务器screen的使用“/" title="远程服务器screen的使用“" itemprop="url">远程服务器screen的使用“</a>
+      <a href="/2022/04/04/代码随想录-链表/" title="代码随想录-链表" itemprop="url">代码随想录-链表</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-07-18T14:12:53.000Z" itemprop="datePublished">2021-07-18</time>
-    Updated:<time datetime="2021-08-11T12:30:14.924Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2022-04-04T10:47:41.000Z" itemprop="datePublished">2022-04-04</time>
+    Updated:<time datetime="2022-04-04T10:47:41.786Z" itemprop="dateModified">2022-04-04</time>
     
   </p>
 </header>
@@ -85,36 +82,19 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+		
 		</div>
 		
-		<h1 id="远程服务器screen的使用"><a href="#远程服务器screen的使用" class="headerlink" title="远程服务器screen的使用"></a>远程服务器screen的使用</h1><p>因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。</p>
-<p>后来就在网上找了相关的解决方法，发现使用screen的方式很方便也很好理解，所以现在就用screen来调用远程服务器后台运行程序了。相关的步骤和常用方式如下：</p>
-<h4 id="step1、安装screen"><a href="#step1、安装screen" class="headerlink" title="step1、安装screen"></a>step1、安装screen</h4><p>在ubuntu系统的服务器上，使用简单的安装语句安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install screen</span><br></pre></td></tr></table></figure>
-
-<h4 id="step2、-创建screen窗口"><a href="#step2、-创建screen窗口" class="headerlink" title="step2、 创建screen窗口"></a>step2、 创建screen窗口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S name</span><br></pre></td></tr></table></figure>
-
-<p>使用如上命令创建对应名字的窗口。这个窗口类似于一个后台进程，可以通过命令使得代码运行在这个窗口上，并在连接断开后仍然能够运行。</p>
-<p>创建完窗口后，会直接跳进这个窗口，然后就可以执行相关代码命令了。需要临时退出窗口，可以使用ctrl+a+d，这样该窗口仍在运行；需要完全结束这个窗口，使用exit，这样这个窗口就彻底没了。</p>
-<h4 id="step3、重新进入已创建的窗口"><a href="#step3、重新进入已创建的窗口" class="headerlink" title="step3、重新进入已创建的窗口"></a>step3、重新进入已创建的窗口</h4><p>将程序运行后，当然就想关电脑走人了。那么如何在重新与服务器连接后恢复之前创建的screen呢？</p>
-<p>使用screen -ls可以查看当前存在的所有进程，每个进程都会显示对应的PID和名字。找到想要进入的PID，然后使用screen -r -d PID就可以进去了。</p>
-<p>棒棒！</p>
-  
+		  
 	</div>
 		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/small-tricks/">small tricks</a>
-  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/07/18/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8%E2%80%9C/" data-title="远程服务器screen的使用“ | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2022/04/04/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E9%93%BE%E8%A1%A8/" data-title="代码随想录-链表 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -123,19 +103,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/07/20/图表示学习论文阅读-1/" title="图表示学习论文阅读(1)">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  图表示学习论文阅读(1)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/07/18/hexo和github博客搭建小记/"  title="hexo和github博客搭建小记">
+<a href="/2022/04/04/代码随想录-数组/"  title="代码随想录-数组">
  <strong>NEXT:</strong><br/> 
- <span>hexo和github博客搭建小记
+ <span>代码随想录-数组
 </span>
 </a>
 </div>
@@ -148,7 +120,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+  
   </div>
 
 <div id="asidepart">

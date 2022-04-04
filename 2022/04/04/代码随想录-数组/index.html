@@ -1,0 +1,407 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>代码随想录-数组 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="代码随想录 - 数组​        按照link进行刷题学习，具体信息请点击代码随想录官网。
+1、数组的理论基础​    数组是存放在连续内存空间上的相同类型的数据的集合。数组的下标都是从0开始的，内存空间的地址是连续的。
+2、二分查找-704​        在有序数组中进行目标值的查找，可使用">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/04/04/代码随想录-数组/" title="代码随想录-数组" itemprop="url">代码随想录-数组</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2022-04-04T10:47:33.000Z" itemprop="datePublished">2022-04-04</time>
+    Updated:<time datetime="2022-04-04T15:16:58.258Z" itemprop="dateModified">2022-04-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">代码随想录 - 数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、数组的理论基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-704"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、二分查找-704</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%981%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89-35"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、二分查找-例题1（搜索插入位置）-35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%982%EF%BC%88%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE%EF%BC%89-34"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%983%EF%BC%88x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%EF%BC%89-60"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、二分查找-例题3（x的平方根）-60</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%984%EF%BC%88%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0%EF%BC%89-367"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、二分查找-例题4（有效的完全平方数）-367</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-27"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、移除元素-27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%981%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89-26"><span class="toc-number">1.0.8.</span> <span class="toc-text">8、移除元素-例题1（删除排序数组中的重复项）-26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%982%EF%BC%88%E7%A7%BB%E5%8A%A80%EF%BC%89-283"><span class="toc-number">1.0.9.</span> <span class="toc-text">9、移除元素-例题2（移动0）-283</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%983%EF%BC%88%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89-844"><span class="toc-number">1.0.10.</span> <span class="toc-text">10、移除元素-例题3（比较含退格的字符串）-844</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9-977"><span class="toc-number">1.0.11.</span> <span class="toc-text">11、有序数组的平方 - 977</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84-209"><span class="toc-number">1.0.12.</span> <span class="toc-text">12、长度最小的子数组-209</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13%E3%80%81%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B52-59"><span class="toc-number">1.0.13.</span> <span class="toc-text">13、螺旋矩阵2-59</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="代码随想录-数组"><a href="#代码随想录-数组" class="headerlink" title="代码随想录 - 数组"></a>代码随想录 - 数组</h1><p>​        按照<a href="programmercarl.com">link</a>进行刷题学习，具体信息请点击代码随想录官网。</p>
+<h3 id="1、数组的理论基础"><a href="#1、数组的理论基础" class="headerlink" title="1、数组的理论基础"></a>1、数组的理论基础</h3><p>​    数组是存放在连续内存空间上的相同类型的数据的集合。数组的下标都是从0开始的，内存空间的地址是连续的。</p>
+<h3 id="2、二分查找-704"><a href="#2、二分查找-704" class="headerlink" title="2、二分查找-704"></a>2、二分查找-704</h3><p>​        在有序数组中进行目标值的查找，可使用二分查找。该算法非常重要，在一系列相似题目中有各种各样的变形，因此对应的模板是要烂熟于心的，并且清楚每一部分的对应含义。</p>
+<p>​        二分查找的模板有两种，我一般习惯使用第一种。不同模板的语句对应的含义最好要弄懂，对后续二分查找的变形题目会有帮助。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模板1</span></span><br><span class="line"><span class="comment"># 定义target是在左闭右闭的区间内，所以left=right是有意义的。如果mid位置的值&gt;target，那么target不在[right,l-1]的区间内，因此right变为mid-1。</span></span><br><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> left &lt;= right:</span><br><span class="line">	mid = (left + right) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">        <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">        right = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        left = mid + <span class="number">1</span></span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模板2</span></span><br><span class="line"><span class="comment"># 定义target是在左闭右开的区间内，所以left=right是没有意义的。如果mid位置的值&gt;target，那么target不在[right,l-1]的区间内，去左半区间寻找，而左半区间是左闭右开的，因此right更新为mid。</span></span><br><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> left &lt; right:</span><br><span class="line">	mid = (left + right) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">        <span class="keyword">return</span> mid</span><br><span class="line">    <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">        right = mid</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        left = mid + <span class="number">1</span></span><br><span class="line"><span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>​        以上两种模板的主题思想是一样的，就是不断比较中间位置的值与目标值，然后每次缩减一半的搜索空间。核心的两点不同在于while循环的条件和right的更新值。因为我个人是喜欢用模板1的，因此后续代码我都会用模板1 写。</p>
+<h3 id="3、二分查找-例题1（搜索插入位置）-35"><a href="#3、二分查找-例题1（搜索插入位置）-35" class="headerlink" title="3、二分查找-例题1（搜索插入位置）-35"></a>3、二分查找-例题1（搜索插入位置）-35</h3><p>​    <strong>题目</strong>：给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>​    这道题与传统二分查找问题唯一的不同在于，返回的是索引值或被插入的位置。仔细思考二分查找左右指针的移动规律，就可以得到这道题的答案。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">          mid = (left + right) // <span class="number">2</span></span><br><span class="line">          <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">              <span class="keyword">return</span> mid</span><br><span class="line">          <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">              right = mid - <span class="number">1</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              left = mid + <span class="number">1</span></span><br><span class="line">      <span class="comment"># 与二分法的不同。进一步思考可以发现，如果未找到，那么left一定等于right+1</span></span><br><span class="line">      <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34"><a href="#4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34" class="headerlink" title="4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34"></a>4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34</h3><p>​    <strong>题目</strong>：给定一个按照升序排列的整数数组 <code>nums</code>，和一个目标值 <code>target</code>。找出给定目标值在数组中的开始位置和结束位置。如果数据中不存在目标值，则返回<code>[-1, -1]</code>。</p>
+<p>​    这个题的含义就是，找到连续目标值的左边界和右边界。理解这道题对深入理解二分法非常有帮助。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这部分找到的left是第一个大于target的位置</span></span><br><span class="line">  	<span class="function"><span class="keyword">def</span> <span class="title">getRightBorder</span>(<span class="params">nums:<span class="type">List</span>[<span class="built_in">int</span>], target:<span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">          left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span></span><br><span class="line">          rightBoder = -<span class="number">2</span> <span class="comment"># 记录一下rightBorder没有被赋值的情况</span></span><br><span class="line">          <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">              middle = left + (right-left) // <span class="number">2</span></span><br><span class="line">              <span class="keyword">if</span> nums[middle] &gt; target:</span><br><span class="line">                  right = middle - <span class="number">1</span></span><br><span class="line">              <span class="keyword">else</span>: <span class="comment"># 寻找右边界，nums[middle] == target的时候更新left</span></span><br><span class="line">                  left = middle + <span class="number">1</span></span><br><span class="line">                  rightBoder = left</span><br><span class="line">  </span><br><span class="line">          <span class="keyword">return</span> rightBoder</span><br><span class="line">      <span class="comment"># 这部分找到的right是第一个小于target的位置</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">getLeftBorder</span>(<span class="params">nums:<span class="type">List</span>[<span class="built_in">int</span>], target:<span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">          left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums)-<span class="number">1</span> </span><br><span class="line">          leftBoder = -<span class="number">2</span> <span class="comment"># 记录一下leftBorder没有被赋值的情况</span></span><br><span class="line">          <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">              middle = left + (right-left) // <span class="number">2</span></span><br><span class="line">              <span class="keyword">if</span> nums[middle] &gt;= target: <span class="comment">#  寻找左边界，nums[middle] == target的时候更新right</span></span><br><span class="line">                  right = middle - <span class="number">1</span>;</span><br><span class="line">                  leftBoder = right;</span><br><span class="line">              <span class="keyword">else</span>:</span><br><span class="line">                  left = middle + <span class="number">1</span></span><br><span class="line">          <span class="keyword">return</span> leftBoder</span><br><span class="line">      leftBoder = getLeftBorder(nums, target)</span><br><span class="line">      rightBoder = getRightBorder(nums, target)</span><br><span class="line">      <span class="comment"># 情况一</span></span><br><span class="line">      <span class="keyword">if</span> leftBoder == -<span class="number">2</span> <span class="keyword">or</span> rightBoder == -<span class="number">2</span>: <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">      <span class="comment"># 情况三</span></span><br><span class="line">      <span class="keyword">if</span> rightBoder -leftBoder &gt;<span class="number">1</span>: <span class="keyword">return</span> [leftBoder + <span class="number">1</span>, rightBoder - <span class="number">1</span>]</span><br><span class="line">      <span class="comment"># 情况二</span></span><br><span class="line">      <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="5、二分查找-例题3（x的平方根）-60"><a href="#5、二分查找-例题3（x的平方根）-60" class="headerlink" title="5、二分查找-例题3（x的平方根）-60"></a>5、二分查找-例题3（x的平方根）-60</h3><p>​    <strong>题目</strong>：给你一个非负整数x，计算并返回x的算数平方根。由于返回类型是整数，结果只保留整数部分，小时部分将被舍去。</p>
+<p>​    可以理解为，寻找最大的平方小于x的整数，可以使用二分法进行查找。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">l, r, ans = <span class="number">0</span>, x, -<span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> l &lt;= r:</span><br><span class="line">          mid = (l + r) // <span class="number">2</span></span><br><span class="line">          <span class="keyword">if</span> mid * mid &lt;= x:</span><br><span class="line">              ans = mid</span><br><span class="line">              l = mid + <span class="number">1</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              r = mid - <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+
+<h3 id="6、二分查找-例题4（有效的完全平方数）-367"><a href="#6、二分查找-例题4（有效的完全平方数）-367" class="headerlink" title="6、二分查找-例题4（有效的完全平方数）-367"></a>6、二分查找-例题4（有效的完全平方数）-367</h3><p>​    <strong>题目</strong>：给定一个正整数<code>num</code>,编写一个函数，如果num是一个完全平方数，则返回True，否则返回False。</p>
+<p>​    可以借助二分查找法，去看有没有一个数的平方是目标正整数，然后不断更新左右边界。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> num == <span class="number">1</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">      left, right = <span class="number">0</span>, num-<span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">          mid = (left + right) // <span class="number">2</span></span><br><span class="line">          <span class="keyword">if</span> mid **<span class="number">2</span> == num:</span><br><span class="line">              <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">          <span class="keyword">elif</span> mid ** <span class="number">2</span> &gt; num:</span><br><span class="line">              right = mid - <span class="number">1</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              left = mid + <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="7、移除元素-27"><a href="#7、移除元素-27" class="headerlink" title="7、移除元素-27"></a>7、移除元素-27</h3><p>​    <strong>题目</strong>：给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong>。</p>
+<p>​    使用快慢指针的方法，在原地实现移除元素的功能。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pre = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">          <span class="keyword">if</span> nums[i] != val:</span><br><span class="line">              nums[pre] = nums[i]</span><br><span class="line">              pre+= <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> pre</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="8、移除元素-例题1（删除排序数组中的重复项）-26"><a href="#8、移除元素-例题1（删除排序数组中的重复项）-26" class="headerlink" title="8、移除元素-例题1（删除排序数组中的重复项）-26"></a>8、移除元素-例题1（删除排序数组中的重复项）-26</h3><p>​    <strong>题目</strong>：给你一个 <strong>升序排列</strong> 的数组 <code>nums</code> ，请你**<a target="_blank" rel="noopener" href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。元素的 <strong>相对顺序</strong> 应该保持 <strong>一致</strong>。 </p>
+<p>​    和7一样，只是多存储一个变量用来标记之前元素的值，用来判断是否是连续重复的元素，从而进一步来删除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pre, pre_val = <span class="number">1</span>, nums[<span class="number">0</span>]</span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">          <span class="keyword">if</span> nums[i] != pre_val:</span><br><span class="line">              pre_val = nums[i]</span><br><span class="line">              nums[pre] = nums[i]</span><br><span class="line">              pre += <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> pre</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9、移除元素-例题2（移动0）-283"><a href="#9、移除元素-例题2（移动0）-283" class="headerlink" title="9、移除元素-例题2（移动0）-283"></a>9、移除元素-例题2（移动0）-283</h3><p>​    <strong>题目</strong>：给定一个数组 <code>nums</code>，编写一个函数将所有 <code>0</code> 移动到数组的末尾，同时保持非零元素的相对顺序。<strong>请注意</strong> ，必须在不复制数组的情况下原地对数组进行操作。</p>
+<p>​    一毛一样的用快慢指针，只是记得把剩下的数变为零。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">      Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">      &quot;&quot;&quot;</span></span><br><span class="line">      pre = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">          <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">              nums[pre] = nums[i]</span><br><span class="line">              pre += <span class="number">1</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(pre, <span class="built_in">len</span>(nums)):</span><br><span class="line">          nums[i] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="10、移除元素-例题3（比较含退格的字符串）-844"><a href="#10、移除元素-例题3（比较含退格的字符串）-844" class="headerlink" title="10、移除元素-例题3（比较含退格的字符串）-844"></a>10、移除元素-例题3（比较含退格的字符串）-844</h3><p>​    <strong>题目</strong>：给定 <code>s</code> 和 <code>t</code> 两个字符串，当它们分别被输入到空白的文本编辑器后，如果两者相等，返回 <code>true</code> 。<code>#</code> 代表退格字符。<strong>注意：</strong>如果对空文本输入退格字符，文本继续为空。</p>
+<p>​    实际上就是每碰到退格就对之前的字符串做一个移除元素处理。需要注意这个注意，注意慢指针不要到-1，我在提交的时候被这个坑过。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pre1, pre2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">       s, t = <span class="built_in">list</span>(s), <span class="built_in">list</span>(t)</span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">           <span class="keyword">if</span> s[i] == <span class="string">&#x27;#&#x27;</span>:</span><br><span class="line">               pre1 = <span class="built_in">max</span>(pre1-<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">else</span>:</span><br><span class="line">               s[pre1] = s[i]</span><br><span class="line">               pre1 += <span class="number">1</span></span><br><span class="line">       <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(t)):</span><br><span class="line">           <span class="keyword">if</span> t[i] == <span class="string">&#x27;#&#x27;</span>:</span><br><span class="line">               pre2 = <span class="built_in">max</span>(pre2-<span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">else</span>:</span><br><span class="line">               t[pre2] = t[i]</span><br><span class="line">               pre2 += <span class="number">1</span></span><br><span class="line">       <span class="keyword">return</span> s[:pre1] == t[:pre2]</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="11、有序数组的平方-977"><a href="#11、有序数组的平方-977" class="headerlink" title="11、有序数组的平方 - 977"></a>11、有序数组的平方 - 977</h3><p>​    <strong>题目</strong>：给你一个按 <strong>非递减顺序</strong> 排序的整数数组 <code>nums</code>，返回 <strong>每个数字的平方</strong> 组成的新数组，要求也按 <strong>非递减顺序</strong> 排序。</p>
+<p>​    无非就是从有序数组里面找出按绝对值排序的序列。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">      res = [<span class="number">0</span>] * <span class="built_in">len</span>(nums)</span><br><span class="line">      tmp = <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">          <span class="keyword">if</span> <span class="built_in">abs</span>(nums[left]) &gt; <span class="built_in">abs</span>(nums[right]):</span><br><span class="line">              res[tmp] = nums[left]**<span class="number">2</span></span><br><span class="line">              left += <span class="number">1</span></span><br><span class="line">              tmp -= <span class="number">1</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              res[tmp] = (nums[right]**<span class="number">2</span>)</span><br><span class="line">              tmp -= <span class="number">1</span></span><br><span class="line">              right -= <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="12、长度最小的子数组-209"><a href="#12、长度最小的子数组-209" class="headerlink" title="12、长度最小的子数组-209"></a>12、长度最小的子数组-209</h3><p>​    <strong>题目</strong>：给定一个含有 <code>n</code> 个正整数的数组和一个正整数 <code>target</code>。找出该数组中满足其和&gt;=target的长度最小的连续子数组，并返回其长度。如果不存在符合条件的子数组，返回0.</p>
+<p>​    挑取连续子数组，应该第一反应想到的是滑动窗口的算法。滑动窗口的起始位置应该是所有求和小于target的位置，终点位置应该是遍历整个数组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">res = <span class="number">100001</span></span><br><span class="line">      left, sums = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">          sums += nums[right]</span><br><span class="line">          </span><br><span class="line">          <span class="keyword">while</span> sums &gt;= target:</span><br><span class="line">              res = <span class="built_in">min</span>(res, right - left + <span class="number">1</span>)</span><br><span class="line">              sums -= nums[left]</span><br><span class="line">              left += <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> res == <span class="number">100001</span> <span class="keyword">else</span> res</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="13、螺旋矩阵2-59"><a href="#13、螺旋矩阵2-59" class="headerlink" title="13、螺旋矩阵2-59"></a>13、螺旋矩阵2-59</h3><p>​    <strong>题目</strong>：给你一个正整数 <code>n</code> ，生成一个包含 <code>1</code> 到 <code>n2</code> 所有元素，且元素按顺时针顺序螺旋排列的 <code>n x n</code> 正方形矩阵 <code>matrix</code> 。</p>
+<p>​    这道题的重点不在于相关算法，而在于如何用代码模拟整个过程。这一模拟的过程对代码的细节问题要求较高。主要就是方向和细节上的问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">directions = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">0</span>], [<span class="number">0</span>, -<span class="number">1</span>], [-<span class="number">1</span>, <span class="number">0</span>]]</span><br><span class="line">      tmp_dir = <span class="number">0</span></span><br><span class="line">      res = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">      tmp_x, tmp_y = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n*n+<span class="number">1</span>):</span><br><span class="line">          <span class="comment"># print(tmp_x, tmp_y)</span></span><br><span class="line">          res[tmp_x][tmp_y] = i</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> tmp_x + directions[tmp_dir%<span class="number">4</span>][<span class="number">0</span>] &gt;= n <span class="keyword">or</span> tmp_x + directions[tmp_dir%<span class="number">4</span>][<span class="number">0</span>] &lt; <span class="number">0</span> <span class="keyword">or</span> tmp_y + directions[tmp_dir%<span class="number">4</span>][<span class="number">1</span>] &gt;= n <span class="keyword">or</span> tmp_y + directions[tmp_dir%<span class="number">4</span>][<span class="number">1</span>] &lt; <span class="number">0</span> <span class="keyword">or</span> res[tmp_x + directions[tmp_dir%<span class="number">4</span>][<span class="number">0</span>]][tmp_y + directions[tmp_dir%<span class="number">4</span>][<span class="number">1</span>]] != <span class="number">0</span>:</span><br><span class="line">              tmp_dir += <span class="number">1</span></span><br><span class="line">          tmp_x += directions[tmp_dir%<span class="number">4</span>][<span class="number">0</span>]</span><br><span class="line">          tmp_y += directions[tmp_dir%<span class="number">4</span>][<span class="number">1</span>]</span><br><span class="line">      <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/leetcode-刷题/">-- leetcode - 刷题</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2022/04/04/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E6%95%B0%E7%BB%84/" data-title="代码随想录-数组 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/04/04/代码随想录-链表/" title="代码随想录-链表">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  代码随想录-链表</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/04/04/爬虫学习-day4/"  title="爬虫学习-day4">
+ <strong>NEXT:</strong><br/> 
+ <span>爬虫学习-day4
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">代码随想录 - 数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%95%B0%E7%BB%84%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、数组的理论基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-704"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、二分查找-704</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%981%EF%BC%88%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE%EF%BC%89-35"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、二分查找-例题1（搜索插入位置）-35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%982%EF%BC%88%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE%EF%BC%89-34"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、二分查找-例题2（在排序数组中查找元素的第一个和最后一个位置）-34</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%983%EF%BC%88x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9%EF%BC%89-60"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、二分查找-例题3（x的平方根）-60</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-%E4%BE%8B%E9%A2%984%EF%BC%88%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0%EF%BC%89-367"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、二分查找-例题4（有效的完全平方数）-367</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-27"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、移除元素-27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%981%EF%BC%88%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%EF%BC%89-26"><span class="toc-number">1.0.8.</span> <span class="toc-text">8、移除元素-例题1（删除排序数组中的重复项）-26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%982%EF%BC%88%E7%A7%BB%E5%8A%A80%EF%BC%89-283"><span class="toc-number">1.0.9.</span> <span class="toc-text">9、移除元素-例题2（移动0）-283</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E4%BE%8B%E9%A2%983%EF%BC%88%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%89-844"><span class="toc-number">1.0.10.</span> <span class="toc-text">10、移除元素-例题3（比较含退格的字符串）-844</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11%E3%80%81%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9-977"><span class="toc-number">1.0.11.</span> <span class="toc-text">11、有序数组的平方 - 977</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12%E3%80%81%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84-209"><span class="toc-number">1.0.12.</span> <span class="toc-text">12、长度最小的子数组-209</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13%E3%80%81%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B52-59"><span class="toc-number">1.0.13.</span> <span class="toc-text">13、螺旋矩阵2-59</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode-刷题/" title="-- leetcode - 刷题">-- leetcode - 刷题<sup>1</sup></a></li>
+		
+			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="-glioma segmentation">-glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/deep-learning/" title="deep learning">deep learning<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>20</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/medical-image-segmentation/" title="medical image segmentation">medical image segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+			<li><a href="/tags/脑肿瘤分割整理/" title="脑肿瘤分割整理">脑肿瘤分割整理<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2022 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>远程服务器screen的使用“ | 放荡小李的博客</title>
+    <title>爬虫学习-day4 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="远程服务器screen的使用因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。
-后来就在网上找了相关的解决方法，发">
+    <meta name="description" content="爬虫学习-day41、scrapy基础
+创建爬虫项目      scrapy startproject xxx
+
+创建爬虫文件      要在spiders文件夹中创建爬虫文件
+                         scrapy genspider 爬虫文件的名字 要爬取的网页（scra">
     
     
     
@@ -68,15 +71,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/07/18/远程服务器screen的使用“/" title="远程服务器screen的使用“" itemprop="url">远程服务器screen的使用“</a>
+      <a href="/2022/04/04/爬虫学习-day4/" title="爬虫学习-day4" itemprop="url">爬虫学习-day4</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-07-18T14:12:53.000Z" itemprop="datePublished">2021-07-18</time>
-    Updated:<time datetime="2021-08-11T12:30:14.924Z" itemprop="dateModified">2021-08-11</time>
+    <time datetime="2022-04-04T06:26:20.000Z" itemprop="datePublished">2022-04-04</time>
+    Updated:<time datetime="2022-04-04T07:04:36.307Z" itemprop="dateModified">2022-04-04</time>
     
   </p>
 </header>
@@ -85,28 +88,43 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-day4"><span class="toc-number">1.</span> <span class="toc-text">爬虫学习-day4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81scrapy%E5%9F%BA%E7%A1%80"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、scrapy基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81scrapy-58%E5%90%8C%E5%9F%8E"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、scrapy 58同城</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h1 id="远程服务器screen的使用"><a href="#远程服务器screen的使用" class="headerlink" title="远程服务器screen的使用"></a>远程服务器screen的使用</h1><p>因为之前一直不知道怎么在ssh连接断开后，仍然让服务器一直运行代码，所以在需要长时间跑代码的情况下，就会让电脑连夜开着保持ssh连接。这在网络稳定和时空条件方便的时候倒还行，但网络一断之前跑的东西就都没了，因此一直这样始终不是个好方法。</p>
-<p>后来就在网上找了相关的解决方法，发现使用screen的方式很方便也很好理解，所以现在就用screen来调用远程服务器后台运行程序了。相关的步骤和常用方式如下：</p>
-<h4 id="step1、安装screen"><a href="#step1、安装screen" class="headerlink" title="step1、安装screen"></a>step1、安装screen</h4><p>在ubuntu系统的服务器上，使用简单的安装语句安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install screen</span><br></pre></td></tr></table></figure>
-
-<h4 id="step2、-创建screen窗口"><a href="#step2、-创建screen窗口" class="headerlink" title="step2、 创建screen窗口"></a>step2、 创建screen窗口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -S name</span><br></pre></td></tr></table></figure>
-
-<p>使用如上命令创建对应名字的窗口。这个窗口类似于一个后台进程，可以通过命令使得代码运行在这个窗口上，并在连接断开后仍然能够运行。</p>
-<p>创建完窗口后，会直接跳进这个窗口，然后就可以执行相关代码命令了。需要临时退出窗口，可以使用ctrl+a+d，这样该窗口仍在运行；需要完全结束这个窗口，使用exit，这样这个窗口就彻底没了。</p>
-<h4 id="step3、重新进入已创建的窗口"><a href="#step3、重新进入已创建的窗口" class="headerlink" title="step3、重新进入已创建的窗口"></a>step3、重新进入已创建的窗口</h4><p>将程序运行后，当然就想关电脑走人了。那么如何在重新与服务器连接后恢复之前创建的screen呢？</p>
-<p>使用screen -ls可以查看当前存在的所有进程，每个进程都会显示对应的PID和名字。找到想要进入的PID，然后使用screen -r -d PID就可以进去了。</p>
-<p>棒棒！</p>
+		<h1 id="爬虫学习-day4"><a href="#爬虫学习-day4" class="headerlink" title="爬虫学习-day4"></a>爬虫学习-day4</h1><h3 id="1、scrapy基础"><a href="#1、scrapy基础" class="headerlink" title="1、scrapy基础"></a>1、scrapy基础</h3><ul>
+<li><p><strong>创建爬虫项目</strong>      scrapy startproject xxx</p>
+</li>
+<li><p><strong>创建爬虫文件</strong>      要在spiders文件夹中创建爬虫文件</p>
+<pre><code>                         scrapy genspider 爬虫文件的名字 要爬取的网页（scrapy genspider baidu www.baidu.com）
+</code></pre>
+<p>​                    这样会生成一个代码文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaiduSpider</span>(<span class="params">scrapy.Spider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;baidu&#x27;</span></span><br><span class="line">    allowed_domains = [<span class="string">&#x27;www.baidu.com&#x27;</span>]</span><br><span class="line">    start_urls = [<span class="string">&#x27;http://www.baidu.com/&#x27;</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>运行爬虫代码</strong>        scrapy crawl 爬虫的名字（scrapy srawl baidu)</p>
+<p>​                                需要把setting里面的ROBOTSTXT_OBEY=True注释掉，否则就遵守了君子协议</p>
+</li>
+</ul>
+<h3 id="2、scrapy-58同城"><a href="#2、scrapy-58同城" class="headerlink" title="2、scrapy 58同城"></a>2、scrapy 58同城</h3><ul>
+<li><p><strong>scrapy的项目结构</strong></p>
+<p>​    项目名字</p>
+<p>​        项目名字</p>
+<p>​            spiders文件夹（存储的是爬虫文件）</p>
+<p>​                自定义的爬虫文件    核心功能文件</p>
+<p>​            init.py</p>
+<p>​            items.py (定义数据结构的地方)</p>
+<p>​            middleware.py(中间件  代理)</p>
+<p>​            pipelines.py(管道    用来出来下载的数据)</p>
+<p>​            settings（配置文件    robots协议    ua定义）</p>
+</li>
+<li><p><strong>response的属性和方法</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response.text				<span class="comment"># 获取的字符串</span></span><br><span class="line">response.body				<span class="comment"># 获取的是二进制数据</span></span><br><span class="line">response.xpath				<span class="comment"># 使用xpath路径来解析response中的内容</span></span><br><span class="line">response.extract()			<span class="comment"># 提取seletor对象的data属性值</span></span><br><span class="line">response.extract_first()	<span class="comment"># 提取seletor列表的第一个数据</span></span><br></pre></td></tr></table></figure></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/small-tricks/">small tricks</a>
+  <span></span> <a href="/tags/爬虫/">-- 爬虫</a>
   </div>
 
 
@@ -114,7 +132,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/07/18/%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8%E2%80%9C/" data-title="远程服务器screen的使用“ | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2022/04/04/%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-day4/" data-title="爬虫学习-day4 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -124,18 +142,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2021/07/20/图表示学习论文阅读-1/" title="图表示学习论文阅读(1)">
+ <a href="/2022/04/04/代码随想录-数组/" title="代码随想录-数组">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  图表示学习论文阅读(1)</span>
+  代码随想录-数组</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2021/07/18/hexo和github博客搭建小记/"  title="hexo和github博客搭建小记">
+<a href="/2022/03/30/爬虫学习-day3/"  title="爬虫学习-day3">
  <strong>NEXT:</strong><br/> 
- <span>hexo和github博客搭建小记
+ <span>爬虫学习-day3
 </span>
 </a>
 </div>
@@ -148,7 +166,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8screen%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">远程服务器screen的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#step1%E3%80%81%E5%AE%89%E8%A3%85screen"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">step1、安装screen</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step2%E3%80%81-%E5%88%9B%E5%BB%BAscreen%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">step2、 创建screen窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#step3%E3%80%81%E9%87%8D%E6%96%B0%E8%BF%9B%E5%85%A5%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84%E7%AA%97%E5%8F%A3"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">step3、重新进入已创建的窗口</span></a></li></ol></li></ol></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-day4"><span class="toc-number">1.</span> <span class="toc-text">爬虫学习-day4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81scrapy%E5%9F%BA%E7%A1%80"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、scrapy基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81scrapy-58%E5%90%8C%E5%9F%8E"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、scrapy 58同城</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
