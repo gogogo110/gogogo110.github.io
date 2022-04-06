@@ -1,0 +1,377 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="docker学习​    相关的学习资料是参考这个网站的。
+1、docker安装​    桌面版的安装是直接下载安装包就行了。在安装的时候要记得打开虚拟化等东西。在控制面板中，操作：控制面板-&amp;gt;程序-&amp;gt;启用或关闭 windows 功能，开启 Windows 虚拟化和 Linux 子系统（">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/04/06/docker学习/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2022-04-06T12:31:16.045Z" itemprop="datePublished">2022-04-06</time>
+    Updated:<time datetime="2022-04-06T13:25:18.240Z" itemprop="dateModified">2022-04-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">docker学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81docker%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、docker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81docker%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、docker安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、制作自己的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%9B%AE%E5%BD%95%E6%8C%82%E8%BD%BD"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、目录挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%BC%94%E7%A4%BA"><span class="toc-number">1.0.4.0.1.</span> <span class="toc-text">挂载演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81docker-compose"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E9%95%9C%E5%83%8F%E7%9A%84%E5%8F%91%E5%B8%83%E5%92%8C%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、镜像的发布和部署</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="docker学习"><a href="#docker学习" class="headerlink" title="docker学习"></a>docker学习</h1><p>​    相关的学习资料是参考这个<a target="_blank" rel="noopener" href="https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP">网站</a>的。</p>
+<h3 id="1、docker安装"><a href="#1、docker安装" class="headerlink" title="1、docker安装"></a>1、docker安装</h3><p>​    <a target="_blank" rel="noopener" href="https://www.docker.com/products/docker-desktop">桌面版</a>的安装是直接下载安装包就行了。在安装的时候要记得打开虚拟化等东西。在控制面板中，操作：控制面板-&gt;程序-&gt;启用或关闭 windows 功能，开启 Windows 虚拟化和 Linux 子系统（WSL2)。如果出现一些问题，跟着提示来就好了，比如可能会提示WSL2版本不够新，那就根据给出的网站更新就好了。</p>
+<h3 id="2、docker安装软件"><a href="#2、docker安装软件" class="headerlink" title="2、docker安装软件"></a>2、docker安装软件</h3><p>​    <strong>演示docker安装Redis：</strong></p>
+<ul>
+<li>打开docker的镜像仓库：hub.docker.com，搜索相关的镜像</li>
+<li>根<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/run/">据</a>在命令行运行命令：docker run -d -p 6379:6379 –name redis redis:latest</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/06/n1jJ9PIQaztfBgD.png" alt="2.PNG"></p>
+<ul>
+<li>这样之后，在docker里面就跑起来容器了。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/04/06/LT2Rlr47bCXH3ok.png" alt="1.PNG"></p>
+<p>​    <strong>演示docker安装wordpress</strong>：</p>
+<ul>
+<li>新建一个文件命名为docker-compose.yml，并填入如下内容</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;3.1&#x27;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  wordpress:</span><br><span class="line">    image: wordpress</span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - 8080:80</span><br><span class="line">    environment:</span><br><span class="line">      WORDPRESS_DB_HOST: db</span><br><span class="line">      WORDPRESS_DB_USER: exampleuser</span><br><span class="line">      WORDPRESS_DB_PASSWORD: examplepass</span><br><span class="line">      WORDPRESS_DB_NAME: exampledb</span><br><span class="line">    volumes:</span><br><span class="line">      - wordpress:/var/www/html</span><br><span class="line"></span><br><span class="line">  db:</span><br><span class="line">    image: mysql:5.7</span><br><span class="line">    restart: always</span><br><span class="line">    environment:</span><br><span class="line">      MYSQL_DATABASE: exampledb</span><br><span class="line">      MYSQL_USER: exampleuser</span><br><span class="line">      MYSQL_PASSWORD: examplepass</span><br><span class="line">      MYSQL_RANDOM_ROOT_PASSWORD: &#x27;1&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - db:/var/lib/mysql</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  wordpress:</span><br><span class="line">  db:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在该文件夹下使用管理员命令行，使用docker-compose up -d命令来安装。</p>
+<p><img src="https://s2.loli.net/2022/04/06/ms3ngzrbDtLPwij.png" alt="3.PNG"></p>
+</li>
+<li><p>然后就可以在docker里看到了，直接localhost:8080就可以看到wordpress界面。</p>
+</li>
+<li><p><img src="https://s2.loli.net/2022/04/06/FrWpYq2DfSIP9Zv.png" alt="4.PNG"></p>
+</li>
+</ul>
+<h3 id="3、制作自己的镜像"><a href="#3、制作自己的镜像" class="headerlink" title="3、制作自己的镜像"></a>3、制作自己的镜像</h3><ul>
+<li>编写dockerfile</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> node:<span class="number">11</span></span><br><span class="line"><span class="keyword">MAINTAINER</span> easydoc.net</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制代码</span></span><br><span class="line"><span class="keyword">ADD</span><span class="bash"> . /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置容器启动后的默认运行目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行命令，安装依赖</span></span><br><span class="line"><span class="comment"># RUN 命令可以有多个，但是可以用 &amp;&amp; 连接多个命令来减少层级。</span></span><br><span class="line"><span class="comment"># 例如 RUN npm install &amp;&amp; cd /app &amp;&amp; mkdir logs</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install --registry=https://registry.npm.taobao.org</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CMD 指令只能一个，是容器启动后执行的命令，算是程序的入口。</span></span><br><span class="line"><span class="comment"># 如果还需要运行其他命令可以用 &amp;&amp; 连接，也可以写成一个shell脚本去执行。</span></span><br><span class="line"><span class="comment"># 例如 CMD cd /app &amp;&amp; ./start.sh</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> node app.js</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>build为镜像</p>
+<p>​    编译：docker build -t test:v1</p>
+<p>​    运行：docker run -p 8080:8080 –name test-hello test:v1</p>
+</li>
+</ul>
+<h3 id="4、目录挂载"><a href="#4、目录挂载" class="headerlink" title="4、目录挂载"></a>4、目录挂载</h3><ul>
+<li><p><code>bind mount</code> 直接把宿主机目录映射到容器内，适合挂代码目录和配置文件。可挂到多个容器上</p>
+</li>
+<li><p><code>volume</code> 由容器创建和管理，创建在宿主机，所以删除容器不会丢失，官方推荐，更高效，Linux 文件系统，适合存储数据库数据。可挂到多个容器上</p>
+</li>
+<li><p><code>tmpfs mount</code> 适合存储临时文件，存宿主机内存中。不可多容器共享。</p>
+<h5 id="挂载演示"><a href="#挂载演示" class="headerlink" title="挂载演示"></a>挂载演示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bind mount` 方式用绝对路径 `-v D:/code:/app</span><br><span class="line">volume` 方式，只需要一个名字 `-v db-data:/app</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5、docker-compose"><a href="#5、docker-compose" class="headerlink" title="5、docker-compose"></a>5、docker-compose</h3><p>​    使用 docker-compose 把项目的多个服务集合到一起，一键运行。</p>
+<p>​    <strong>编写脚本</strong>：要把项目依赖的多个服务集合到一起，我们需要编写一个<code>docker-compose.yml</code>文件，描述依赖哪些服务</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">&quot;3.7&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 表示依赖哪些服务</span></span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    build: ./</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="number">80</span>:<span class="number">8080</span></span><br><span class="line">    volumes:</span><br><span class="line">      - ./:/app</span><br><span class="line">    environment:</span><br><span class="line">      - TZ=Asia/Shanghai</span><br><span class="line">  redis:</span><br><span class="line">    image: redis:<span class="number">5.0</span>.<span class="number">13</span></span><br><span class="line">    volumes:</span><br><span class="line">      - redis:/data</span><br><span class="line">    environment:</span><br><span class="line">      - TZ=Asia/Shanghai</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  redis:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​    <strong>跑起来</strong>：在<code>docker-compose.yml</code> 文件所在目录，执行：<code>docker-compose up -d</code>就可以跑起来了。-d表示在后台运行。</p>
+<p>​    <strong>其他命令</strong>：</p>
+<p>​        查看运行状态：<code>docker-compose ps</code><br>​        停止运行：<code>docker-compose stop</code><br>​        重启：<code>docker-compose restart</code><br>​        重启单个服务：<code>docker-compose restart service-name</code><br>​        进入容器命令行：<code>docker-compose exec service-name sh</code><br>​        查看容器运行log：<code>docker-compose logs [service-name]</code></p>
+<h3 id="6、镜像的发布和部署"><a href="#6、镜像的发布和部署" class="headerlink" title="6、镜像的发布和部署"></a>6、镜像的发布和部署</h3><ul>
+<li>首先你要先 <a target="_blank" rel="noopener" href="https://hub.docker.com/">注册一个账号</a></li>
+<li>创建一个镜像库</li>
+<li>命令行登录账号：<br><code>docker login -u username</code></li>
+<li>新建一个tag，名字必须跟你注册账号一样<br><code>docker tag test:v1 username/test:v1</code></li>
+<li>推上去<br><code>docker push username/test:v1</code></li>
+<li>部署试下<br><code>docker run -dp 8080:8080 username/test:v1</code></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2022/04/06/docker%E5%AD%A6%E4%B9%A0/" data-title="放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/04/06/代码随想录-单调栈/"  title="代码随想录-单调栈">
+ <strong>NEXT:</strong><br/> 
+ <span>代码随想录-单调栈
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">docker学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81docker%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、docker安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81docker%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、docker安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%88%B6%E4%BD%9C%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、制作自己的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%9B%AE%E5%BD%95%E6%8C%82%E8%BD%BD"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、目录挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%BC%94%E7%A4%BA"><span class="toc-number">1.0.4.0.1.</span> <span class="toc-text">挂载演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81docker-compose"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、docker-compose</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E9%95%9C%E5%83%8F%E7%9A%84%E5%8F%91%E5%B8%83%E5%92%8C%E9%83%A8%E7%BD%B2"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、镜像的发布和部署</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="-- leetcode刷题">-- leetcode刷题<sup>3</sup></a></li>
+		
+			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="-glioma segmentation">-glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/deep-learning/" title="deep learning">deep learning<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>20</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="leetcode刷题">leetcode刷题<sup>1</sup></a></li>
+		
+			<li><a href="/tags/medical-image-segmentation/" title="medical image segmentation">medical image segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+			<li><a href="/tags/脑肿瘤分割整理/" title="脑肿瘤分割整理">脑肿瘤分割整理<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2022 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
