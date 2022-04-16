@@ -9,6 +9,10 @@
     
     <meta name="author" content="Jiale Li">
     
+    <meta name="description" content="代码随想录 双指针法​    写了以一会发现所有题目都是之前做过的，那就不再详细写了。
+1、移除元素-27​    题目：给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
+​    这个题之前有做过，如果要不使用额外空间原地修改输入">
+    
     
     
     
@@ -73,7 +77,7 @@
     </p>
   <p class="article-time">
     <time datetime="2022-04-06T01:42:19.000Z" itemprop="datePublished">2022-04-06</time>
-    Updated:<time datetime="2022-04-06T01:42:19.703Z" itemprop="dateModified">2022-04-06</time>
+    Updated:<time datetime="2022-04-09T07:19:53.512Z" itemprop="dateModified">2022-04-09</time>
     
   </p>
 </header>
@@ -82,12 +86,36 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">代码随想录 双指针法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-27"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、移除元素-27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-344"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、反转字符串-344</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、替换空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E9%A2%A0%E5%80%92%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AF%8D"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、颠倒字符串中的字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、反转链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、删除链表的倒数第N个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、链表相交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A82"><span class="toc-number">1.0.8.</span> <span class="toc-text">8、环形链表2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.0.9.</span> <span class="toc-text">9、三数之和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.0.10.</span> <span class="toc-text">10、四数之和</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		  
+		<h1 id="代码随想录-双指针法"><a href="#代码随想录-双指针法" class="headerlink" title="代码随想录 双指针法"></a>代码随想录 双指针法</h1><p>​    写了以一会发现所有题目都是之前做过的，那就不再详细写了。</p>
+<h3 id="1、移除元素-27"><a href="#1、移除元素-27" class="headerlink" title="1、移除元素-27"></a>1、移除元素-27</h3><p>​    <strong>题目</strong>：给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>​    这个题之前有做过，如果要不使用额外空间原地修改输入数组的话，可以使用双指针法（快慢指针）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pre = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">          <span class="keyword">if</span> nums[i] != val:</span><br><span class="line">              nums[pre] = nums[i]</span><br><span class="line">              pre+= <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> pre</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、反转字符串-344"><a href="#2、反转字符串-344" class="headerlink" title="2、反转字符串-344"></a>2、反转字符串-344</h3><p>​    <strong>题目</strong>：编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p>
+<p>​    用两个指针指向头尾，然后不断交换并指针向内移动，直到相遇。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(s) - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> left &lt; right:</span><br><span class="line">          s[left], s[right] = s[right], s[left]</span><br><span class="line">          left += <span class="number">1</span></span><br><span class="line">          right -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、替换空格"><a href="#3、替换空格" class="headerlink" title="3、替换空格"></a>3、替换空格</h3><p>​    <strong>题目</strong>：请实现一个函数，把字符串 <code>s</code> 中的每个空格替换成”%20”。</p>
+<p>​    先根据空格数预留出足够的空间，然后利用快慢指针的方式不断从老的字符串中读取数据到新字符串，遇到空格替换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">counter = s.count(<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">      res = <span class="built_in">list</span>(s)</span><br><span class="line">      <span class="comment"># 每碰到一个空格就多拓展两个格子，1 + 2 = 3个位置存’%20‘</span></span><br><span class="line">      res.extend([<span class="string">&#x27; &#x27;</span>] * counter * <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">      slow = <span class="built_in">len</span>(res)-<span class="number">1</span></span><br><span class="line">      <span class="keyword">for</span> fast <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">          <span class="keyword">if</span> s[fast] == <span class="string">&#x27; &#x27;</span>:</span><br><span class="line">              res[slow-<span class="number">2</span>:slow+<span class="number">1</span>] = [<span class="string">&#x27;%&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;0&#x27;</span>]</span><br><span class="line">              slow -= <span class="number">3</span></span><br><span class="line">          <span class="keyword">else</span>:</span><br><span class="line">              res[slow] = s[fast]</span><br><span class="line">              slow -= <span class="number">1</span></span><br><span class="line">      <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(res)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、颠倒字符串中的字母"><a href="#4、颠倒字符串中的字母" class="headerlink" title="4、颠倒字符串中的字母"></a>4、颠倒字符串中的字母</h3><h3 id="5、反转链表"><a href="#5、反转链表" class="headerlink" title="5、反转链表"></a>5、反转链表</h3><h3 id="6、删除链表的倒数第N个节点"><a href="#6、删除链表的倒数第N个节点" class="headerlink" title="6、删除链表的倒数第N个节点"></a>6、删除链表的倒数第N个节点</h3><h3 id="7、链表相交"><a href="#7、链表相交" class="headerlink" title="7、链表相交"></a>7、链表相交</h3><h3 id="8、环形链表2"><a href="#8、环形链表2" class="headerlink" title="8、环形链表2"></a>8、环形链表2</h3><h3 id="9、三数之和"><a href="#9、三数之和" class="headerlink" title="9、三数之和"></a>9、三数之和</h3><h3 id="10、四数之和"><a href="#10、四数之和" class="headerlink" title="10、四数之和"></a>10、四数之和</h3>  
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/leetcode刷题/">-- leetcode刷题</a>
+  </div>
 
 
 
@@ -128,7 +156,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">代码随想录 双指针法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-27"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、移除元素-27</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-344"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、反转字符串-344</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、替换空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E9%A2%A0%E5%80%92%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AF%8D"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、颠倒字符串中的字母</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、反转链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、删除链表的倒数第N个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、链表相交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A82"><span class="toc-number">1.0.8.</span> <span class="toc-text">8、环形链表2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.0.9.</span> <span class="toc-text">9、三数之和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E3%80%81%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="toc-number">1.0.10.</span> <span class="toc-text">10、四数之和</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
@@ -144,11 +172,13 @@
 		
 			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
 		
-			<li><a href="/tags/leetcode刷题/" title="-- leetcode刷题">-- leetcode刷题<sup>3</sup></a></li>
+			<li><a href="/tags/leetcode刷题/" title="-- leetcode刷题">-- leetcode刷题<sup>7</sup></a></li>
 		
 			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>1</sup></a></li>
 		
 			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>4</sup></a></li>
+		
+			<li><a href="/tags/阅读笔记/" title="-- 阅读笔记">-- 阅读笔记<sup>1</sup></a></li>
 		
 			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
 		
