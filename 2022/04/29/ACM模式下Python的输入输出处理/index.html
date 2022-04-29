@@ -4,14 +4,18 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>脑胶质瘤分级分割论文阅读-24 | 放荡小李的博客</title>
+    <title>ACM模式下Python的输入输出处理 | 放荡小李的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Jiale Li">
     
-    <meta name="description" content="脑胶质瘤分级分割论文阅读-24论文标题：《3D CGAN BASED CROSS-MODALITY MR IMAGE SYNTHESIS FOR BRAIN TUMOR SEGMENTATION》
-论文链接：link
-引用：Yu B, Zhou L, Wang L, et al. 3D cGAN b">
+    <meta name="description" content="ACM模式下Python的输入输出处理1、实例1
+第一行两个整数n和m。之后n行输入矩阵，均为非负整数。
+
+输入：
+12343 55 1 8 5 21 3 10 3 37 8 5 5 16
+输入读取
+12345678try:    n,m = map(int,input().split())exce">
     
     
     
@@ -69,15 +73,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/10/28/脑胶质瘤分级分割论文阅读-24/" title="脑胶质瘤分级分割论文阅读-24" itemprop="url">脑胶质瘤分级分割论文阅读-24</a>
+      <a href="/2022/04/29/ACM模式下Python的输入输出处理/" title="ACM模式下Python的输入输出处理" itemprop="url">ACM模式下Python的输入输出处理</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://example.com" title="Jiale Li">Jiale Li</a>
     </p>
   <p class="article-time">
-    <time datetime="2021-10-28T14:09:43.000Z" itemprop="datePublished">2021-10-28</time>
-    Updated:<time datetime="2021-10-28T14:11:34.640Z" itemprop="dateModified">2021-10-28</time>
+    <time datetime="2022-04-29T12:53:36.000Z" itemprop="datePublished">2022-04-29</time>
+    Updated:<time datetime="2022-04-29T13:01:50.621Z" itemprop="dateModified">2022-04-29</time>
     
   </p>
 </header>
@@ -86,29 +90,45 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-24"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-24</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E4%B8%8BPython%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">ACM模式下Python的输入输出处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E4%BE%8B1"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、实例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%9E%E4%BE%8B2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、实例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E4%BE%8B3"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实例3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、总结</span></a></li></ol></li></ol></li></ol>
 		</div>
 		
-		<h1 id="脑胶质瘤分级分割论文阅读-24"><a href="#脑胶质瘤分级分割论文阅读-24" class="headerlink" title="脑胶质瘤分级分割论文阅读-24"></a>脑胶质瘤分级分割论文阅读-24</h1><p><strong>论文标题</strong>：《3D CGAN BASED CROSS-MODALITY MR IMAGE SYNTHESIS FOR BRAIN TUMOR SEGMENTATION》</p>
-<p><strong>论文链接</strong>：<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/8363653/">link</a></p>
-<p><strong>引用</strong>：Yu B, Zhou L, Wang L, et al. 3D cGAN based cross-modality MR image synthesis for brain tumor segmentation[C]//2018 IEEE 15th International Symposium on Biomedical Imaging (ISBI 2018). IEEE, 2018: 626-630.</p>
-<h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>​        不同模态的MRI图像往往包含了不同方面的信息，这对更好的脑胶质瘤分割是有益的。考虑到日常诊断中往往只会拥有T1这一模态，为了更好的进行分割，文章使用cGAN来从T1模态学习生成Flair模态，获取Flair模态的全局信息，并使用局部线性映射的方式完善生成的Flair模态的细节信息（这个文章说会损害生成图像的表现，但会提升分割结果）。</p>
-<p>​        利用T1得到虚假的Flair模态后，再用Deepmedic（好像）里的网络做分割。</p>
-<h3 id="2、方法"><a href="#2、方法" class="headerlink" title="2、方法"></a>2、方法</h3><p>​    cGAN生成模型，融合进了UNet的思想。输入大小为128*128，他这里使用了七层下采样，最后采样到只有1大小了，感觉怪怪的，不过这在GAN里倒也还行，因为原生GAN的输入就是一串随机噪声嘛。</p>
-<p><img src="https://i.loli.net/2021/10/28/nsiBN1rDlURIfCa.png" alt="1.png"></p>
-<p>​        在得到一个生成的Flair模态的图像之后，为了进一步精细化图像细节，文章做了一个我很不能理解的操作。就是将生成的Flair图像分成若干个小块之后，与训练集对应位置的小块比对，并使用如下公式赋权重。接着用这个权重加权相加对应的训练集小块，用这个当做最终生成的结果。wtf？？？所以cGAN到头来只是为了学这么一个权重？我不李姐！还在文章给出了一点解释：“虽然这种线性组合会产生一些影响合成图像外观的伪像，但它被证明是一种有效的改进分割的策略，这是我们的最终目标。”</p>
-<p><img src="https://i.loli.net/2021/10/28/sUJDXBkhlK7N42W.png" alt="2.png"></p>
-<p>​        得到一个真一个假两个图像之后，使用Deepmedic的网络进行分割，为什么不用UNet这我就不知道了。</p>
-<h3 id="3、实验"><a href="#3、实验" class="headerlink" title="3、实验"></a>3、实验</h3><p>​        就加了生成flair的的结果勉强比只使用T1好了一丢丢，但是比真的flair差远了，就但看这个结果我觉得没什么好的，但只能说确实看到了比只使用T1是有提升的吧。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://i.loli.net/2021/10/28/YGOcsdtf2KrZF3v.png" alt="3.png"></h3><h3 id="4、想法"><a href="#4、想法" class="headerlink" title="4、想法"></a>4、想法</h3><p>​        感觉使用GAN来根据已知模态生成未知模态是一个不错的想法，但是用在分割任务上并没有那么好。因为分割任务这种像素级的任务对每一个模态的细节信息有较高的要求，而生成的图像在细节上确实还差很多，而且不像自然图像，不同模态的MRI图像在分布上也有较大不同，很难通过GAN来得到不错的结果，我觉得将生成图像用在分类这种图像级的任务上会好一些。</p>
-<p>​        然后，文章使用的细化图像细节的方法我也很不赞同，哪有这样的？这种方法如果在训练数据集和测试数据集差的很多的时候，就完全不可用了哇。就有点离谱好吧。</p>
+		<h1 id="ACM模式下Python的输入输出处理"><a href="#ACM模式下Python的输入输出处理" class="headerlink" title="ACM模式下Python的输入输出处理"></a>ACM模式下Python的输入输出处理</h1><h3 id="1、实例1"><a href="#1、实例1" class="headerlink" title="1、实例1"></a>1、实例1</h3><ul>
+<li><p>第一行两个整数n和m。之后n行输入矩阵，均为非负整数。</p>
+</li>
+<li><p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3 5</span><br><span class="line">5 1 8 5 2</span><br><span class="line">1 3 10 3 3</span><br><span class="line">7 8 5 5 16</span><br></pre></td></tr></table></figure></li>
+<li><p>输入读取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    n,m = <span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split())</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    b = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line">    a.append(b)  </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2、实例2"><a href="#2、实例2" class="headerlink" title="2、实例2"></a>2、实例2</h3><ul>
+<li>输入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1,2,2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输入读取</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="built_in">input</span>().split(<span class="string">&#x27;,&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、实例3"><a href="#3、实例3" class="headerlink" title="3、实例3"></a>3、实例3</h3><ul>
+<li>输入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 2, -5, 3, 4</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输入读取</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().strip().split(<span class="string">&#x27;,&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h3><p>​        输入的每一行用input()读取，得到的东西会是一个字符串，如果需要转换为其他类型需要进一步处理。例如，变成列表需要先split再list。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/glioma-segmentation/">-- glioma segmentation</a>
+  <span></span> <a href="/tags/tricks/">-- tricks</a>
   </div>
 
 
@@ -116,7 +136,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://example.com/2021/10/28/%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-24/" data-title="脑胶质瘤分级分割论文阅读-24 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  <div data-url="http://example.com/2022/04/29/ACM%E6%A8%A1%E5%BC%8F%E4%B8%8BPython%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%A4%84%E7%90%86/" data-title="ACM模式下Python的输入输出处理 | 放荡小李的博客" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -125,19 +145,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2021/10/31/脑胶质瘤分级分割论文阅读-25/" title="脑胶质瘤分级分割论文阅读-25">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  脑胶质瘤分级分割论文阅读-25</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2021/10/28/脑胶质瘤分级分割论文阅读-23/"  title="脑胶质瘤分级分割论文阅读-23">
+<a href="/2022/04/06/Science-Research-Writing-A-Guide-for-Non-Native-speakers-of-English阅读笔记/"  title="Science Research Writing: A Guide for Non-Native speakers of English阅读笔记">
  <strong>NEXT:</strong><br/> 
- <span>脑胶质瘤分级分割论文阅读-23
+ <span>Science Research Writing: A Guide for Non-Native speakers of English阅读笔记
 </span>
 </a>
 </div>
@@ -150,7 +162,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%84%91%E8%83%B6%E8%B4%A8%E7%98%A4%E5%88%86%E7%BA%A7%E5%88%86%E5%89%B2%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-24"><span class="toc-number">1.</span> <span class="toc-text">脑胶质瘤分级分割论文阅读-24</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E9%AA%8C"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%83%B3%E6%B3%95"><span class="toc-number">1.0.5.</span> <span class="toc-text">4、想法</span></a></li></ol></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ACM%E6%A8%A1%E5%BC%8F%E4%B8%8BPython%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%A4%84%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">ACM模式下Python的输入输出处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E4%BE%8B1"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、实例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%9E%E4%BE%8B2"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、实例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%9E%E4%BE%8B3"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、实例3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、总结</span></a></li></ol></li></ol></li></ol>
   </div>
 
 <div id="asidepart">
