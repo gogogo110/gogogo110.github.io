@@ -1,0 +1,342 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>“docker镜像制作与提交-入门” | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="Docker1、docker images​    查看所有已有的docker镜像
+2、docker ps查看所有正在运行的docker容器
+
+容器类似于screen。使用exit（ctrl+d）退出容器；使用crtl+p，ctrl+q暂时离开容器,容器后台运行；使用docker attach id">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/06/22/“docker镜像制作与提交-入门”/" title="“docker镜像制作与提交-入门”" itemprop="url">“docker镜像制作与提交-入门”</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2022-06-22T08:52:27.000Z" itemprop="datePublished">2022-06-22</time>
+    Updated:<time datetime="2022-06-22T08:52:47.956Z" itemprop="dateModified">2022-06-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81docker-images"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、docker images</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81docker-ps"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、docker ps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81docker-%E7%94%B1%E9%95%9C%E5%83%8F%E7%94%9F%E6%88%90%E5%AE%B9%E5%99%A8"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、docker 由镜像生成容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81docker-%E4%BB%8E%E6%9C%AC%E5%9C%B0%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%88%B0%E5%AE%B9%E5%99%A8%E4%B8%AD"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、docker 从本地复制文件到容器中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%B0%86%E5%BD%93%E5%89%8D%E5%AE%B9%E5%99%A8%E4%BF%9D%E5%AD%98%E4%B8%BA%E9%95%9C%E5%83%8F"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、将当前容器保存为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E8%BE%93%E5%87%BA%E9%95%9C%E5%83%8F%E4%B8%BAtar%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、输出镜像为tar文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、修改文件权限</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h3 id="1、docker-images"><a href="#1、docker-images" class="headerlink" title="1、docker images"></a>1、docker images</h3><p>​    查看所有已有的docker镜像<img src="https://s2.loli.net/2022/06/22/fGtToEj156Q7DIb.png" alt="1.PNG"></p>
+<h3 id="2、docker-ps"><a href="#2、docker-ps" class="headerlink" title="2、docker ps"></a>2、docker ps</h3><p>查看所有正在运行的docker容器</p>
+<p><img src="https://s2.loli.net/2022/06/22/pnGsj7q38gm6zMQ.png" alt="2.PNG"></p>
+<p>容器类似于screen。使用exit（ctrl+d）退出容器；使用crtl+p，ctrl+q暂时离开容器,容器后台运行；使用docker attach id 进入后台运行的容器。</p>
+<p>容器内可以像独立系统一样安装东西</p>
+<h3 id="3、docker-由镜像生成容器"><a href="#3、docker-由镜像生成容器" class="headerlink" title="3、docker 由镜像生成容器"></a>3、docker 由镜像生成容器</h3><p>docker run -it mgtv_challenge:test</p>
+<p>镜像名称由docker images 得到。</p>
+<h3 id="4、docker-从本地复制文件到容器中"><a href="#4、docker-从本地复制文件到容器中" class="headerlink" title="4、docker 从本地复制文件到容器中"></a>4、docker 从本地复制文件到容器中</h3><p>docker cp 本地文件路径 container_id:/容器文件路径<img src="https://s2.loli.net/2022/06/22/derqlROiWQ8LHCb.png" alt="3.PNG"></p>
+<h3 id="5、将当前容器保存为镜像"><a href="#5、将当前容器保存为镜像" class="headerlink" title="5、将当前容器保存为镜像"></a>5、将当前容器保存为镜像</h3><p>docker commit 容器ID  镜像名:v版本<img src="https://s2.loli.net/2022/06/22/aREJ3tGFfAQzn9x.png" alt="4.PNG"></p>
+<h3 id="6、输出镜像为tar文件"><a href="#6、输出镜像为tar文件" class="headerlink" title="6、输出镜像为tar文件"></a>6、输出镜像为tar文件</h3><p>docker save -o XXXXX.tar 镜像ID<img src="https://s2.loli.net/2022/06/22/1JKX6ICkz3Yu9r7.png" alt="5.PNG"></p>
+<h3 id="7、修改文件权限"><a href="#7、修改文件权限" class="headerlink" title="7、修改文件权限"></a>7、修改文件权限</h3><p>因为我的服务器里docker命令都是在sudo下运行的，所以保存的文件都是root权限，直接用xftp不好下载。故需要额外更改一下权限。</p>
+<p>sudo chmod a+rw /home/lijl/code/X2_code/MGTV_VQA/baseline/8f77aae9a091.tar</p>
+<p>a表示对所有用户，rw表示读写</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/tips/">-- tips</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2022/06/22/%E2%80%9Cdocker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C%E4%B8%8E%E6%8F%90%E4%BA%A4-%E5%85%A5%E9%97%A8%E2%80%9D/" data-title="“docker镜像制作与提交-入门” | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/04/30/招商银行FinTech数据赛道/"  title="招商银行FinTech数据赛道">
+ <strong>NEXT:</strong><br/> 
+ <span>招商银行FinTech数据赛道
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker"><span class="toc-number">1.</span> <span class="toc-text">Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81docker-images"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、docker images</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81docker-ps"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、docker ps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81docker-%E7%94%B1%E9%95%9C%E5%83%8F%E7%94%9F%E6%88%90%E5%AE%B9%E5%99%A8"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、docker 由镜像生成容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81docker-%E4%BB%8E%E6%9C%AC%E5%9C%B0%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E5%88%B0%E5%AE%B9%E5%99%A8%E4%B8%AD"><span class="toc-number">1.0.4.</span> <span class="toc-text">4、docker 从本地复制文件到容器中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%B0%86%E5%BD%93%E5%89%8D%E5%AE%B9%E5%99%A8%E4%BF%9D%E5%AD%98%E4%B8%BA%E9%95%9C%E5%83%8F"><span class="toc-number">1.0.5.</span> <span class="toc-text">5、将当前容器保存为镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E8%BE%93%E5%87%BA%E9%95%9C%E5%83%8F%E4%B8%BAtar%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.6.</span> <span class="toc-text">6、输出镜像为tar文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-number">1.0.7.</span> <span class="toc-text">7、修改文件权限</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="-- leetcode刷题">-- leetcode刷题<sup>8</sup></a></li>
+		
+			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>2</sup></a></li>
+		
+			<li><a href="/tags/tricks/" title="-- tricks">-- tricks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/比赛/" title="-- 比赛">-- 比赛<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>4</sup></a></li>
+		
+			<li><a href="/tags/阅读笔记/" title="-- 阅读笔记">-- 阅读笔记<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="-glioma segmentation">-glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/deep-learning/" title="deep learning">deep learning<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>20</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="leetcode刷题">leetcode刷题<sup>3</sup></a></li>
+		
+			<li><a href="/tags/medical-image-segmentation/" title="medical image segmentation">medical image segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+			<li><a href="/tags/脑肿瘤分割整理/" title="脑肿瘤分割整理">脑肿瘤分割整理<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2022 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

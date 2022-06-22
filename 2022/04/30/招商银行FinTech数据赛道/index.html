@@ -1,0 +1,367 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>招商银行FinTech数据赛道 | 放荡小李的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Jiale Li">
+    
+    <meta name="description" content="招商银行FinTech数据赛道比赛记录1、赛题简介​    本次竞赛的主题是公司存款流失预测。参赛选手需要分局训练数据集和测试数据集，基于训练数据集的有效特征提取，使用分类算法构建公司客户存款流失预测模型，并将模型应用在测试数据集上，输出测试数据集中公司客户存款流失概率的预测。竞赛的评价指标为AUC">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="放荡小李的博客" title="放荡小李的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="放荡小李的博客">放荡小李的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/04/30/招商银行FinTech数据赛道/" title="招商银行FinTech数据赛道" itemprop="url">招商银行FinTech数据赛道</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://example.com" title="Jiale Li">Jiale Li</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2022-04-30T13:04:11.000Z" itemprop="datePublished">2022-04-30</time>
+    Updated:<time datetime="2022-05-01T07:30:41.668Z" itemprop="dateModified">2022-05-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8CFinTech%E6%95%B0%E6%8D%AE%E8%B5%9B%E9%81%93%E6%AF%94%E8%B5%9B%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">招商银行FinTech数据赛道比赛记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%B5%9B%E9%A2%98%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、赛题简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81lgb-baseline"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、lgb baseline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%8120220501"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、20220501</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="招商银行FinTech数据赛道比赛记录"><a href="#招商银行FinTech数据赛道比赛记录" class="headerlink" title="招商银行FinTech数据赛道比赛记录"></a>招商银行FinTech数据赛道比赛记录</h1><h3 id="1、赛题简介"><a href="#1、赛题简介" class="headerlink" title="1、赛题简介"></a>1、赛题简介</h3><p>​    本次竞赛的主题是公司存款流失预测。参赛选手需要分局训练数据集和测试数据集，基于训练数据集的有效特征提取，使用分类算法构建公司客户存款流失预测模型，并将模型应用在测试数据集上，输出测试数据集中公司客户存款流失概率的预测。竞赛的评价指标为AUC</p>
+<p>​    给定数据集中的特征有数值类型的，有字符类型的，并且有大量的异常值，？值，以及2值。特征的名称没有做过多的说明，如果需要进一步的特征筛选，合适的特征选择可能是需要的。</p>
+<h3 id="2、lgb-baseline"><a href="#2、lgb-baseline" class="headerlink" title="2、lgb baseline"></a>2、lgb baseline</h3><ul>
+<li>首先读取数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(<span class="string">&#x27;data/train.xlsx&#x27;</span>)</span><br><span class="line">data_test = pd.read_excel(<span class="string">&#x27;data/test_A榜.xlsx&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(data.shape)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后进行一定的预处理。在baseline中没做任何的特征工程，仅替换了字母。在后续的尝试中特征工程还是有必要的。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process</span>(<span class="params">data, train=<span class="literal">True</span></span>):</span></span><br><span class="line">    ID = data[<span class="string">&#x27;CUST_UID&#x27;</span>].values</span><br><span class="line">    <span class="keyword">if</span> train:</span><br><span class="line">        label = data[<span class="string">&#x27;LABEL&#x27;</span>].values</span><br><span class="line">    feature = data[[s <span class="keyword">for</span> s <span class="keyword">in</span> data.columns <span class="keyword">if</span> s <span class="keyword">not</span> <span class="keyword">in</span> [<span class="string">&#x27;CUST_UID&#x27;</span>, <span class="string">&#x27;LABEL&#x27;</span>]]]</span><br><span class="line">    feature.replace(<span class="string">&#x27;?&#x27;</span>, <span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;MON_12_CUST_CNT_PTY_ID&#x27;</span>].replace(<span class="string">&#x27;Y&#x27;</span>, <span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;WTHR_OPN_ONL_ICO&#x27;</span>].replace(<span class="string">&#x27;A&#x27;</span>, <span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;WTHR_OPN_ONL_ICO&#x27;</span>].replace(<span class="string">&#x27;B&#x27;</span>, <span class="number">0</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;A&#x27;</span>, <span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;B&#x27;</span>, <span class="number">2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;C&#x27;</span>, <span class="number">3</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;D&#x27;</span>, <span class="number">4</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;E&#x27;</span>, <span class="number">5</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;LGP_HLD_CARD_LVL&#x27;</span>].replace(<span class="string">&#x27;F&#x27;</span>, <span class="number">6</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;A&#x27;</span>, <span class="number">1</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;B&#x27;</span>, <span class="number">2</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;C&#x27;</span>, <span class="number">3</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;D&#x27;</span>, <span class="number">4</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;E&#x27;</span>, <span class="number">5</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature[<span class="string">&#x27;NB_CTC_HLD_IDV_AIO_CARD_SITU&#x27;</span>].replace(<span class="string">&#x27;F&#x27;</span>, <span class="number">6</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">    feature = feature.values</span><br><span class="line">    <span class="keyword">if</span> train:</span><br><span class="line">        <span class="keyword">return</span> feature, label, ID</span><br><span class="line">    <span class="keyword">return</span> feature, ID</span><br><span class="line"></span><br><span class="line">feature, label, ID = process(data)</span><br><span class="line">feature_test, ID_test = process(data_test, <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用LGB进行拟合然后提交。这里尝试了五折和十折，本地结果分别是0.9489和0.95006，提交结果分别是 0.9529和0.9534.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">import</span> lightgbm <span class="keyword">as</span> lgb</span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&quot;learning_rate&quot;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&quot;boosting&quot;</span>: <span class="string">&#x27;gbdt&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;lambda_l2&quot;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&quot;max_depth&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;num_leaves&quot;</span>: <span class="number">128</span>,</span><br><span class="line">    <span class="string">&quot;bagging_fraction&quot;</span>: <span class="number">0.8</span>,</span><br><span class="line">    <span class="string">&quot;feature_fraction&quot;</span>: <span class="number">0.8</span>,</span><br><span class="line">    <span class="string">&quot;metric&quot;</span>: &#123;<span class="string">&#x27;binary_logloss&#x27;</span>, <span class="string">&#x27;auc&#x27;</span>&#125;,</span><br><span class="line">    <span class="string">&quot;objective&quot;</span>: <span class="string">&quot;binary&quot;</span>,</span><br><span class="line">    <span class="string">&quot;nthread&quot;</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="string">&quot;verbose&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;使用训练集数据进行模型训练&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">fold_num = <span class="number">10</span></span><br><span class="line">folds = KFold(n_splits=fold_num, shuffle=<span class="literal">True</span>, random_state=<span class="number">2022</span>)</span><br><span class="line">predictions = np.zeros([<span class="built_in">len</span>(feature_test), ])</span><br><span class="line">auc_local = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fold_, (trn_idx, val_idx) <span class="keyword">in</span> <span class="built_in">enumerate</span>(folds.split(feature, label)):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;fold n°&#123;&#125;&quot;</span>.<span class="built_in">format</span>(fold_ + <span class="number">1</span>))</span><br><span class="line">    trn_data = lgb.Dataset(feature[trn_idx], label[trn_idx])</span><br><span class="line">    val_data = lgb.Dataset(feature[val_idx], label[val_idx])</span><br><span class="line"></span><br><span class="line">    num_round = <span class="number">10000</span></span><br><span class="line">    clf = lgb.train(params,</span><br><span class="line">                    trn_data,</span><br><span class="line">                    num_round,</span><br><span class="line">                    valid_sets=[trn_data, val_data],</span><br><span class="line">                    verbose_eval=<span class="number">100</span>,</span><br><span class="line">                    early_stopping_rounds=<span class="number">500</span>)</span><br><span class="line">    <span class="comment"># 评价验证集结果</span></span><br><span class="line">    valid_res = clf.predict(feature[val_idx], num_iteration=clf.best_iteration)</span><br><span class="line">    fpr, tpr, thresholds = metrics.roc_curve(label[val_idx], valid_res)</span><br><span class="line">    roc_auc = metrics.auc(fpr, tpr)</span><br><span class="line">    auc_local += roc_auc</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;fold &#123;&#125; auc: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(fold_ + <span class="number">1</span>, roc_auc))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获得测试集结果</span></span><br><span class="line">    fold_pre = clf.predict(feature_test, num_iteration=clf.best_iteration)</span><br><span class="line">    predictions += fold_pre / folds.n_splits</span><br><span class="line"></span><br><span class="line">auc_local /= fold_num</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;average auc: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(auc_local))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最终保存提交结果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存结果</span></span><br><span class="line">file_handle=<span class="built_in">open</span>(<span class="string">&#x27;1.txt&#x27;</span>,mode=<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(predictions)):</span><br><span class="line">    tmp = [ID_test[i], predictions[i]]</span><br><span class="line">    res.append(tmp)</span><br><span class="line">    file_handle.write(ID_test[i] + <span class="string">&quot;\t&quot;</span> + <span class="built_in">str</span>(predictions[i]) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">sub = np.array(res)</span><br><span class="line">file_handle.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、20220501"><a href="#3、20220501" class="headerlink" title="3、20220501"></a>3、20220501</h3><ul>
+<li><p>第一次提交</p>
+<p>仅进行了调参，找了一个线下分数稍微高一点的参数。线下0.9509，线上还是0.9534。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&quot;learning_rate&quot;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&quot;boosting&quot;</span>: <span class="string">&#x27;gbdt&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;lambda_l1&quot;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&quot;lambda_l2&quot;</span>: <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">&quot;max_depth&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">    <span class="string">&quot;num_leaves&quot;</span>: <span class="number">128</span>,</span><br><span class="line">    <span class="string">&quot;bagging_fraction&quot;</span>: <span class="number">0.6</span>,</span><br><span class="line">    <span class="string">&quot;feature_fraction&quot;</span>: <span class="number">0.8</span>,</span><br><span class="line">    <span class="string">&quot;metric&quot;</span>: &#123;<span class="string">&#x27;binary_logloss&#x27;</span>, <span class="string">&#x27;auc&#x27;</span>&#125;,</span><br><span class="line">    <span class="string">&quot;objective&quot;</span>: <span class="string">&quot;binary&quot;</span>,</span><br><span class="line">    <span class="string">&quot;nthread&quot;</span>: <span class="number">10</span>,</span><br><span class="line">    <span class="string">&quot;verbose&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;使用训练集数据进行模型训练&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">fold_num = <span class="number">50</span></span><br></pre></td></tr></table></figure></li>
+<li><p>第二次提交</p>
+<p>在第一次提交的基础上做了后处理，将较大的概率值变得更大，较小的概率变得更小。线上得分为0.9404，掉了很多，后续就不考虑使用这个了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> tmp[<span class="number">1</span>] &gt;= <span class="number">0.75</span>:</span><br><span class="line">    tmp[<span class="number">1</span>] = <span class="built_in">min</span>(<span class="number">1</span>, tmp[<span class="number">1</span>] + <span class="number">0.1</span>)</span><br><span class="line"><span class="keyword">elif</span> tmp[<span class="number">1</span>] &lt;= <span class="number">0.25</span>:</span><br><span class="line">    tmp[<span class="number">1</span>] = <span class="built_in">max</span>(<span class="number">0</span>, tmp[<span class="number">1</span>] - <span class="number">0.1</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>第三次提交</p>
+<p>对缺失值取均值在线下不行，于是又是调参，线上得分为0.9535.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/比赛/">-- 比赛</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://example.com/2022/04/30/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8CFinTech%E6%95%B0%E6%8D%AE%E8%B5%9B%E9%81%93/" data-title="招商银行FinTech数据赛道 | 放荡小李的博客" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2022/06/22/“docker镜像制作与提交-入门”/" title="“docker镜像制作与提交-入门”">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  “docker镜像制作与提交-入门”</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2022/04/29/ACM模式下Python的输入输出处理/"  title="ACM模式下Python的输入输出处理">
+ <strong>NEXT:</strong><br/> 
+ <span>ACM模式下Python的输入输出处理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8CFinTech%E6%95%B0%E6%8D%AE%E8%B5%9B%E9%81%93%E6%AF%94%E8%B5%9B%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">招商银行FinTech数据赛道比赛记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%B5%9B%E9%A2%98%E7%AE%80%E4%BB%8B"><span class="toc-number">1.0.1.</span> <span class="toc-text">1、赛题简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81lgb-baseline"><span class="toc-number">1.0.2.</span> <span class="toc-text">2、lgb baseline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%8120220501"><span class="toc-number">1.0.3.</span> <span class="toc-text">3、20220501</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/glioma-segmentation/" title="-- glioma segmentation">-- glioma segmentation<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="-- leetcode刷题">-- leetcode刷题<sup>8</sup></a></li>
+		
+			<li><a href="/tags/tips/" title="-- tips">-- tips<sup>2</sup></a></li>
+		
+			<li><a href="/tags/tricks/" title="-- tricks">-- tricks<sup>1</sup></a></li>
+		
+			<li><a href="/tags/比赛/" title="-- 比赛">-- 比赛<sup>1</sup></a></li>
+		
+			<li><a href="/tags/爬虫/" title="-- 爬虫">-- 爬虫<sup>4</sup></a></li>
+		
+			<li><a href="/tags/阅读笔记/" title="-- 阅读笔记">-- 阅读笔记<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="--glioma segmentation">--glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="-glioma segmentation">-glioma segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/deep-learning/" title="deep learning">deep learning<sup>1</sup></a></li>
+		
+			<li><a href="/tags/glioma-grading/" title="glioma grading">glioma grading<sup>4</sup></a></li>
+		
+			<li><a href="/tags/glioma-segmentation/" title="glioma segmentation">glioma segmentation<sup>20</sup></a></li>
+		
+			<li><a href="/tags/graph-ML/" title="graph ML">graph ML<sup>6</sup></a></li>
+		
+			<li><a href="/tags/leetcode刷题/" title="leetcode刷题">leetcode刷题<sup>3</sup></a></li>
+		
+			<li><a href="/tags/medical-image-segmentation/" title="medical image segmentation">medical image segmentation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/small-tricks/" title="small tricks">small tricks<sup>3</sup></a></li>
+		
+			<li><a href="/tags/脑肿瘤分割整理/" title="脑肿瘤分割整理">脑肿瘤分割整理<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2022 
+		
+		<a href="http://example.com" target="_blank" title="Jiale Li">Jiale Li</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
